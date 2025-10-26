@@ -3,7 +3,6 @@ import Credentials from 'next-auth/providers/credentials'
 import { authConfig } from './auth.config'
 import { z } from 'zod'
 import { getStringFromBuffer } from './lib/utils'
-import { getUser } from './app/login/actions'
 
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
@@ -19,23 +18,10 @@ export const { auth, signIn, signOut } = NextAuth({
 
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data
-          const user = await getUser(email)
-
-          if (!user) return null
-
-          const encoder = new TextEncoder()
-          const saltedPassword = encoder.encode(password + user.salt)
-          const hashedPasswordBuffer = await crypto.subtle.digest(
-            'SHA-256',
-            saltedPassword
-          )
-          const hashedPassword = getStringFromBuffer(hashedPasswordBuffer)
-
-          if (hashedPassword === user.password) {
-            return user
-          } else {
-            return null
-          }
+          
+          // TODO: Implement your own user verification logic here
+          // For example, query your MongoDB database
+          return null
         }
 
         return null

@@ -24,7 +24,7 @@ export function Chat({ id, className, session, missingKeys }: ChatProps) {
   const path = usePathname()
   const [input, setInput] = useState('')
   const [messages] = useUIState()
-  const [aiState] = useAIState()
+  const [aiState] = useAIState() 
 
   const [_, setNewChatId] = useLocalStorage('newChatId', id)
 
@@ -32,7 +32,7 @@ export function Chat({ id, className, session, missingKeys }: ChatProps) {
     if (session?.user) {
       if (!path.includes('chat') && messages.length === 1) {
         window.history.replaceState({}, '', `/chat/${id}`)
-      }
+      } 
     }
   }, [id, path, session?.user, messages])
 
@@ -72,6 +72,7 @@ export function Chat({ id, className, session, missingKeys }: ChatProps) {
         )}
         <div className="w-full h-px" ref={visibilityRef} />
       </div>
+      
       <ChatPanel
         id={id}
         input={input}
