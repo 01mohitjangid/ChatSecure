@@ -3,8 +3,8 @@
 import { signIn } from '@/auth'
 import { ResultCode, getStringFromBuffer } from '@/lib/utils'
 import { z } from 'zod'
-import { kv } from '@vercel/kv'
-import { getUser } from '../login/actions'
+import { userStorage } from '@/lib/user-storage'
+import { getUser } from '../sign-in/actions'
 import { AuthError } from 'next-auth'
 
 export async function createUser(
@@ -20,14 +20,7 @@ export async function createUser(
       resultCode: ResultCode.UserAlreadyExists
     }
   } else {
-    const user = {
-      id: crypto.randomUUID(),
-      email,
-      password: hashedPassword,
-      salt
-    }
-
-    await kv.hmset(`user:${email}`, user)
+    await userStorage.createUser(email, hashedPassword, salt)
 
     return {
       type: 'success',
