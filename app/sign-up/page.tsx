@@ -2,34 +2,56 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useFormState, useFormStatus } from "react-dom"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { X, ArrowRight } from "lucide-react"
+import { X, ArrowRight, Loader2 } from "lucide-react"
+import { signup } from "./actions"
+import { toast } from "sonner"
+import { getMessageFromCode } from "@/lib/utils"
+
+const SubmitButton = () => {
+  const { pending } = useFormStatus()
+
+  return (
+    <Button
+      type="submit"
+      disabled={pending}
+      className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3"
+    >
+      {pending ? (
+        <>
+          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          Creating account...
+        </>
+      ) : (
+        "Sign Up"
+      )}
+    </Button>
+  )
+}
 
 export default function SignUpPage() {
-  const [email, setEmail] = useState("")
+  const router = useRouter()
+  const [result, dispatch] = useFormState(signup, undefined)
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (password !== confirmPassword) {
-      alert("Passwords do not match")
-      return
+  useEffect(() => {
+    if (result) {
+      if (result.type === 'error') {
+        toast.error(getMessageFromCode(result.resultCode))
+      } else {
+        toast.success(getMessageFromCode(result.resultCode))
+        router.refresh()
+        router.push('/')
+      }
     }
-
-    setIsLoading(true)
-
-    // TODO: Implement Clerk sign-up logic here
-    setTimeout(() => {
-      setIsLoading(false)
-      window.location.href = "/"
-    }, 1000)
-  }
+  }, [result, router])
 
   return (
     <div className="min-h-screen flex">
@@ -52,18 +74,29 @@ export default function SignUpPage() {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form 
+            action={(formData) => {
+              // Client-side password validation
+              if (password !== confirmPassword) {
+                toast.error("Passwords do not match!")
+                return
+              }
+              dispatch(formData)
+            }} 
+            className="space-y-4"
+          >
             <div className="space-y-2">
               <Label htmlFor="email" className="text-gray-300 text-sm">
                 Email Address
               </Label>
               <Input
                 id="email"
+                name="email"
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@example.com"
                 className="bg-transparent border-gray-600 text-white placeholder:text-gray-500 focus:border-purple-500"
                 required
+                autoComplete="email"
               />
             </div>
 
@@ -73,12 +106,17 @@ export default function SignUpPage() {
               </Label>
               <Input
                 id="password"
+                name="password"
                 type="password"
+                placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="bg-transparent border-gray-600 text-white placeholder:text-gray-500 focus:border-purple-500"
                 required
+                minLength={6}
+                autoComplete="new-password"
               />
+              <p className="text-xs text-gray-500">Minimum 6 characters</p>
             </div>
 
             <div className="space-y-2">
@@ -87,21 +125,19 @@ export default function SignUpPage() {
               </Label>
               <Input
                 id="confirmPassword"
+                name="confirmPassword"
                 type="password"
+                placeholder="••••••••"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 className="bg-transparent border-gray-600 text-white placeholder:text-gray-500 focus:border-purple-500"
                 required
+                minLength={6}
+                autoComplete="new-password"
               />
             </div>
 
-            <Button
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3"
-            >
-              {isLoading ? "Creating account..." : "Sign Up"}
-            </Button>
+            <SubmitButton />
           </form>
 
           {/* Footer Links */}
@@ -136,17 +172,20 @@ export default function SignUpPage() {
 
           {/* Content */}
           <div className="space-y-4">
-            <p className="text-sm opacity-80">Stock BOT</p>
+            <p className="text-sm opacity-80 uppercase tracking-wider">ChatSecure AI</p>
             <h2 className="text-3xl font-light leading-tight">
-              Join thousands of teams
+              Join thousands of users
               <br />
-              already collaborating
+              experiencing secure AI
             </h2>
+            <p className="text-sm opacity-90">
+              Create your free account and start having intelligent conversations protected by enterprise-grade encryption.
+            </p>
           </div>
 
           {/* CTA Button */}
-          <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 px-6">
-            SIGNUP NOW
+          <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 px-6" asChild>
+            <Link href="/dashboard">LEARN MORE</Link>
           </Button>
 
           {/* Navigation Arrow */}

@@ -1,10 +1,10 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { type User as ClerkUser, LogOut, Github, Menu } from "lucide-react"
+import { LogOut, Github, Menu, User as UserIcon } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,55 +14,30 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { useRouter } from "next/navigation"
+import type { Session } from "next-auth"
 
-// Mock user state - replace with actual Clerk integration
-interface User {
-  id: string
-  email: string
-  firstName?: string
-  lastName?: string
-  imageUrl?: string
+interface HeaderProps {
+  session: Session | null
 }
 
-export function Header() {
-  const [user, setUser] = useState<User | null>(null)
+export function Header({ session }: HeaderProps) {
+  const router = useRouter()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const user = session?.user
 
-  // Mock authentication state - replace with Clerk's useUser hook
-  useEffect(() => {
-    // Simulate checking authentication state
-    const checkAuth = () => {
-      // This would be replaced with Clerk's authentication check
-      const isAuthenticated = localStorage.getItem("isAuthenticated") === "true"
-      if (isAuthenticated) {
-        setUser({
-          id: "1",
-          email: "user@example.com",
-          firstName: "John",
-          lastName: "Doe",
-          imageUrl: undefined,
-        })
+  const handleSignOut = async () => {
+    try {
+      const response = await fetch("/api/auth/signout", {
+        method: "POST",
+      })
+      if (response.ok) {
+        router.refresh()
+        router.push("/sign-in")
       }
+    } catch (error) {
+      console.error("Sign out error:", error)
     }
-    checkAuth()
-  }, [])
-
-  const handleSignOut = () => {
-    // Replace with Clerk's signOut function
-    localStorage.removeItem("isAuthenticated")
-    setUser(null)
-    window.location.href = "/"
-  }
-
-  const handleSignIn = () => {
-    // Mock sign in - replace with actual Clerk logic
-    localStorage.setItem("isAuthenticated", "true")
-    setUser({
-      id: "1",
-      email: "user@example.com",
-      firstName: "John",
-      lastName: "Doe",
-    })
   }
 
   return (
@@ -126,10 +101,9 @@ export function Header() {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                 <Avatar className="h-8 w-8">
-                  <AvatarImage src={user.imageUrl || "/placeholder.svg"} alt={user.email} />
-                  <AvatarFallback>
-                    {user.firstName?.[0]}
-                    {user.lastName?.[0]}
+                  <AvatarImage src={user.image || undefined} alt={user.email || "User"} />
+                  <AvatarFallback className="bg-purple-600 text-white">
+                    <UserIcon className="h-4 w-4" />
                   </AvatarFallback>
                 </Avatar>
               </Button>
@@ -137,16 +111,16 @@ export function Header() {
             <DropdownMenuContent className="w-56" align="end" forceMount>
               <div className="flex items-center justify-start gap-2 p-2">
                 <div className="flex flex-col space-y-1 leading-none">
-                  {user.firstName && (
-                    <p className="font-medium">
-                      {user.firstName} {user.lastName}
-                    </p>
+                  {user.name && (
+                    <p className="font-medium">{user.name}</p>
                   )}
-                  <p className="w-[200px] truncate text-sm text-muted-foreground">{user.email}</p>
+                  {user.email && (
+                    <p className="w-[200px] truncate text-sm text-muted-foreground">{user.email}</p>
+                  )}
                 </div>
               </div>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={handleSignOut}>
+              <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer">
                 <LogOut className="mr-2 h-4 w-4" />
                 <span>Sign out</span>
               </DropdownMenuItem>
