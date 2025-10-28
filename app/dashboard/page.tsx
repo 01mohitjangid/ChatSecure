@@ -414,6 +414,7 @@ const CapabilityItem = ({ text }: { text: string }) => {
   )
 }
 
+
 const StatCard = ({ number, label }: { number: string; label: string }) => {
   return (
     <div className="flex flex-col items-center space-y-2 rounded-lg border bg-card p-8 text-center">
