@@ -31,7 +31,7 @@ export default function DashboardPage() {
               <Button asChild size="lg" className="bg-white text-purple-700 hover:bg-purple-50">
                 <Link href="/">
                   Start Chatting
-                  <ChevronRight className="ml-2 h-4 w-4" />
+                  <ChevronRight className="ml-2 size-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
@@ -55,32 +55,32 @@ export default function DashboardPage() {
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
             <FeatureCard
-              icon={<Shield className="h-10 w-10 text-purple-600" />}
+              icon={<Shield className="size-10 text-purple-600" />}
               title="Enterprise Security"
               description="Bank-level encryption and security protocols to keep your conversations private and protected."
             />
             <FeatureCard
-              icon={<Zap className="h-10 w-10 text-purple-600" />}
+              icon={<Zap className="size-10 text-purple-600" />}
               title="Lightning Fast"
               description="Real-time responses powered by state-of-the-art AI models with optimized performance."
             />
             <FeatureCard
-              icon={<MessageSquare className="h-10 w-10 text-purple-600" />}
+              icon={<MessageSquare className="size-10 text-purple-600" />}
               title="Smart Conversations"
               description="Context-aware AI that understands nuance and maintains conversation history."
             />
             <FeatureCard
-              icon={<Lock className="h-10 w-10 text-purple-600" />}
+              icon={<Lock className="size-10 text-purple-600" />}
               title="Privacy First"
               description="Your data stays yours. No tracking, no selling, no compromises on privacy."
             />
             <FeatureCard
-              icon={<Users className="h-10 w-10 text-purple-600" />}
+              icon={<Users className="size-10 text-purple-600" />}
               title="Multi-User Support"
               description="Collaborate with team members while maintaining individual privacy and preferences."
             />
             <FeatureCard
-              icon={<FileCode className="h-10 w-10 text-purple-600" />}
+              icon={<FileCode className="size-10 text-purple-600" />}
               title="Code Understanding"
               description="Advanced code comprehension for developers with syntax highlighting and explanations."
             />
@@ -134,13 +134,13 @@ export default function DashboardPage() {
               <div className="rounded-xl border bg-card p-8 shadow-lg">
                 <div className="space-y-4">
                   <div className="flex items-start space-x-3">
-                    <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center flex-shrink-0">
+                    <div className="size-8 rounded-full bg-purple-600 flex items-center justify-center shrink-0">
                       <span className="text-white text-sm font-bold">AI</span>
                     </div>
                     <div className="flex-1 space-y-2">
                       <div className="rounded-lg bg-muted p-3">
                         <p className="text-sm">
-                          Hello! I'm ChatSecure AI. I can help you with coding, writing, analysis, and much more.
+                          Hello! I&apos;m ChatSecure AI. I can help you with coding, writing, analysis, and much more.
                           How can I assist you today?
                         </p>
                       </div>
@@ -154,18 +154,18 @@ export default function DashboardPage() {
                         </p>
                       </div>
                     </div>
-                    <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
+                    <div className="size-8 rounded-full bg-muted flex items-center justify-center shrink-0">
                       <span className="text-sm">👤</span>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center flex-shrink-0">
+                    <div className="size-8 rounded-full bg-purple-600 flex items-center justify-center shrink-0">
                       <span className="text-white text-sm font-bold">AI</span>
                     </div>
                     <div className="flex-1 space-y-2">
                       <div className="rounded-lg bg-muted p-3">
                         <p className="text-sm">
-                          Absolutely! I'd be happy to help you create a React component. What kind of component
+                          Absolutely! I&apos;d be happy to help you create a React component. What kind of component
                           are you looking to build?
                         </p>
                       </div>
@@ -222,7 +222,7 @@ export default function DashboardPage() {
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
                 <div className="rounded-lg bg-gradient-to-br from-purple-600 to-indigo-800 p-2">
-                  <Shield className="h-5 w-5 text-white" />
+                  <Shield className="size-5 text-white" />
                 </div>
                 <span className="text-xl font-bold">ChatSecure</span>
               </div>
@@ -234,25 +234,25 @@ export default function DashboardPage() {
                   href="#" 
                   className="rounded-full border p-2 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-colors"
                 >
-                  <Twitter className="h-4 w-4" />
+                  <Twitter className="size-4" />
                 </Link>
                 <Link 
                   href="#" 
                   className="rounded-full border p-2 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-colors"
                 >
-                  <Github className="h-4 w-4" />
+                  <Github className="size-4" />
                 </Link>
                 <Link 
                   href="#" 
                   className="rounded-full border p-2 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-colors"
                 >
-                  <Linkedin className="h-4 w-4" />
+                  <Linkedin className="size-4" />
                 </Link>
                 <Link 
                   href="#" 
                   className="rounded-full border p-2 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-colors"
                 >
-                  <Mail className="h-4 w-4" />
+                  <Mail className="size-4" />
                 </Link>
               </div>
             </div>
@@ -398,7 +398,7 @@ const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode; titl
 const TechCard = ({ title, description }: { title: string; description: string }) => {
   return (
     <div className="flex flex-col items-center space-y-2 rounded-lg border bg-card p-6 text-center hover:shadow-md transition-shadow">
-      <Globe className="h-8 w-8 text-purple-600" />
+      <Globe className="size-8 text-purple-600" />
       <h3 className="font-bold">{title}</h3>
       <p className="text-sm text-muted-foreground">{description}</p>
     </div>
@@ -408,7 +408,7 @@ const TechCard = ({ title, description }: { title: string; description: string }
 const CapabilityItem = ({ text }: { text: string }) => {
   return (
     <li className="flex items-start space-x-3">
-      <CheckCircle2 className="h-5 w-5 text-purple-600 mt-0.5 flex-shrink-0" />
+      <CheckCircle2 className="size-5 text-purple-600 mt-0.5 shrink-0" />
       <span className="text-muted-foreground">{text}</span>
     </li>
   )

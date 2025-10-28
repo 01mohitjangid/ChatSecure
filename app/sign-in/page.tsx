@@ -25,7 +25,7 @@ const SubmitButton = () => {
     >
       {pending ? (
         <>
-          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          <Loader2 className="mr-2 size-4 animate-spin" />
           Signing in...
         </>
       ) : (
@@ -60,7 +60,7 @@ export default function SignInPage() {
           <div className="flex justify-end">
             <Button variant="ghost" size="icon" asChild className="text-white hover:bg-white/10">
               <Link href="/">
-                <X className="h-4 w-4" />
+                <X className="size-4" />
               </Link>
             </Button>
           </div>
@@ -114,7 +114,7 @@ export default function SignInPage() {
             </Link>
 
             <div className="flex items-center justify-center space-x-2 text-sm">
-              <span className="text-gray-400">Don't have an account?</span>
+              <span className="text-gray-400">Don&apos;t have an account?</span>
               <Link href="/sign-up" className="text-white hover:underline">
                 Get Started
               </Link>
@@ -127,15 +127,15 @@ export default function SignInPage() {
       <div className="flex-1 bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center p-8 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 right-20 w-32 h-32 border border-white/20 rounded-full"></div>
-          <div className="absolute bottom-32 left-16 w-24 h-24 border border-white/20 rounded-full"></div>
-          <div className="absolute top-1/2 right-1/3 w-16 h-16 border border-white/20 rounded-full"></div>
+          <div className="absolute top-20 right-20 size-32 border border-white/20 rounded-full"></div>
+          <div className="absolute bottom-32 left-16 size-24 border border-white/20 rounded-full"></div>
+          <div className="absolute top-1/2 right-1/3 size-16 border border-white/20 rounded-full"></div>
         </div>
 
         <div className="relative z-10 text-center text-white space-y-8 max-w-md">
           {/* Logo */}
           <div className="flex items-center justify-center space-x-2">
-            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+            <div className="size-8 bg-white rounded-full flex items-center justify-center">
               <span className="text-purple-600 font-bold text-sm">AI</span>
             </div>
             {/* <span className="text-xl font-semibold">Visio</span> */}
@@ -162,7 +162,7 @@ export default function SignInPage() {
           {/* Navigation Arrow */}
           <div className="absolute bottom-8 right-8">
             <Button size="icon" className="bg-white/20 hover:bg-white/30 text-white rounded-full">
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="size-4" />
             </Button>
           </div>
         </div>

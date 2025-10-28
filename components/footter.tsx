@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <div className="rounded-lg bg-gradient-to-br from-purple-600 to-indigo-800 p-2">
-                <Shield className="h-5 w-5 text-white" />
+                <Shield className="size-5 text-white" />
               </div>
               <span className="text-xl font-bold">ChatSecure</span>
             </div>
@@ -23,25 +23,25 @@ export default function Footer() {
                 href="#" 
                 className="rounded-full border p-2 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-colors"
               >
-                <Twitter className="h-4 w-4" />
+                <Twitter className="size-4" />
               </Link>
               <Link 
                 href="#" 
                 className="rounded-full border p-2 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-colors"
               >
-                <Github className="h-4 w-4" />
+                <Github className="size-4" />
               </Link>
               <Link 
                 href="#" 
                 className="rounded-full border p-2 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-colors"
               >
-                <Linkedin className="h-4 w-4" />
+                <Linkedin className="size-4" />
               </Link>
               <Link 
                 href="#" 
                 className="rounded-full border p-2 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-colors"
               >
-                <Mail className="h-4 w-4" />
+                <Mail className="size-4" />
               </Link>
             </div>
           </div>
