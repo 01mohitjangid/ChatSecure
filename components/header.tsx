@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { useRouter } from "next/navigation"
+import { logout } from "@/app/actions-auth"
 import type { Session } from "next-auth"
 
 interface HeaderProps {
@@ -22,19 +22,12 @@ interface HeaderProps {
 }
 
 export function Header({ session }: HeaderProps) {
-  const router = useRouter()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const user = session?.user
 
   const handleSignOut = async () => {
     try {
-      const response = await fetch("/api/auth/signout", {
-        method: "POST",
-      })
-      if (response.ok) {
-        router.refresh()
-        router.push("/sign-in")
-      }
+      await logout()
     } catch (error) {
       console.error("Sign out error:", error)
     }

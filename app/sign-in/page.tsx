@@ -45,8 +45,8 @@ export default function SignInPage() {
         toast.error(getMessageFromCode(result.resultCode))
       } else {
         toast.success(getMessageFromCode(result.resultCode))
-        router.refresh()
-        router.push('/')
+        // Use window.location for a full page reload to ensure session is loaded
+        window.location.href = '/'
       }
     }
   }, [result, router])
