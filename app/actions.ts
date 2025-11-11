@@ -154,3 +154,14 @@ export async function getMissingKeys() {
     .map(key => (process.env[key] ? '' : key))
     .filter(key => key !== '')
 }
+
+// Additional configuration check for development
+export async function checkAPIConfiguration() {
+  const { checkOpenAIConfig, getConfigErrorMessage } = await import('@/lib/api-config')
+  const config = checkOpenAIConfig()
+  
+  return {
+    isConfigured: config.isConfigured,
+    message: getConfigErrorMessage(config)
+  }
+}
