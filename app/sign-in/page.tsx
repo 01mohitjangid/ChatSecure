@@ -160,11 +160,7 @@ export default function SignInPage() {
           </Button>
 
           {/* Navigation Arrow */}
-          <div className="absolute bottom-8 right-8">
-            <Button size="icon" className="bg-white/20 hover:bg-white/30 text-white rounded-full">
-              <ArrowRight className="size-4" />
-            </Button>
-          </div>
+          
         </div>
       </div>
     </div>

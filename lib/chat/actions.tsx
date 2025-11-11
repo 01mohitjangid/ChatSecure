@@ -35,6 +35,7 @@ import { saveChat } from '@/app/actions'
 import { SpinnerMessage, UserMessage } from '@/components/stocks/message'
 import { Chat, Message } from '@/lib/types'
 import { auth } from '@/auth'
+import { retryOpenAICall } from '@/lib/retry-utils'
 
 async function confirmPurchase(symbol: string, price: number, amount: number) {
   'use server'
@@ -126,10 +127,13 @@ async function submitUserMessage(content: string) {
   let textStream: undefined | ReturnType<typeof createStreamableValue<string>>
   let textNode: undefined | React.ReactNode
 
-  const result = await streamUI({
-    model: openai('gpt-3.5-turbo'),
-    initial: <SpinnerMessage />,
-    system: `\
+  try {
+    // Wrap OpenAI call with retry logic for rate limits
+    const result = await retryOpenAICall(async () => {
+      return await streamUI({
+        model: openai('gpt-3.5-turbo'),
+        initial: <SpinnerMessage />,
+        system: `\
     You are a stock trading conversation bot and you can help users buy stocks, step by step.
     You and the user can discuss stock prices and the user can adjust the amount of stocks they want to buy, or place an order, in the UI.
     
@@ -144,38 +148,38 @@ async function submitUserMessage(content: string) {
     If the user wants to sell stock, or complete another impossible task, respond that you are a demo and cannot do that.
     
     Besides that, you can also chat with users and do some calculations if needed.`,
-    messages: [
-      ...aiState.get().messages.map((message: any) => ({
-        role: message.role,
-        content: message.content,
-        name: message.name
-      }))
-    ],
-    text: ({ content, done, delta }) => {
-      if (!textStream) {
-        textStream = createStreamableValue('')
-        textNode = <BotMessage content={textStream.value} />
-      }
+      messages: [
+        ...aiState.get().messages.map((message: any) => ({
+          role: message.role,
+          content: message.content,
+          name: message.name
+        }))
+      ],
+      text: ({ content, done, delta }) => {
+        if (!textStream) {
+          textStream = createStreamableValue('')
+          textNode = <BotMessage content={textStream.value} />
+        }
 
-      if (done) {
-        textStream.done()
-        aiState.done({
-          ...aiState.get(),
-          messages: [
-            ...aiState.get().messages,
-            {
-              id: nanoid(),
-              role: 'assistant',
-              content
-            }
-          ]
-        })
-      } else {
-        textStream.update(delta)
-      }
+        if (done) {
+          textStream.done()
+          aiState.done({
+            ...aiState.get(),
+            messages: [
+              ...aiState.get().messages,
+              {
+                id: nanoid(),
+                role: 'assistant',
+                content
+              }
+            ]
+          })
+        } else {
+          textStream.update(delta)
+        }
 
-      return textNode
-    },
+        return textNode
+      },
     tools: {
       listStocks: {
         description: 'List three imaginary stocks that are trending.',
@@ -476,12 +480,157 @@ async function submitUserMessage(content: string) {
         }
       }
     }
-  })
+    })
+    })  // Close retryOpenAICall
 
-  return {
-    id: nanoid(),
-    display: result.value
+    return {
+      id: nanoid(),
+      display: result.value
+    }
+  } catch (error: any) {
+    // Handle different types of errors
+    const errorMessage = getErrorMessage(error)
+    const errorType = error?.data?.error?.type || error?.error?.type || 'unknown'
+    const isQuotaError = errorType === 'insufficient_quota' || errorMessage.toLowerCase().includes('quota')
+    
+    // Log error for debugging (in production, use proper logging service)
+    console.error('OpenAI API Error:', {
+      status: error?.status,
+      type: errorType,
+      code: error?.data?.error?.code || error?.error?.code,
+      message: error?.message,
+      fullError: error
+    })
+
+    // Update AI state with error
+    aiState.done({
+      ...aiState.get(),
+      messages: [
+        ...aiState.get().messages,
+        {
+          id: nanoid(),
+          role: 'assistant',
+          content: errorMessage
+        }
+      ]
+    })
+
+    // Return user-friendly error UI with specific styling for quota errors
+    return {
+      id: nanoid(),
+      display: (
+        <BotCard>
+          <div className={`flex flex-col gap-3 p-4 rounded-lg border ${
+            isQuotaError 
+              ? 'bg-orange-50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-800'
+              : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
+          }`}>
+            <div className="flex items-start gap-2">
+              <span className={`text-lg ${isQuotaError ? 'text-orange-600 dark:text-orange-400' : 'text-red-600 dark:text-red-400'}`}>
+                {isQuotaError ? '💳' : '⚠️'}
+              </span>
+              <div className="flex-1 space-y-2">
+                <p className={`text-sm font-medium ${
+                  isQuotaError 
+                    ? 'text-orange-900 dark:text-orange-100' 
+                    : 'text-red-900 dark:text-red-100'
+                }`}>
+                  {isQuotaError ? 'Quota Exceeded' : 'Error'}
+                </p>
+                <p className={`text-sm ${
+                  isQuotaError 
+                    ? 'text-orange-800 dark:text-orange-200' 
+                    : 'text-red-800 dark:text-red-200'
+                }`}>
+                  {errorMessage}
+                </p>
+                {isQuotaError ? (
+                  <div className="mt-3 space-y-2">
+                    <p className="text-xs text-orange-700 dark:text-orange-300 font-medium">
+                      What to do next:
+                    </p>
+                    <ul className="text-xs text-orange-700 dark:text-orange-300 space-y-1 list-disc list-inside">
+                      <li>Check your usage at <a href="https://platform.openai.com/usage" target="_blank" rel="noopener noreferrer" className="underline hover:text-orange-900 dark:hover:text-orange-100">OpenAI Usage Dashboard</a></li>
+                      <li>Add a payment method at <a href="https://platform.openai.com/account/billing" target="_blank" rel="noopener noreferrer" className="underline hover:text-orange-900 dark:hover:text-orange-100">Billing Settings</a></li>
+                      <li>Free trial credits expire after 3 months or when used up</li>
+                      <li>Paid plans start at $5/month with higher limits</li>
+                    </ul>
+                  </div>
+                ) : (
+                  <p className="text-xs text-red-600 dark:text-red-400 mt-2">
+                    {error?.status === 429 && !isQuotaError
+                      ? 'Please wait about 60 seconds before trying again.'
+                      : 'Please try again in a moment. If the issue persists, check your API configuration.'}
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
+        </BotCard>
+      )
+    }
   }
+}
+
+// Helper function to extract user-friendly error messages
+function getErrorMessage(error: any): string {
+  // Extract OpenAI error details from various possible locations
+  const errorData = error?.data?.error || error?.error || {}
+  const errorType = errorData.type
+  const errorCode = errorData.code
+  const errorMessage = errorData.message || error?.message || ''
+  const messageLower = errorMessage.toLowerCase()
+  
+  // Check error type/code first (most reliable)
+  if (errorType === 'insufficient_quota' || errorCode === 'insufficient_quota') {
+    return 'Your OpenAI API key has exceeded its quota. Please check your plan and billing details at https://platform.openai.com/account/billing. Free trial credits may have expired, or you may need to add a payment method.'
+  }
+  
+  if (errorType === 'invalid_api_key' || errorCode === 'invalid_api_key' || errorType === 'invalid_request_error') {
+    return 'API authentication failed. Your OpenAI API key appears to be invalid. Please check your .env.local file and verify your key at https://platform.openai.com/api-keys'
+  }
+  
+  // Check for rate limit errors (429 status)
+  if (error?.status === 429 || messageLower.includes('rate limit')) {
+    // Distinguish between rate limit and quota errors
+    if (messageLower.includes('quota')) {
+      return 'Your OpenAI API key has exceeded its quota. Please check your plan and billing details at https://platform.openai.com/account/billing'
+    }
+    return 'Rate limit exceeded. Please wait a moment before sending another message. Free API keys have limited requests per minute (typically 3 RPM).'
+  }
+  
+  // Authentication errors (401 status)
+  if (error?.status === 401 || messageLower.includes('authentication') || messageLower.includes('api key')) {
+    return 'API authentication failed. Please check your OpenAI API key configuration in .env.local'
+  }
+  
+  // Quota errors in message
+  if (messageLower.includes('quota')) {
+    return 'API quota exceeded. Your OpenAI account has reached its usage limit. Check https://platform.openai.com/account/billing for details.'
+  }
+  
+  // Timeout errors
+  if (messageLower.includes('timeout') || messageLower.includes('timed out')) {
+    return 'Request timed out. The AI service is taking too long to respond. Please try again.'
+  }
+  
+  // Network errors
+  if (messageLower.includes('network') || messageLower.includes('fetch failed')) {
+    return 'Network error occurred. Please check your internet connection and try again.'
+  }
+  
+  // Server errors (5xx)
+  if (error?.status >= 500) {
+    return 'OpenAI service is temporarily unavailable. Please try again in a few moments.'
+  }
+  
+  // If we have a specific error message from OpenAI, use it
+  if (errorMessage && errorMessage.length > 0 && errorMessage.length < 500) {
+    return `OpenAI API Error: ${errorMessage}`
+  }
+  
+  // Generic error fallback
+  return 'An unexpected error occurred while processing your request. Please try again.'
 }
 
 export type AIState = {

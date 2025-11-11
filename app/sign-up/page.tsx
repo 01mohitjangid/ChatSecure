@@ -185,15 +185,12 @@ export default function SignUpPage() {
 
           {/* CTA Button */}
           <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 px-6" asChild>
-            <Link href="/dashboard">LEARN MORE</Link>
+            <Link href="/dashboard">LEARN MORE
+            </Link>
           </Button>
 
           {/* Navigation Arrow */}
-          <div className="absolute bottom-8 right-8">
-            <Button size="icon" className="bg-white/20 hover:bg-white/30 text-white rounded-full">
-              <ArrowRight className="size-4" />
-            </Button>
-          </div>
+          
         </div>
       </div>
     </div>
