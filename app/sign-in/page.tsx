@@ -115,7 +115,7 @@ export default function SignInPage() {
           {/* Logo */}
           <div className="flex items-center justify-center space-x-2">
             <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-              <span className="text-purple-600 font-bold text-sm">AI</span>
+              <span className="text-purple-600 font-bold text-sm">ai</span>
             </div>
             {/* <span className="text-xl font-semibold">Visio</span> */}
           </div>
