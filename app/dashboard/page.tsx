@@ -140,7 +140,7 @@ export default function DashboardPage() {
                     <div className="flex-1 space-y-2">
                       <div className="rounded-lg bg-muted p-3">
                         <p className="text-sm">
-                          Hello! I'm ChatSecure AI. I can help you with coding, writing, analysis, and much more.
+                          Hello! I'm ChatSecure AI. I can help you with coding, writing, analysis....
                           How can I assist you today?
                         </p>
                       </div>
