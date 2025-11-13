@@ -9,29 +9,26 @@ export function EmptyScreen() {
     <div className="mx-auto max-w-2xl px-4">
       <div className="flex flex-col gap-2 rounded-lg border bg-background p-8">
         <h1 className="text-lg font-semibold">
-          Welcome to Next.js AI Chatbot!
+          Welcome to ChatSecure! 🔒
         </h1>
         <p className="leading-normal text-muted-foreground">
-          This is an open source AI chatbot app template built with{' '}
-          <ExternalLink href="https://nextjs.org">Next.js</ExternalLink>, the{' '}
-          <ExternalLink href="https://sdk.vercel.ai">
-            Vercel AI SDK
-          </ExternalLink>
-          , and{' '}
-          <ExternalLink href="https://vercel.com/storage/kv">
-            Vercel KV
-          </ExternalLink>
-          .
+          A secure AI chat application powered by{' '}
+          <ExternalLink href="https://openai.com">OpenAI</ExternalLink> and built with{' '}
+          <ExternalLink href="https://nextjs.org">Next.js 14</ExternalLink>.
         </p>
         <p className="leading-normal text-muted-foreground">
-          It uses{' '}
-          <ExternalLink href="https://vercel.com/blog/ai-sdk-3-generative-ui">
-            React Server Components
-          </ExternalLink>{' '}
-          to combine text with generative UI as output of the LLM. The UI state
-          is synced through the SDK so the model is aware of your interactions
-          as they happen.
+          Start a conversation by typing your message below. Your chats are securely stored 
+          and only accessible to you.
         </p>
+        <div className="mt-4 flex flex-col items-start space-y-2">
+          <p className="text-sm font-medium">You can ask me to:</p>
+          <ul className="text-sm text-muted-foreground space-y-1 ml-4">
+            <li>• Answer questions and explain concepts</li>
+            <li>• Help with coding and debugging</li>
+            <li>• Write and edit content</li>
+            <li>• Brainstorm ideas and solutions</li>
+          </ul>
+        </div>
       </div>
     </div>
   )
