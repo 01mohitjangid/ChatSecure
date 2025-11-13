@@ -9,33 +9,27 @@ import {
   createStreamableValue
 } from 'ai/rsc'
 import { openai } from '@ai-sdk/openai'
-
-import {
-  spinner,
-  BotCard,
-  BotMessage,
-  SystemMessage,
-  Stock,
-  Purchase
-} from '@/components/stocks'
-
+import { streamText } from 'ai'
 import { z } from 'zod'
-import { EventsSkeleton } from '@/components/stocks/events-skeleton'
-import { Events } from '@/components/stocks/events'
-import { StocksSkeleton } from '@/components/stocks/stocks-skeleton'
-import { Stocks } from '@/components/stocks/stocks'
-import { StockSkeleton } from '@/components/stocks/stock-skeleton'
-import {
-  formatNumber,
-  runAsyncFnWithoutBlocking,
-  sleep,
-  nanoid
-} from '@/lib/utils'
+import { nanoid } from 'nanoid'
 import { saveChat } from '@/app/actions'
-import { SpinnerMessage, UserMessage } from '@/components/stocks/message'
+import {
+  BotMessage,
+  UserMessage,
+  SystemMessage,
+  BotCard
+} from '@/components/stocks/message'
+import { Stock, Purchase, Stocks, Events, spinner } from '@/components/stocks'
+import { StockSkeleton } from '@/components/stocks/stock-skeleton'
+import { StocksSkeleton } from '@/components/stocks/stocks-skeleton'
+import { EventsSkeleton } from '@/components/stocks/events-skeleton'
 import { Chat, Message } from '@/lib/types'
 import { auth } from '@/auth'
+import { formatNumber, runAsyncFnWithoutBlocking, sleep } from '@/lib/utils'
 
+/**
+ * Confirm stock purchase (for trader mode)
+ */
 async function confirmPurchase(symbol: string, price: number, amount: number) {
   'use server'
 
@@ -106,11 +100,18 @@ async function confirmPurchase(symbol: string, price: number, amount: number) {
   }
 }
 
+/**
+ * Submit user message and get AI response
+ * Supports two modes:
+ * 1. Normal chat mode (default)
+ * 2. Trader mode (when message starts with /trade)
+ */
 async function submitUserMessage(content: string) {
   'use server'
 
   const aiState = getMutableAIState<typeof AI>()
 
+  // Add user message to AI state
   aiState.update({
     ...aiState.get(),
     messages: [
@@ -123,12 +124,131 @@ async function submitUserMessage(content: string) {
     ]
   })
 
+  // Check if this is a trader command
+  const isTraderMode = content.trim().toLowerCase().startsWith('/trade')
+  const actualContent = isTraderMode
+    ? content.trim().slice(6).trim() // Remove "/trade" prefix
+    : content
+
+  // Create streamable UI for the response
+  let textStream: undefined | ReturnType<typeof createStreamableValue<string>>
+  let textNode: undefined | React.ReactNode
+
+  // If trader mode, use streamUI with tools
+  if (isTraderMode) {
+    return handleTraderMode(actualContent, aiState)
+  }
+
+  // Normal chat mode
+  const ui = createStreamableUI(<BotMessage content="" />)
+
+  // Start the async streaming process
+  ;(async () => {
+    try {
+      const session = await auth()
+      if (!session?.user) {
+        throw new Error('Unauthorized')
+      }
+
+      // Check for OpenAI API key
+      if (!process.env.OPENAI_API_KEY) {
+        throw new Error('OpenAI API key not configured')
+      }
+
+      const userId = session.user.id
+
+      // Prepare messages for OpenAI API
+      const messages = aiState.get().messages.map((message: Message) => ({
+        role: message.role as 'user' | 'assistant' | 'system',
+        content: message.content as string
+      }))
+
+      // Create streamable text for response
+      textStream = createStreamableValue('')
+      textNode = <BotMessage content={textStream.value} />
+      ui.update(textNode)
+
+      // Stream directly from OpenAI
+      const result = await streamText({
+        model: openai(process.env.OPENAI_MODEL || 'gpt-4-turbo-preview'),
+        messages,
+        temperature: 0.7,
+        maxTokens: 2000,
+        async onFinish({ text, finishReason, usage }) {
+          // Log completion for monitoring
+          console.log('Chat completion:', {
+            userId,
+            mode: 'normal',
+            finishReason,
+            usage
+          })
+        }
+      })
+
+      // Stream the text to UI
+      for await (const delta of result.textStream) {
+        textStream.update(delta)
+      }
+
+      textStream.done()
+
+      // Get the full text
+      const fullText = await result.text
+
+      // Update AI state with the complete response
+      aiState.done({
+        ...aiState.get(),
+        messages: [
+          ...aiState.get().messages,
+          {
+            id: nanoid(),
+            role: 'assistant',
+            content: fullText
+          }
+        ]
+      })
+
+      ui.done()
+    } catch (error) {
+      console.error('Error in submitUserMessage:', error)
+      ui.done(
+        <BotMessage
+          content={
+            error instanceof Error
+              ? `Error: ${error.message}`
+              : 'An error occurred. Please try again.'
+          }
+        />
+      )
+
+      aiState.done(aiState.get())
+    }
+  })()
+
+  return {
+    id: nanoid(),
+    display: ui.value
+  }
+}
+
+/**
+ * Handle trader mode with stock trading tools
+ */
+async function handleTraderMode(content: string, aiState: any) {
+  'use server'
+
+  const session = await auth()
+  if (!session?.user) {
+    throw new Error('Unauthorized')
+  }
+
+  const userId = session.user.id
   let textStream: undefined | ReturnType<typeof createStreamableValue<string>>
   let textNode: undefined | React.ReactNode
 
   const result = await streamUI({
-    model: openai('gpt-3.5-turbo'),
-    initial: <SpinnerMessage />,
+    model: openai('gpt-4-turbo-preview'),
+    initial: <BotMessage content="🔄 Switching to trader mode..." />,
     system: `\
     You are a stock trading conversation bot and you can help users buy stocks, step by step.
     You and the user can discuss stock prices and the user can adjust the amount of stocks they want to buy, or place an order, in the UI.
@@ -137,10 +257,10 @@ async function submitUserMessage(content: string) {
     - "[Price of AAPL = 100]" means that an interface of the stock price of AAPL is shown to the user.
     - "[User has changed the amount of AAPL to 10]" means that the user has changed the amount of AAPL to 10 in the UI.
     
-    If the user requests purchasing a stock, call \`show_stock_purchase_ui\` to show the purchase UI.
-    If the user just wants the price, call \`show_stock_price\` to show the price.
-    If you want to show trending stocks, call \`list_stocks\`.
-    If you want to show events, call \`get_events\`.
+    If the user requests purchasing a stock, call \`showStockPurchase\` to show the purchase UI.
+    If the user just wants the price, call \`showStockPrice\` to show the price.
+    If you want to show trending stocks, call \`listStocks\`.
+    If you want to show events, call \`getEvents\`.
     If the user wants to sell stock, or complete another impossible task, respond that you are a demo and cannot do that.
     
     Besides that, you can also chat with users and do some calculations if needed.`,
@@ -484,6 +604,9 @@ async function submitUserMessage(content: string) {
   }
 }
 
+/**
+ * AI State and UI State Types
+ */
 export type AIState = {
   chatId: string
   messages: Message[]
@@ -494,6 +617,9 @@ export type UIState = {
   display: React.ReactNode
 }[]
 
+/**
+ * Create the AI provider with actions
+ */
 export const AI = createAI<AIState, UIState>({
   actions: {
     submitUserMessage,
@@ -501,6 +627,7 @@ export const AI = createAI<AIState, UIState>({
   },
   initialUIState: [],
   initialAIState: { chatId: nanoid(), messages: [] },
+  
   onGetUIState: async () => {
     'use server'
 
@@ -517,6 +644,7 @@ export const AI = createAI<AIState, UIState>({
       return
     }
   },
+  
   onSetAIState: async ({ state }) => {
     'use server'
 
@@ -529,8 +657,8 @@ export const AI = createAI<AIState, UIState>({
       const userId = session.user.id as string
       const path = `/chat/${chatId}`
 
-      const firstMessageContent = messages[0].content as string
-      const title = firstMessageContent.substring(0, 100)
+      const firstMessageContent = messages[0]?.content as string
+      const title = firstMessageContent?.substring(0, 100) || 'New Chat'
 
       const chat: Chat = {
         id: chatId,
@@ -548,38 +676,16 @@ export const AI = createAI<AIState, UIState>({
   }
 })
 
+/**
+ * Convert AI state to UI state for rendering
+ */
 export const getUIStateFromAIState = (aiState: Chat) => {
   return aiState.messages
     .filter(message => message.role !== 'system')
     .map((message, index) => ({
       id: `${aiState.chatId}-${index}`,
       display:
-        message.role === 'tool' ? (
-          message.content.map(tool => {
-            return tool.toolName === 'listStocks' ? (
-              <BotCard>
-                {/* TODO: Infer types based on the tool result*/}
-                {/* @ts-expect-error */}
-                <Stocks props={tool.result} />
-              </BotCard>
-            ) : tool.toolName === 'showStockPrice' ? (
-              <BotCard>
-                {/* @ts-expect-error */}
-                <Stock props={tool.result} />
-              </BotCard>
-            ) : tool.toolName === 'showStockPurchase' ? (
-              <BotCard>
-                {/* @ts-expect-error */}
-                <Purchase props={tool.result} />
-              </BotCard>
-            ) : tool.toolName === 'getEvents' ? (
-              <BotCard>
-                {/* @ts-expect-error */}
-                <Events props={tool.result} />
-              </BotCard>
-            ) : null
-          })
-        ) : message.role === 'user' ? (
+        message.role === 'user' ? (
           <UserMessage>{message.content as string}</UserMessage>
         ) : message.role === 'assistant' &&
           typeof message.content === 'string' ? (

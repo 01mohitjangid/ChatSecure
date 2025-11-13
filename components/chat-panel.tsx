@@ -36,24 +36,24 @@ export function ChatPanel({
 
   const exampleMessages = [
     {
-      heading: 'What are the',
-      subheading: 'trending memecoins today?',
-      message: `What are the trending memecoins today?`
+      heading: 'Explain a concept',
+      subheading: 'like quantum computing',
+      message: `Explain quantum computing in simple terms`
     },
     {
-      heading: 'What is the price of',
-      subheading: '$DOGE right now?',
-      message: 'What is the price of $DOGE right now?'
+      heading: 'Help me write',
+      subheading: 'a professional email',
+      message: 'Help me write a professional email to my team'
     },
     {
-      heading: 'I would like to buy',
-      subheading: '42 $DOGE',
-      message: `I would like to buy 42 $DOGE`
+      heading: '💼 Trade stocks',
+      subheading: 'check prices & buy',
+      message: `/trade What's the price of AAPL?`
     },
     {
-      heading: 'What are some',
-      subheading: `recent events about $DOGE?`,
-      message: `What are some recent events about $DOGE?`
+      heading: '📈 Trending stocks',
+      subheading: 'see what\'s hot',
+      message: `/trade Show me trending stocks today`
     }
   ]
 

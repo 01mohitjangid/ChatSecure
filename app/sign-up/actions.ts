@@ -4,8 +4,18 @@ import { signIn } from '@/auth'
 import { ResultCode, getStringFromBuffer } from '@/lib/utils'
 import { z } from 'zod'
 import { kv } from '@vercel/kv'
-import { getUser } from '../login/actions'
 import { AuthError } from 'next-auth'
+
+export async function getUser(email: string) {
+  const user = await kv.hgetall<{
+    id: string
+    email: string
+    password: string
+    salt: string
+  }>(`user:${email}`)
+
+  return user
+}
 
 export async function createUser(
   email: string,
