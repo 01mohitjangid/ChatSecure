@@ -16,6 +16,7 @@ export function EmptyScreen() {
           <ExternalLink href="https://openai.com">OpenAI</ExternalLink> and built with{' '}
           <ExternalLink href="https://nextjs.org">Next.js 14</ExternalLink>.
         </p>
+        
         <p className="leading-normal text-muted-foreground">
           Start a conversation by typing your message below. Your chats are securely stored 
           and only accessible to you.
