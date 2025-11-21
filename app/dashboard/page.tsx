@@ -1,6 +1,7 @@
 import { Shield, Lock, MessageSquare, Zap, Users, FileCode, Globe, ChevronRight, CheckCircle2, Github, Twitter, Linkedin, Mail } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { ContactForm } from "@/components/contact-form"
 
 export const metadata = {
   title: 'Dashboard - ChatSecure',
@@ -189,6 +190,60 @@ export default function DashboardPage() {
         </div>
       </section>
 
+      {/* Contact Section */}
+      <section id="contact" className="w-full py-12 md:py-24 lg:py-32 bg-background">
+        <div className="container px-4 md:px-6">
+          <div className="grid gap-10 lg:grid-cols-2 items-start">
+            {/* Left Side - Info */}
+            <div className="space-y-4">
+              <div className="inline-block rounded-lg bg-purple-100 dark:bg-purple-950 px-3 py-1 text-sm text-purple-600 dark:text-purple-400">
+                Get in Touch
+              </div>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                Contact Us
+              </h2>
+              <p className="text-muted-foreground md:text-xl/relaxed">
+                Need an API key or have questions? We're here to help. Fill out the form and our team will get back to you within 24 hours.
+              </p>
+              <div className="space-y-4 pt-4">
+                <div className="flex items-start space-x-3">
+                  <div className="rounded-lg bg-purple-100 dark:bg-purple-950 p-2">
+                    <Mail className="h-5 w-5 text-purple-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Email Support</h3>
+                    <p className="text-sm text-muted-foreground">support@chatsecure.com</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="rounded-lg bg-purple-100 dark:bg-purple-950 p-2">
+                    <Zap className="h-5 w-5 text-purple-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">API Access</h3>
+                    <p className="text-sm text-muted-foreground">Request your API key through the form</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="rounded-lg bg-purple-100 dark:bg-purple-950 p-2">
+                    <Shield className="h-5 w-5 text-purple-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Enterprise Solutions</h3>
+                    <p className="text-sm text-muted-foreground">Custom plans for large organizations</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Side - Contact Form */}
+            <div className="rounded-xl border bg-card p-8 shadow-lg">
+              <ContactForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800">
         <div className="container px-4 md:px-6">
@@ -309,7 +364,7 @@ export default function DashboardPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="#contact" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Contact
                   </Link>
                 </li>
