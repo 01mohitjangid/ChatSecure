@@ -81,6 +81,12 @@ export function Header() {
           >
             Dashboard
           </Link>
+          <Link 
+            href="/blog" 
+            className="text-sm font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400"
+          >
+            Blog
+          </Link>
         </nav>
         <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
           <SheetTrigger asChild>
@@ -97,6 +103,13 @@ export function Header() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Dashboard
+              </Link>
+              <Link 
+                href="/blog" 
+                className="text-lg font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Blog
               </Link>
               <Link 
                 href="/" 
