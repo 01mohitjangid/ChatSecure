@@ -354,7 +354,7 @@ export default function DashboardPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="#blog" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Blog
                   </Link>
                 </li>
