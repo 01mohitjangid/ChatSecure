@@ -104,7 +104,7 @@ export function ContactForm() {
         disabled={isSubmitting}
         className="w-full bg-gradient-to-r from-purple-600 to-indigo-800 hover:from-purple-700 hover:to-indigo-900 text-white disabled:opacity-50"
       >
-        <Mail className="mr-2 h-4 w-4" />
+        <Mail className="mr-2 size-4" />
         {isSubmitting ? 'Sending...' : 'Send Message'}
       </Button>
 

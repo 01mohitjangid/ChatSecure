@@ -35,21 +35,21 @@ export default function BlogPage() {
       <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
         <div className="container px-4 md:px-6">
           <div className="flex items-center gap-2 mb-8">
-            <TrendingUp className="h-5 w-5 text-purple-600" />
+            <TrendingUp className="size-5 text-purple-600" />
             <h2 className="text-2xl font-bold">Featured Post</h2>
           </div>
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="relative overflow-hidden rounded-lg aspect-video bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-950 dark:to-indigo-950 flex items-center justify-center">
-              <BookOpen className="h-24 w-24 text-purple-600/20" />
+              <BookOpen className="size-24 text-purple-600/20" />
             </div>
             <div className="space-y-4">
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <div className="flex items-center gap-1">
-                  <Calendar className="h-4 w-4" />
+                  <Calendar className="size-4" />
                   <span>Nov 20, 2024</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <Clock className="h-4 w-4" />
+                  <Clock className="size-4" />
                   <span>8 min read</span>
                 </div>
               </div>
@@ -63,8 +63,8 @@ export default function BlogPage() {
               </p>
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center">
-                    <User className="h-4 w-4 text-white" />
+                  <div className="size-8 rounded-full bg-purple-600 flex items-center justify-center">
+                    <User className="size-4 text-white" />
                   </div>
                   <span className="text-sm font-medium">Sarah Chen</span>
                 </div>
@@ -74,7 +74,7 @@ export default function BlogPage() {
               <Button asChild size="lg" className="bg-purple-600 hover:bg-purple-700">
                 <Link href="#">
                   Read Full Article
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-2 size-4" />
                 </Link>
               </Button>
             </div>
@@ -159,22 +159,22 @@ export default function BlogPage() {
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <CategoryCard
-              icon={<Shield className="h-8 w-8 text-purple-600" />}
+              icon={<Shield className="size-8 text-purple-600" />}
               title="Security"
               count={12}
             />
             <CategoryCard
-              icon={<BookOpen className="h-8 w-8 text-purple-600" />}
+              icon={<BookOpen className="size-8 text-purple-600" />}
               title="AI Insights"
               count={18}
             />
             <CategoryCard
-              icon={<TrendingUp className="h-8 w-8 text-purple-600" />}
+              icon={<TrendingUp className="size-8 text-purple-600" />}
               title="Product Updates"
               count={24}
             />
             <CategoryCard
-              icon={<Tag className="h-8 w-8 text-purple-600" />}
+              icon={<Tag className="size-8 text-purple-600" />}
               title="Best Practices"
               count={15}
             />
@@ -188,7 +188,7 @@ export default function BlogPage() {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <div className="rounded-full bg-white/10 p-3 w-fit mx-auto mb-4 backdrop-blur-sm">
-                <Mail className="h-6 w-6 text-white" />
+                <Mail className="size-6 text-white" />
               </div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
                 Subscribe to Our Newsletter
@@ -224,7 +224,7 @@ export default function BlogPage() {
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
                 <div className="rounded-lg bg-gradient-to-br from-purple-600 to-indigo-800 p-2">
-                  <Shield className="h-5 w-5 text-white" />
+                  <Shield className="size-5 text-white" />
                 </div>
                 <span className="text-xl font-bold">ChatSecure</span>
               </div>
@@ -342,7 +342,7 @@ const BlogCard = ({
   return (
     <div className="group relative overflow-hidden rounded-lg border bg-card hover:shadow-lg transition-all duration-300">
       <div className="relative overflow-hidden aspect-video bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-950 dark:to-indigo-950 flex items-center justify-center">
-        <BookOpen className="h-12 w-12 text-purple-600/20 group-hover:scale-110 transition-transform duration-300" />
+        <BookOpen className="size-12 text-purple-600/20 group-hover:scale-110 transition-transform duration-300" />
       </div>
       <div className="p-6 space-y-3">
         <div className="inline-block rounded-lg bg-purple-100 dark:bg-purple-950 px-3 py-1 text-xs font-medium text-purple-600 dark:text-purple-400">
@@ -356,16 +356,16 @@ const BlogCard = ({
         </p>
         <div className="flex items-center justify-between pt-3 border-t">
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            <Calendar className="h-3 w-3" />
+            <Calendar className="size-3" />
             <span>{date}</span>
             <span>•</span>
-            <Clock className="h-3 w-3" />
+            <Clock className="size-3" />
             <span>{readTime}</span>
           </div>
         </div>
         <div className="flex items-center gap-2 pt-2">
-          <div className="w-6 h-6 rounded-full bg-purple-600 flex items-center justify-center">
-            <User className="h-3 w-3 text-white" />
+          <div className="size-6 rounded-full bg-purple-600 flex items-center justify-center">
+            <User className="size-3 text-white" />
           </div>
           <span className="text-xs font-medium">{author}</span>
         </div>
@@ -374,7 +374,7 @@ const BlogCard = ({
           className="inline-flex items-center text-sm font-medium text-purple-600 hover:text-purple-700 pt-2"
         >
           Read Article
-          <ArrowRight className="ml-1 h-4 w-4" />
+          <ArrowRight className="ml-1 size-4" />
         </Link>
       </div>
     </div>
