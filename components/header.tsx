@@ -69,7 +69,7 @@ export function Header() {
     <header className="sticky top-0 z-50 flex items-center justify-between w-full h-16 px-4 border-b shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
       <div className="flex items-center gap-6">
         <Link href="/" className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center">
+          <div className="size-8 bg-purple-600 rounded-full flex items-center justify-center">
             <span className="text-white font-bold text-sm">AI</span>
           </div>
           
@@ -91,7 +91,7 @@ export function Header() {
         <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon" className="md:hidden">
-              <Menu className="h-5 w-5" />
+              <Menu className="size-5" />
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
@@ -130,15 +130,15 @@ export function Header() {
           rel="noopener noreferrer"
           className={cn(buttonVariants({ variant: "outline" }))}
         >
-          <Github className="h-4 w-4" />
+          <Github className="size-4" />
           <span className="hidden ml-2 md:flex">GitHub</span>
         </a>
 
         {user ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                <Avatar className="h-8 w-8">
+              <Button variant="ghost" className="relative size-8 rounded-full">
+                <Avatar className="size-8">
                   <AvatarImage src={user.imageUrl || "/placeholder.svg"} alt={user.email} />
                   <AvatarFallback>
                     {user.firstName?.[0]}
@@ -160,7 +160,7 @@ export function Header() {
               </div>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={handleSignOut}>
-                <LogOut className="mr-2 h-4 w-4" />
+                <LogOut className="mr-2 size-4" />
                 <span>Sign out</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
