@@ -1,5 +1,6 @@
 import { Calendar, Clock, User, ArrowRight, Tag, TrendingUp, BookOpen, Shield, Mail } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -39,8 +40,14 @@ export default function BlogPage() {
             <h2 className="text-2xl font-bold">Featured Post</h2>
           </div>
           <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div className="relative overflow-hidden rounded-lg aspect-video bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-950 dark:to-indigo-950 flex items-center justify-center">
-              <BookOpen className="size-24 text-purple-600/20" />
+            <div className="relative overflow-hidden rounded-lg aspect-video bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-950 dark:to-indigo-950">
+              <Image
+                src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=1200&q=80"
+                alt="The Future of AI Security"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
             <div className="space-y-4">
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -101,6 +108,7 @@ export default function BlogPage() {
               date="Nov 18, 2024"
               readTime="5 min"
               author="Michael Ross"
+              image="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
             />
             <BlogCard
               category="Technical"
@@ -109,6 +117,7 @@ export default function BlogPage() {
               date="Nov 15, 2024"
               readTime="12 min"
               author="David Kim"
+              image="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80"
             />
             <BlogCard
               category="Best Practices"
@@ -117,6 +126,7 @@ export default function BlogPage() {
               date="Nov 12, 2024"
               readTime="7 min"
               author="Emily Johnson"
+              image="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80"
             />
             <BlogCard
               category="Security"
@@ -125,6 +135,7 @@ export default function BlogPage() {
               date="Nov 8, 2024"
               readTime="6 min"
               author="Sarah Chen"
+              image="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80"
             />
             <BlogCard
               category="AI Insights"
@@ -133,6 +144,7 @@ export default function BlogPage() {
               date="Nov 5, 2024"
               readTime="10 min"
               author="Dr. James Wilson"
+              image="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80"
             />
             <BlogCard
               category="Company News"
@@ -141,6 +153,7 @@ export default function BlogPage() {
               date="Nov 1, 2024"
               readTime="4 min"
               author="Jennifer Adams"
+              image="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
             />
           </div>
         </div>
@@ -330,7 +343,8 @@ const BlogCard = ({
   excerpt, 
   date, 
   readTime, 
-  author 
+  author,
+  image 
 }: { 
   category: string
   title: string
@@ -338,11 +352,23 @@ const BlogCard = ({
   date: string
   readTime: string
   author: string
+  image?: string
 }) => {
   return (
     <div className="group relative overflow-hidden rounded-lg border bg-card hover:shadow-lg transition-all duration-300">
-      <div className="relative overflow-hidden aspect-video bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-950 dark:to-indigo-950 flex items-center justify-center">
-        <BookOpen className="size-12 text-purple-600/20 group-hover:scale-110 transition-transform duration-300" />
+      <div className="relative overflow-hidden aspect-video bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-950 dark:to-indigo-950">
+        {image ? (
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        ) : (
+          <div className="flex items-center justify-center h-full">
+            <BookOpen className="size-12 text-purple-600/20 group-hover:scale-110 transition-transform duration-300" />
+          </div>
+        )}
       </div>
       <div className="p-6 space-y-3">
         <div className="inline-block rounded-lg bg-purple-100 dark:bg-purple-950 px-3 py-1 text-xs font-medium text-purple-600 dark:text-purple-400">
