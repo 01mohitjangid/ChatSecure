@@ -25,7 +25,7 @@ export default function ComingSoonPage() {
               Coming <span className="text-purple-600">Soon</span>
             </h1>
             <p className="mx-auto max-w-[700px] text-muted-foreground text-lg md:text-xl">
-              We're working hard to bring you something amazing. This feature is currently under development 
+              We&apos;re working hard to bring you something amazing. This feature is currently under development 
               and will be available soon. Stay tuned for updates!
             </p>
           </div>
