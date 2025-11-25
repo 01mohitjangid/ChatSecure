@@ -286,25 +286,25 @@ export default function DashboardPage() {
               </p>
               <div className="flex space-x-3">
                 <Link 
-                  href="#" 
+                  href="/coming-soon" 
                   className="rounded-full border p-2 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-colors"
                 >
                   <Twitter className="size-4" />
                 </Link>
                 <Link 
-                  href="#" 
+                  href="/coming-soon" 
                   className="rounded-full border p-2 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-colors"
                 >
                   <Github className="size-4" />
                 </Link>
                 <Link 
-                  href="#" 
+                  href="/coming-soon" 
                   className="rounded-full border p-2 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-colors"
                 >
                   <Linkedin className="size-4" />
                 </Link>
                 <Link 
-                  href="#" 
+                  href="/coming-soon" 
                   className="rounded-full border p-2 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-colors"
                 >
                   <Mail className="size-4" />
@@ -322,22 +322,22 @@ export default function DashboardPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Pricing
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     API Documentation
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Integrations
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Changelog
                   </Link>
                 </li>
@@ -350,7 +350,7 @@ export default function DashboardPage() {
               <h3 className="text-sm font-semibold">Company</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     About Us
                   </Link>
                 </li>
@@ -360,7 +360,7 @@ export default function DashboardPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Careers
                   </Link>
                 </li>
@@ -370,7 +370,7 @@ export default function DashboardPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Partners
                   </Link>
                 </li>
@@ -382,27 +382,27 @@ export default function DashboardPage() {
               <h3 className="text-sm font-semibold">Resources</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Help Center
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Community
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Guides & Tutorials
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Status
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Terms of Service
                   </Link>
                 </li>
@@ -419,13 +419,13 @@ export default function DashboardPage() {
                 © 2024 ChatSecure. All rights reserved.
               </p>
               <div className="flex items-center space-x-6">
-                <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                   Privacy Policy
                 </Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                   Cookie Policy
                 </Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                   Security
                 </Link>
               </div>

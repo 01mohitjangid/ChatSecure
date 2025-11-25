@@ -22,7 +22,7 @@ export default function BlogPage() {
                 Latest Insights & Updates
               </div>
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white">
-                ChatSecure <span className="text-purple-200">Blog</span>
+                <span className="text-purple-200">BLOG</span>
               </h1>
               <p className="mx-auto max-w-[700px] text-purple-100 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Discover the latest in AI technology, security best practices, and product updates from the ChatSecure team.
@@ -79,7 +79,7 @@ export default function BlogPage() {
                 <span className="text-sm text-muted-foreground">Security Lead</span>
               </div>
               <Button asChild size="lg" className="bg-purple-600 hover:bg-purple-700">
-                <Link href="#">
+                <Link href="/coming-soon">
                   Read Full Article
                   <ArrowRight className="ml-2 size-4" />
                 </Link>
@@ -256,12 +256,12 @@ export default function BlogPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Pricing
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     API Documentation
                   </Link>
                 </li>
@@ -273,7 +273,7 @@ export default function BlogPage() {
               <h3 className="text-sm font-semibold">Company</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     About Us
                   </Link>
                 </li>
@@ -283,7 +283,7 @@ export default function BlogPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Contact
                   </Link>
                 </li>
@@ -295,17 +295,17 @@ export default function BlogPage() {
               <h3 className="text-sm font-semibold">Resources</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Help Center
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Community
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Status
                   </Link>
                 </li>
@@ -322,10 +322,10 @@ export default function BlogPage() {
                 © 2024 ChatSecure. All rights reserved.
               </p>
               <div className="flex items-center space-x-6">
-                <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                   Privacy Policy
                 </Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                   Terms of Service
                 </Link>
               </div>
@@ -396,7 +396,7 @@ const BlogCard = ({
           <span className="text-xs font-medium">{author}</span>
         </div>
         <Link 
-          href="#" 
+          href="/coming-soon" 
           className="inline-flex items-center text-sm font-medium text-purple-600 hover:text-purple-700 pt-2"
         >
           Read Article
@@ -417,7 +417,7 @@ const CategoryCard = ({
   count: number
 }) => {
   return (
-    <Link href="#" className="group">
+    <Link href="/coming-soon" className="group">
       <div className="flex flex-col items-center space-y-3 rounded-lg border bg-card p-8 text-center hover:shadow-lg transition-all duration-300 hover:border-purple-600">
         <div className="rounded-lg bg-purple-100 dark:bg-purple-950 w-fit p-3 group-hover:scale-110 transition-transform duration-300">
           {icon}
