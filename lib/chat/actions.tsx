@@ -158,10 +158,25 @@ async function submitUserMessage(content: string) {
       const userId = session.user.id
 
       // Prepare messages for OpenAI API
-      const messages = aiState.get().messages.map((message: Message) => ({
-        role: message.role as 'user' | 'assistant' | 'system',
-        content: message.content as string
-      }))
+      // Note: For GPT-4 Vision, you would format image messages differently
+      // For now, we include image URLs as text references
+      const messages = aiState.get().messages.map((message: Message) => {
+        let content = message.content as string
+        
+        // If message contains an image reference, ensure it's properly formatted
+        if (content && content.includes('[User sent an image:')) {
+          // The AI can understand and reference the image URL
+          content = content.replace(
+            /\[User sent an image: (.+?)\]/g,
+            'I sent an image that can be viewed at: $1'
+          )
+        }
+        
+        return {
+          role: message.role as 'user' | 'assistant' | 'system',
+          content
+        }
+      })
 
       // Create streamable text for response
       textStream = createStreamableValue('')

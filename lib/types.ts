@@ -1,7 +1,15 @@
 import { CoreMessage } from 'ai'
 
+export interface ImageAttachment {
+  url: string
+  fileName: string
+  size: number
+  type: string
+}
+
 export type Message = CoreMessage & {
   id: string
+  imageAttachment?: ImageAttachment
 }
 
 export interface Chat extends Record<string, any> {
