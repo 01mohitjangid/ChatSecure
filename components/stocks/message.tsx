@@ -12,13 +12,29 @@ import { useStreamableText } from '@/lib/hooks/use-streamable-text'
 
 // Different types of message bubbles.
 
-export function UserMessage({ children }: { children: React.ReactNode }) {
+export function UserMessage({ 
+  children, 
+  imageUrl 
+}: { 
+  children: React.ReactNode
+  imageUrl?: string 
+}) {
   return (
     <div className="group relative flex items-start md:-ml-12">
       <div className="flex size-[25px] shrink-0 select-none items-center justify-center rounded-md border bg-background shadow-sm">
         <IconUser />
       </div>
       <div className="ml-4 flex-1 space-y-2 overflow-hidden pl-2">
+        {imageUrl && (
+          <div className="mb-2">
+            <img
+              src={imageUrl}
+              alt="User uploaded"
+              className="rounded-lg border border-border max-w-md max-h-96 object-contain cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => window.open(imageUrl, '_blank')}
+            />
+          </div>
+        )}
         {children}
       </div>
     </div>
