@@ -26,16 +26,29 @@ export function UserMessage({
       </div>
       <div className="ml-4 flex-1 space-y-2 overflow-hidden pl-2">
         {imageUrl && (
-          <div className="mb-2">
-            <img
-              src={imageUrl}
-              alt="User uploaded"
-              className="rounded-lg border border-border max-w-md max-h-96 object-contain cursor-pointer hover:opacity-90 transition-opacity"
-              onClick={() => window.open(imageUrl, '_blank')}
-            />
+          <div className="mb-3 mt-1">
+            <div className="relative inline-block group/image">
+              <img
+                src={imageUrl}
+                alt="User uploaded image"
+                className="rounded-xl border-2 border-border max-w-sm sm:max-w-md max-h-80 object-contain cursor-pointer hover:opacity-95 transition-all duration-200 shadow-md hover:shadow-lg bg-muted/30"
+                onClick={() => window.open(imageUrl, '_blank')}
+                loading="lazy"
+              />
+              <div className="absolute inset-0 rounded-xl bg-black/0 group-hover/image:bg-black/5 transition-colors pointer-events-none" />
+              <div className="absolute bottom-2 right-2 opacity-0 group-hover/image:opacity-100 transition-opacity">
+                <div className="bg-black/70 text-white text-xs px-2 py-1 rounded-md backdrop-blur-sm">
+                  Click to enlarge
+                </div>
+              </div>
+            </div>
           </div>
         )}
-        {children}
+        {children && (
+          <div className="prose prose-sm dark:prose-invert">
+            {children}
+          </div>
+        )}
       </div>
     </div>
   )
