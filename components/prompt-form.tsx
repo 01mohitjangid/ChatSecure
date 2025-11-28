@@ -161,13 +161,13 @@ export function PromptForm({
         setMessages(currentMessages => [...currentMessages, responseMessage])
       }}
     >
-      <div className="relative flex max-h-60 w-full grow flex-col overflow-hidden bg-background px-8 sm:rounded-md sm:border sm:px-12">
+      <div className="relative flex w-full grow flex-col overflow-visible bg-background px-8 sm:rounded-md sm:border sm:px-12">
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
               variant="outline"
               size="icon"
-              className="absolute left-0 top-[14px] size-8 rounded-full bg-background p-0 sm:left-4"
+              className="absolute left-0 top-[14px] size-8 rounded-full bg-background p-0 sm:left-4 z-10"
               onClick={() => {
                 router.push('/new')
               }}
@@ -179,30 +179,35 @@ export function PromptForm({
           <TooltipContent>New Chat</TooltipContent>
         </Tooltip>
 
-        {/* Image preview */}
+        {/* Image preview - positioned above the input */}
         {imagePreview && (
-          <div className="relative mb-2 mt-2 inline-block max-w-xs">
-            <img
-              src={imagePreview}
-              alt="Preview"
-              className="rounded-lg border border-border max-h-32 object-cover"
-            />
-            <Button
-              type="button"
-              variant="destructive"
-              size="icon"
-              className="absolute -right-2 -top-2 size-6 rounded-full"
-              onClick={handleRemoveImage}
-              disabled={isUploading}
-            >
-              <IconX className="size-3" />
-              <span className="sr-only">Remove image</span>
-            </Button>
-            {isUploading && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-lg">
-                <IconSpinner className="text-white" />
-              </div>
-            )}
+          <div className="pt-2 pb-2">
+            <div className="relative inline-block">
+              <img
+                src={imagePreview}
+                alt="Preview"
+                className="rounded-lg border-2 border-muted-foreground/20 max-h-40 max-w-[200px] object-contain shadow-sm"
+              />
+              <Button
+                type="button"
+                variant="destructive"
+                size="icon"
+                className="absolute -right-2 -top-2 size-7 rounded-full shadow-md hover:scale-110 transition-transform"
+                onClick={handleRemoveImage}
+                disabled={isUploading}
+              >
+                <IconX className="size-4" />
+                <span className="sr-only">Remove image</span>
+              </Button>
+              {isUploading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/60 rounded-lg backdrop-blur-sm">
+                  <div className="flex flex-col items-center gap-2">
+                    <IconSpinner className="text-white size-6" />
+                    <span className="text-white text-xs font-medium">Uploading...</span>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         )}
 
@@ -210,7 +215,7 @@ export function PromptForm({
           ref={inputRef}
           tabIndex={0}
           onKeyDown={onKeyDown}
-          placeholder="Send a message."
+          placeholder={imagePreview ? "Add a message (optional)..." : "Send a message."}
           className="min-h-[60px] w-full resize-none bg-transparent px-4 py-[1.3rem] focus-within:outline-none sm:text-sm"
           autoFocus
           spellCheck={false}
@@ -222,7 +227,7 @@ export function PromptForm({
           onChange={e => setInput(e.target.value)}
         />
         
-        <div className="absolute right-0 top-[13px] sm:right-4 flex items-center gap-2">
+        <div className="absolute right-0 top-[13px] sm:right-4 flex items-center gap-1">
           {/* Image upload button */}
           <Tooltip>
             <TooltipTrigger asChild>
@@ -230,11 +235,11 @@ export function PromptForm({
                 type="button"
                 variant="outline"
                 size="icon"
-                className="size-8"
+                className="size-8 hover:bg-accent"
                 onClick={() => fileInputRef.current?.click()}
-                disabled={isUploading}
+                disabled={isUploading || !!imagePreview}
               >
-                {isUploading ? <IconSpinner /> : <IconImage />}
+                {isUploading ? <IconSpinner className="size-4" /> : <IconImage className="size-4" />}
                 <span className="sr-only">Upload image</span>
               </Button>
             </TooltipTrigger>
@@ -253,10 +258,11 @@ export function PromptForm({
             <TooltipTrigger asChild>
               <Button 
                 type="submit" 
-                size="icon" 
+                size="icon"
+                className="size-8"
                 disabled={(input === '' && !selectedFile) || isUploading}
               >
-                <IconArrowElbow />
+                <IconArrowElbow className="size-4" />
                 <span className="sr-only">Send message</span>
               </Button>
             </TooltipTrigger>
