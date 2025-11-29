@@ -114,6 +114,13 @@ export function PromptForm({
     }
   }
 
+  // Format file size for display
+  const formatFileSize = (bytes: number): string => {
+    if (bytes < 1024) return bytes + ' B'
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB'
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB'
+  }
+
   return (
     <form
       ref={formRef}
@@ -161,73 +168,71 @@ export function PromptForm({
         setMessages(currentMessages => [...currentMessages, responseMessage])
       }}
     >
-      <div className="relative flex w-full grow flex-col overflow-visible bg-background px-8 sm:rounded-md sm:border sm:px-12">
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              variant="outline"
-              size="icon"
-              className="absolute left-0 top-[14px] size-8 rounded-full bg-background p-0 sm:left-4 z-10"
-              onClick={() => {
-                router.push('/new')
-              }}
-            >
-              <IconPlus />
-              <span className="sr-only">New Chat</span>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>New Chat</TooltipContent>
-        </Tooltip>
-
-        {/* Image preview - positioned above the input */}
-        {imagePreview && (
-          <div className="pt-2 pb-2">
-            <div className="relative inline-block">
-              <img
-                src={imagePreview}
-                alt="Preview"
-                className="rounded-lg border-2 border-muted-foreground/20 max-h-40 max-w-[200px] object-contain shadow-sm"
-              />
+      <div className="relative flex w-full grow flex-col overflow-visible bg-background sm:rounded-md sm:border">
+        
+        {/* Compact image preview - similar to v0.app */}
+        {imagePreview && selectedFile && (
+          <div className="pt-3 pb-1 pl-4">
+            <div className="inline-flex items-center gap-2 bg-muted/50 border border-border rounded-lg px-3 py-2 max-w-[280px] group hover:bg-muted/70 transition-colors">
+              {/* Small thumbnail */}
+              <div className="relative shrink-0">
+                <img
+                  src={imagePreview}
+                  alt="Preview"
+                  className="w-10 h-10 rounded object-cover border border-border/50"
+                />
+                {isUploading && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/60 rounded backdrop-blur-[1px]">
+                    <IconSpinner className="text-white size-3" />
+                  </div>
+                )}
+              </div>
+              
+              {/* File info */}
+              <div className="flex-1 min-w-0">
+                <p className="text-xs font-medium text-foreground truncate">
+                  {selectedFile.name}
+                </p>
+                <p className="text-[10px] text-muted-foreground">
+                  {formatFileSize(selectedFile.size)}
+                </p>
+              </div>
+              
+              {/* Remove button */}
               <Button
                 type="button"
-                variant="destructive"
+                variant="ghost"
                 size="icon"
-                className="absolute -right-2 -top-2 size-7 rounded-full shadow-md hover:scale-110 transition-transform"
+                className="size-6 shrink-0 hover:bg-destructive/10 hover:text-destructive rounded-full"
                 onClick={handleRemoveImage}
                 disabled={isUploading}
               >
-                <IconX className="size-4" />
+                <IconX className="size-3" />
                 <span className="sr-only">Remove image</span>
               </Button>
-              {isUploading && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/60 rounded-lg backdrop-blur-sm">
-                  <div className="flex flex-col items-center gap-2">
-                    <IconSpinner className="text-white size-6" />
-                    <span className="text-white text-xs font-medium">Uploading...</span>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         )}
 
-        <Textarea
-          ref={inputRef}
-          tabIndex={0}
-          onKeyDown={onKeyDown}
-          placeholder={imagePreview ? "Add a message (optional)..." : "Send a message."}
-          className="min-h-[60px] w-full resize-none bg-transparent px-4 py-[1.3rem] focus-within:outline-none sm:text-sm"
-          autoFocus
-          spellCheck={false}
-          autoComplete="off"
-          autoCorrect="off"
-          name="message"
-          rows={1}
-          value={input}
-          onChange={e => setInput(e.target.value)}
-        />
-        
-        <div className="absolute right-0 top-[13px] sm:right-4 flex items-center gap-1">
+        {/* Input area wrapper with relative positioning for buttons */}
+        <div className="relative">
+          <Textarea
+            ref={inputRef}
+            tabIndex={0}
+            onKeyDown={onKeyDown}
+            placeholder={imagePreview ? "Add a message " : "Send a message."}
+            className="min-h-[60px] w-full resize-none bg-transparent px-4 py-[1.3rem] focus-within:outline-none sm:text-sm"
+            autoFocus
+            spellCheck={false}
+            autoComplete="off"
+            autoCorrect="off"
+            name="message"
+            rows={1}
+            value={input}
+            onChange={e => setInput(e.target.value)}
+          />
+          
+          <div className="absolute right-4 top-[13px] flex items-center gap-1">
           {/* Image upload button */}
           <Tooltip>
             <TooltipTrigger asChild>
@@ -268,6 +273,7 @@ export function PromptForm({
             </TooltipTrigger>
             <TooltipContent>Send message</TooltipContent>
           </Tooltip>
+          </div>
         </div>
       </div>
     </form>
