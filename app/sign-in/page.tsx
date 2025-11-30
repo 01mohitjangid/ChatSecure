@@ -2,30 +2,47 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useFormState, useFormStatus } from "react-dom"
+import { useEffect } from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { X, ArrowRight } from "lucide-react"
+import { authenticate } from "./actions"
+import { toast } from "sonner"
+import { getMessageFromCode } from "@/lib/utils"
+
+function SignInButton() {
+  const { pending } = useFormStatus()
+
+  return (
+    <Button
+      type="submit"
+      disabled={pending}
+      className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3"
+    >
+      {pending ? "Signing in..." : "Sign In"}
+    </Button>
+  )
+}
 
 export default function SignInPage() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
+  const [result, dispatch] = useFormState(authenticate, undefined)
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-
-    // TODO: Implement Clerk sign-in logic here
-    // For now, just simulate loading
-    setTimeout(() => {
-      setIsLoading(false)
-      // Redirect to dashboard or home page
-      window.location.href = "/"
-    }, 1000)
-  }
+  useEffect(() => {
+    if (result) {
+      if (result.type === 'error') {
+        toast.error(getMessageFromCode(result.resultCode))
+      } else {
+        toast.success(getMessageFromCode(result.resultCode))
+        router.push('/')
+        router.refresh()
+      }
+    }
+  }, [result, router])
 
   return (
     <div className="min-h-screen flex">
@@ -48,18 +65,18 @@ export default function SignInPage() {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form action={dispatch} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email" className="text-gray-300 text-sm">
                 Email Address
               </Label>
               <Input
                 id="email"
+                name="email"
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
                 className="bg-transparent border-gray-600 text-white placeholder:text-gray-500 focus:border-purple-500"
                 required
+                autoComplete="email"
               />
             </div>
 
@@ -69,21 +86,16 @@ export default function SignInPage() {
               </Label>
               <Input
                 id="password"
+                name="password"
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
                 className="bg-transparent border-gray-600 text-white placeholder:text-gray-500 focus:border-purple-500"
                 required
+                autoComplete="current-password"
+                minLength={6}
               />
             </div>
 
-            <Button
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3"
-            >
-              {isLoading ? "Signing in..." : "Sign In"}
-            </Button>
+            <SignInButton />
           </form>
 
           {/* Footer Links */}
