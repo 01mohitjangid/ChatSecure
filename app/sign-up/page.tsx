@@ -2,34 +2,47 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useFormState, useFormStatus } from "react-dom"
+import { useEffect } from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { X, ArrowRight } from "lucide-react"
+import { signup } from "./actions"
+import { toast } from "sonner"
+import { getMessageFromCode } from "@/lib/utils"
+
+function SignUpButton() {
+  const { pending } = useFormStatus()
+
+  return (
+    <Button
+      type="submit"
+      disabled={pending}
+      className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3"
+    >
+      {pending ? "Creating account..." : "Sign Up"}
+    </Button>
+  )
+}
 
 export default function SignUpPage() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
+  const [result, dispatch] = useFormState(signup, undefined)
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (password !== confirmPassword) {
-      alert("Passwords do not match")
-      return
+  useEffect(() => {
+    if (result) {
+      if (result.type === 'error') {
+        toast.error(getMessageFromCode(result.resultCode))
+      } else {
+        toast.success(getMessageFromCode(result.resultCode))
+        router.push('/')
+        router.refresh()
+      }
     }
-
-    setIsLoading(true)
-
-    // TODO: Implement Clerk sign-up logic here
-    setTimeout(() => {
-      setIsLoading(false)
-      window.location.href = "/"
-    }, 1000)
-  }
+  }, [result, router])
 
   return (
     <div className="min-h-screen flex">
@@ -52,18 +65,18 @@ export default function SignUpPage() {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form action={dispatch} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email" className="text-gray-300 text-sm">
                 Email Address
               </Label>
               <Input
                 id="email"
+                name="email"
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
                 className="bg-transparent border-gray-600 text-white placeholder:text-gray-500 focus:border-purple-500"
                 required
+                autoComplete="email"
               />
             </div>
 
@@ -73,35 +86,16 @@ export default function SignUpPage() {
               </Label>
               <Input
                 id="password"
+                name="password"
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
                 className="bg-transparent border-gray-600 text-white placeholder:text-gray-500 focus:border-purple-500"
                 required
+                autoComplete="new-password"
+                minLength={6}
               />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="confirmPassword" className="text-gray-300 text-sm">
-                Confirm Password
-              </Label>
-              <Input
-                id="confirmPassword"
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                className="bg-transparent border-gray-600 text-white placeholder:text-gray-500 focus:border-purple-500"
-                required
-              />
-            </div>
-
-            <Button
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3"
-            >
-              {isLoading ? "Creating account..." : "Sign Up"}
-            </Button>
+            <SignUpButton />
           </form>
 
           {/* Footer Links */}
