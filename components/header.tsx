@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { LogOut, Github, Menu } from "lucide-react"
+import { LogOut, Github, Menu, User } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -69,6 +69,13 @@ export async function Header() {
                   <p className="w-[200px] truncate text-sm text-muted-foreground">{user.email}</p>
                 </div>
               </div>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild>
+                <Link href="/profile" className="cursor-pointer">
+                  <User className="mr-2 size-4" />
+                  <span>My Profile</span>
+                </Link>
+              </DropdownMenuItem>
               <DropdownMenuSeparator />
               <SignOutButton />
             </DropdownMenuContent>
