@@ -29,6 +29,7 @@ export default function BlogPage() {
               </p>
             </div>
           </div>
+          
         </div>
       </section>
 
