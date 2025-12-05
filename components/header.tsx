@@ -89,6 +89,7 @@ export async function Header() {
               <Link href="/sign-up">Sign Up</Link>
             </Button>
           </div>
+          
         )}
       </div>
     </header>

@@ -56,6 +56,7 @@ export async function POST(request: NextRequest) {
     } catch (error) {
       // Directory might already exist, continue
     }
+    
 
     // Save file
     const filePath = join(uploadsDir, fileName)

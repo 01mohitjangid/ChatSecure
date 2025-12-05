@@ -3,6 +3,11 @@ import { auth } from "@/auth"
 import { ProfileForm } from "./profile-form"
 import { getUser } from "../sign-up/actions"
 
+export const metadata = {
+  title: 'My Profile - ChatSecure',
+  description: 'Manage your ChatSecure account'
+}
+
 export default async function ProfilePage() {
   const session = await auth()
 
@@ -14,22 +19,42 @@ export default async function ProfilePage() {
   const userDetails = await getUser(session.user.email!)
 
   return (
-    <div className="flex items-center justify-center min-h-[calc(100vh-4rem)] p-4">
-      <div className="w-full max-w-2xl">
-        <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
-          <div className="flex flex-col space-y-1.5 p-6">
-            <h3 className="text-2xl font-semibold leading-none tracking-tight">
-              My Profile
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              View and manage your account information
-            </p>
+    <div className="flex flex-col w-full">
+      {/* Hero Section with Gradient */}
+      <section className="relative w-full py-16 md:py-20 bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800">
+        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 right-20 size-32 border border-white/20 rounded-full"></div>
+          <div className="absolute bottom-10 left-20 size-24 border border-white/20 rounded-full"></div>
+          <div className="absolute top-1/2 right-1/3 size-16 border border-white/20 rounded-full"></div>
+        </div>
+        <div className="container px-4 md:px-6 relative">
+          <div className="flex flex-col items-center space-y-4 text-center">
+            <div className="size-20 bg-white rounded-full flex items-center justify-center shadow-lg">
+              <span className="text-purple-600 font-bold text-3xl">
+                {session.user.email?.[0]?.toUpperCase()}
+              </span>
+            </div>
+            <div className="space-y-2">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
+                My Profile
+              </h1>
+              <p className="text-purple-100 max-w-[600px]">
+                {session.user.email}
+              </p>
+            </div>
           </div>
-          <div className="p-6 pt-0">
+        </div>
+      </section>
+
+      {/* Profile Content */}
+      <section className="w-full py-12 bg-background">
+        <div className="container px-4 md:px-6">
+          <div className="max-w-4xl mx-auto">
             <ProfileForm user={userDetails} />
           </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }
