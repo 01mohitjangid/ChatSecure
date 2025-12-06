@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation"
 import { auth } from "@/auth"
 import { ProfileForm } from "./profile-form"
+import { ProfilePhotoUpload } from "./profile-photo-upload"
 import { getUser } from "../sign-up/actions"
 
 export const metadata = {
@@ -29,19 +30,17 @@ export default async function ProfilePage() {
           <div className="absolute top-1/2 right-1/3 size-16 border border-white/20 rounded-full"></div>
         </div>
         <div className="container px-4 md:px-6 relative">
-          <div className="flex flex-col items-center space-y-4 text-center">
-            <div className="size-20 bg-white rounded-full flex items-center justify-center shadow-lg">
-              <span className="text-purple-600 font-bold text-3xl">
-                {session.user.email?.[0]?.toUpperCase()}
-              </span>
-            </div>
+          <div className="flex flex-col items-center space-y-6 text-center">
+            <ProfilePhotoUpload
+              currentPhoto={userDetails?.profilePhoto}
+              userEmail={session.user.email!}
+              userInitial={session.user.email?.[0]?.toUpperCase() || 'U'}
+            />
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
-                My Profile
+                PROFILE
               </h1>
-              <p className="text-purple-100 max-w-[600px]">
-                {session.user.email}
-              </p>
+              
             </div>
           </div>
         </div>

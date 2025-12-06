@@ -12,6 +12,7 @@ export async function getUser(email: string) {
     email: string
     password: string
     salt: string
+    profilePhoto?: string
   }>(`user:${email}`)
 
   return user
@@ -34,7 +35,8 @@ export async function createUser(
       id: crypto.randomUUID(),
       email,
       password: hashedPassword,
-      salt
+      salt,
+      profilePhoto: ''
     }
 
     await kv.hmset(`user:${email}`, user)

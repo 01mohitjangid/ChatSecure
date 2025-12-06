@@ -11,6 +11,7 @@ async function getUser(email: string) {
       email: string
       password: string
       salt: string
+      profilePhoto?: string
     }>(`user:${email}`)
     return user
   } catch (error) {
@@ -82,6 +83,86 @@ export async function updatePassword(formData: FormData) {
     return {
       type: 'error',
       message: 'Failed to update password'
+    }
+  }
+}
+
+export async function updateProfilePhoto(email: string, photoUrl: string) {
+  try {
+    if (!email || !photoUrl) {
+      return {
+        type: 'error',
+        message: 'Email and photo URL are required'
+      }
+    }
+
+    // Get user from database
+    const user = await getUser(email)
+
+    if (!user) {
+      return {
+        type: 'error',
+        message: 'User not found'
+      }
+    }
+
+    // Update profile photo in database
+    await kv.hset(`user:${email}`, {
+      profilePhoto: photoUrl
+    })
+
+    revalidatePath('/profile')
+    revalidatePath('/')
+
+    return {
+      type: 'success',
+      message: 'Profile photo updated successfully'
+    }
+  } catch (error) {
+    console.error('Profile photo update error:', error)
+    return {
+      type: 'error',
+      message: 'Failed to update profile photo'
+    }
+  }
+}
+
+export async function removeProfilePhoto(email: string) {
+  try {
+    if (!email) {
+      return {
+        type: 'error',
+        message: 'Email is required'
+      }
+    }
+
+    // Get user from database
+    const user = await getUser(email)
+
+    if (!user) {
+      return {
+        type: 'error',
+        message: 'User not found'
+      }
+    }
+
+    // Remove profile photo from database
+    await kv.hset(`user:${email}`, {
+      profilePhoto: ''
+    })
+
+    revalidatePath('/profile')
+    revalidatePath('/')
+
+    return {
+      type: 'success',
+      message: 'Profile photo removed successfully'
+    }
+  } catch (error) {
+    console.error('Profile photo removal error:', error)
+    return {
+      type: 'error',
+      message: 'Failed to remove profile photo'
     }
   }
 }
