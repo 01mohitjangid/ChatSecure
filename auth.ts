@@ -12,6 +12,7 @@ async function getUser(email: string) {
       email: string
       password: string
       salt: string
+      profilePhoto?: string
     }>(`user:${email}`)
     return user
   } catch (error) {
@@ -49,7 +50,8 @@ export const { auth, signIn, signOut } = NextAuth({
           if (hashedPassword === user.password) {
             return {
               id: user.id,
-              email: user.email
+              email: user.email,
+              image: user.profilePhoto || null
             }
           }
         }

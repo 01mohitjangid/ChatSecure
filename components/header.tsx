@@ -73,7 +73,7 @@ export async function Header() {
               <DropdownMenuItem asChild>
                 <Link href="/profile" className="cursor-pointer">
                   <User className="mr-2 size-4" />
-                  <span>My Profile</span>
+                  <span>Profile</span>
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
