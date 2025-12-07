@@ -14,10 +14,24 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { auth } from "@/auth"
 import { SignOutButton } from "./sign-out-button"
 import { MobileMenuButton } from "./mobile-menu-button"
+import { kv } from "@vercel/kv"
+
+async function getUserProfilePhoto(email: string): Promise<string | null> {
+  try {
+    const profilePhoto = await kv.hget<string>(`user:${email}`, 'profilePhoto')
+    return profilePhoto || null
+  } catch (error) {
+    console.error('Failed to fetch profile photo:', error)
+    return null
+  }
+}
 
 export async function Header() {
   const session = await auth()
   const user = session?.user
+  
+  // Fetch fresh profile photo from database
+  const profilePhoto = user?.email ? await getUserProfilePhoto(user.email) : null
 
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between w-full h-16 px-4 border-b shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
@@ -56,7 +70,7 @@ export async function Header() {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="relative size-8 rounded-full">
                 <Avatar className="size-8">
-                  <AvatarImage src={user.image || "/placeholder.svg"} alt={user.email || "User"} />
+                  <AvatarImage src={profilePhoto || user.image || undefined} alt={user.email || "User"} />
                   <AvatarFallback className="bg-purple-600 text-white">
                     {user.email?.[0]?.toUpperCase() || "U"}
                   </AvatarFallback>
