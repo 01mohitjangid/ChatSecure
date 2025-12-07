@@ -89,6 +89,7 @@ export async function Header() {
                   <User className="mr-2 size-4" />
                   <span>Profile</span>
                 </Link>
+                
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <SignOutButton />
