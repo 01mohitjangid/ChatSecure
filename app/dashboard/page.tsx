@@ -382,7 +382,7 @@ export default function DashboardPage() {
               <h3 className="text-sm font-semibold">Resources</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/help-center" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Help Center
                   </Link>
                 </li>
