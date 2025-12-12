@@ -402,7 +402,7 @@ export default function DashboardPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/terms-of-service" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Terms of Service
                   </Link>
                 </li>
