@@ -10,11 +10,8 @@ export {
   termsData,
   AcceptanceSection,
   DescriptionSection,
-  AcceptableUseSection,
   IntellectualPropertySection,
   PrivacySection,
   TerminationSection,
   DisclaimersSection,
-  LimitationSection,
-  ChangesSection,
 } from "./terms-content"

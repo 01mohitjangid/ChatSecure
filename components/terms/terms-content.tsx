@@ -14,39 +14,24 @@ export const termsData = [
     title: "Service Description",
   },
   {
-    id: "acceptable-use",
-    number: "3",
-    title: "Acceptable Use Policy",
-  },
-  {
     id: "intellectual-property",
-    number: "4",
+    number: "3",
     title: "Intellectual Property Rights",
   },
   {
     id: "privacy",
-    number: "5",
+    number: "4",
     title: "Privacy & Data Protection",
   },
   {
     id: "termination",
-    number: "6",
+    number: "5",
     title: "Termination",
   },
   {
     id: "disclaimers",
-    number: "7",
+    number: "6",
     title: "Disclaimers",
-  },
-  {
-    id: "limitation",
-    number: "8",
-    title: "Limitation of Liability",
-  },
-  {
-    id: "changes",
-    number: "9",
-    title: "Changes to Terms",
   },
 ]
 
@@ -92,30 +77,8 @@ export const DescriptionSection = () => (
   </TermsSection>
 )
 
-export const AcceptableUseSection = () => (
-  <TermsSection id="acceptable-use" number="3" title="Acceptable Use Policy">
-    <p>
-      You agree not to use the Service to:
-    </p>
-    <TermsList 
-      items={[
-        "Violate any applicable laws or regulations",
-        "Infringe upon the rights of others, including intellectual property rights",
-        "Transmit harmful, offensive, or illegal content",
-        "Attempt to gain unauthorized access to our systems",
-        "Interfere with or disrupt the Service or servers",
-        "Use the Service for any fraudulent or deceptive purposes",
-        "Generate content that promotes violence, discrimination, or illegal activities",
-        "Attempt to reverse engineer or extract source code from the Service",
-        "Use automated systems to access the Service without permission",
-        "Resell or redistribute the Service without authorization",
-      ]}
-    />
-  </TermsSection>
-)
-
 export const IntellectualPropertySection = () => (
-  <TermsSection id="intellectual-property" number="4" title="Intellectual Property Rights">
+  <TermsSection id="intellectual-property" number="3" title="Intellectual Property Rights">
     <p>
       The Service and its original content, features, and functionality are owned by 
       ChatSecure and are protected by international copyright, trademark, patent, trade 
@@ -136,7 +99,7 @@ export const IntellectualPropertySection = () => (
 )
 
 export const PrivacySection = () => (
-  <TermsSection id="privacy" number="5" title="Privacy & Data Protection">
+  <TermsSection id="privacy" number="4" title="Privacy & Data Protection">
     <p>
       Your privacy is important to us. Our collection and use of personal information is 
       governed by our Privacy Policy, which is incorporated into these Terms by reference.
@@ -158,7 +121,7 @@ export const PrivacySection = () => (
 )
 
 export const TerminationSection = () => (
-  <TermsSection id="termination" number="6" title="Termination">
+  <TermsSection id="termination" number="5" title="Termination">
     <p>
       We may terminate or suspend your account and access to the Service immediately, 
       without prior notice or liability, for any reason, including:
@@ -180,7 +143,7 @@ export const TerminationSection = () => (
 )
 
 export const DisclaimersSection = () => (
-  <TermsSection id="disclaimers" number="7" title="Disclaimers">
+  <TermsSection id="disclaimers" number="6" title="Disclaimers">
     <TermsHighlight type="warning">
       THE SERVICE IS PROVIDED ON AN &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; BASIS WITHOUT WARRANTIES 
       OF ANY KIND, EITHER EXPRESS OR IMPLIED.
@@ -203,59 +166,15 @@ export const DisclaimersSection = () => (
   </TermsSection>
 )
 
-export const LimitationSection = () => (
-  <TermsSection id="limitation" number="8" title="Limitation of Liability">
-    <p>
-      To the maximum extent permitted by law, ChatSecure and its affiliates, officers, 
-      employees, agents, and partners shall not be liable for any indirect, incidental, 
-      special, consequential, or punitive damages, including:
-    </p>
-    <TermsList 
-      items={[
-        "Loss of profits, data, or goodwill",
-        "Service interruption or computer damage",
-        "Cost of substitute services",
-        "Any damages arising from your use of the Service",
-      ]}
-    />
-    <p>
-      Our total liability for any claims arising from your use of the Service shall not 
-      exceed the amount you paid us in the twelve (12) months preceding the claim.
-    </p>
-  </TermsSection>
-)
-
-export const ChangesSection = () => (
-  <TermsSection id="changes" number="9" title="Changes to Terms">
-    <p>
-      We reserve the right to modify these Terms at any time. When we make changes, we will:
-    </p>
-    <TermsList 
-      items={[
-        "Update the \"Last updated\" date at the top of these Terms",
-        "Notify you via email or through the Service for material changes",
-        "Provide at least 30 days notice before changes take effect",
-      ]}
-    />
-    <p>
-      Your continued use of the Service after changes become effective constitutes your 
-      acceptance of the revised Terms.
-    </p>
-  </TermsSection>
-)
-
 export const TermsContent = () => {
   return (
     <div className="space-y-12">
       <AcceptanceSection />
       <DescriptionSection />
-      <AcceptableUseSection />
       <IntellectualPropertySection />
       <PrivacySection />
       <TerminationSection />
       <DisclaimersSection />
-      <LimitationSection />
-      <ChangesSection />
     </div>
   )
 }
