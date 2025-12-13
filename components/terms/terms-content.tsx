@@ -14,54 +14,39 @@ export const termsData = [
     title: "Service Description",
   },
   {
-    id: "accounts",
-    number: "3",
-    title: "User Accounts",
-  },
-  {
     id: "acceptable-use",
-    number: "4",
+    number: "3",
     title: "Acceptable Use Policy",
   },
   {
     id: "intellectual-property",
-    number: "5",
+    number: "4",
     title: "Intellectual Property Rights",
   },
   {
     id: "privacy",
-    number: "6",
+    number: "5",
     title: "Privacy & Data Protection",
   },
   {
-    id: "payment",
-    number: "7",
-    title: "Payment Terms",
-  },
-  {
     id: "termination",
-    number: "8",
+    number: "6",
     title: "Termination",
   },
   {
     id: "disclaimers",
-    number: "9",
+    number: "7",
     title: "Disclaimers",
   },
   {
     id: "limitation",
-    number: "10",
+    number: "8",
     title: "Limitation of Liability",
   },
   {
     id: "changes",
-    number: "11",
+    number: "9",
     title: "Changes to Terms",
-  },
-  {
-    id: "governing-law",
-    number: "12",
-    title: "Governing Law",
   },
 ]
 
@@ -107,30 +92,8 @@ export const DescriptionSection = () => (
   </TermsSection>
 )
 
-export const AccountsSection = () => (
-  <TermsSection id="accounts" number="3" title="User Accounts">
-    <p>
-      To access certain features of the Service, you must create an account. When creating 
-      an account, you agree to:
-    </p>
-    <TermsList 
-      items={[
-        "Provide accurate, current, and complete information",
-        "Maintain and promptly update your account information",
-        "Keep your password secure and confidential",
-        "Accept responsibility for all activities under your account",
-        "Notify us immediately of any unauthorized access",
-      ]}
-    />
-    <TermsHighlight type="warning">
-      You are responsible for safeguarding your account credentials. ChatSecure will never 
-      ask for your password via email or support channels.
-    </TermsHighlight>
-  </TermsSection>
-)
-
 export const AcceptableUseSection = () => (
-  <TermsSection id="acceptable-use" number="4" title="Acceptable Use Policy">
+  <TermsSection id="acceptable-use" number="3" title="Acceptable Use Policy">
     <p>
       You agree not to use the Service to:
     </p>
@@ -152,7 +115,7 @@ export const AcceptableUseSection = () => (
 )
 
 export const IntellectualPropertySection = () => (
-  <TermsSection id="intellectual-property" number="5" title="Intellectual Property Rights">
+  <TermsSection id="intellectual-property" number="4" title="Intellectual Property Rights">
     <p>
       The Service and its original content, features, and functionality are owned by 
       ChatSecure and are protected by international copyright, trademark, patent, trade 
@@ -173,7 +136,7 @@ export const IntellectualPropertySection = () => (
 )
 
 export const PrivacySection = () => (
-  <TermsSection id="privacy" number="6" title="Privacy & Data Protection">
+  <TermsSection id="privacy" number="5" title="Privacy & Data Protection">
     <p>
       Your privacy is important to us. Our collection and use of personal information is 
       governed by our Privacy Policy, which is incorporated into these Terms by reference.
@@ -194,30 +157,8 @@ export const PrivacySection = () => (
   </TermsSection>
 )
 
-export const PaymentSection = () => (
-  <TermsSection id="payment" number="7" title="Payment Terms">
-    <p>
-      Certain features of the Service require payment. By subscribing to a paid plan, 
-      you agree to the following:
-    </p>
-    <TermsList 
-      items={[
-        "Subscriptions are billed in advance on a monthly or annual basis",
-        "All fees are non-refundable unless otherwise stated",
-        "You authorize us to charge your payment method automatically",
-        "Prices may change with 30 days notice",
-        "Failed payments may result in service suspension",
-      ]}
-    />
-    <p>
-      You may cancel your subscription at any time. Cancellation will take effect at the 
-      end of your current billing period.
-    </p>
-  </TermsSection>
-)
-
 export const TerminationSection = () => (
-  <TermsSection id="termination" number="8" title="Termination">
+  <TermsSection id="termination" number="6" title="Termination">
     <p>
       We may terminate or suspend your account and access to the Service immediately, 
       without prior notice or liability, for any reason, including:
@@ -239,7 +180,7 @@ export const TerminationSection = () => (
 )
 
 export const DisclaimersSection = () => (
-  <TermsSection id="disclaimers" number="9" title="Disclaimers">
+  <TermsSection id="disclaimers" number="7" title="Disclaimers">
     <TermsHighlight type="warning">
       THE SERVICE IS PROVIDED ON AN &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; BASIS WITHOUT WARRANTIES 
       OF ANY KIND, EITHER EXPRESS OR IMPLIED.
@@ -263,7 +204,7 @@ export const DisclaimersSection = () => (
 )
 
 export const LimitationSection = () => (
-  <TermsSection id="limitation" number="10" title="Limitation of Liability">
+  <TermsSection id="limitation" number="8" title="Limitation of Liability">
     <p>
       To the maximum extent permitted by law, ChatSecure and its affiliates, officers, 
       employees, agents, and partners shall not be liable for any indirect, incidental, 
@@ -285,7 +226,7 @@ export const LimitationSection = () => (
 )
 
 export const ChangesSection = () => (
-  <TermsSection id="changes" number="11" title="Changes to Terms">
+  <TermsSection id="changes" number="9" title="Changes to Terms">
     <p>
       We reserve the right to modify these Terms at any time. When we make changes, we will:
     </p>
@@ -303,40 +244,18 @@ export const ChangesSection = () => (
   </TermsSection>
 )
 
-export const GoverningLawSection = () => (
-  <TermsSection id="governing-law" number="12" title="Governing Law">
-    <p>
-      These Terms shall be governed by and construed in accordance with the laws of the 
-      State of California, United States, without regard to its conflict of law provisions.
-    </p>
-    <p>
-      Any disputes arising from these Terms or your use of the Service shall be resolved 
-      through binding arbitration in San Francisco, California, in accordance with the 
-      rules of the American Arbitration Association.
-    </p>
-    <TermsHighlight type="info">
-      For users in the European Union, you retain any mandatory consumer protection 
-      rights under the laws of your country of residence.
-    </TermsHighlight>
-  </TermsSection>
-)
-
 export const TermsContent = () => {
   return (
     <div className="space-y-12">
       <AcceptanceSection />
       <DescriptionSection />
-      <AccountsSection />
       <AcceptableUseSection />
       <IntellectualPropertySection />
       <PrivacySection />
-      <PaymentSection />
       <TerminationSection />
       <DisclaimersSection />
       <LimitationSection />
       <ChangesSection />
-      <GoverningLawSection />
     </div>
   )
 }
-
