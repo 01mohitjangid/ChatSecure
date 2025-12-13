@@ -4,13 +4,10 @@ import Link from "next/link"
 import {
   AcceptanceSection,
   DescriptionSection,
-  AcceptableUseSection,
   IntellectualPropertySection,
   PrivacySection,
   TerminationSection,
   DisclaimersSection,
-  LimitationSection,
-  ChangesSection,
 } from "@/components/terms"
 
 export const metadata = {
@@ -121,8 +118,6 @@ export default function TermsOfServicePage() {
                 <Divider />
                 <DescriptionSection />
                 <Divider />
-                <AcceptableUseSection />
-                <Divider />
                 <IntellectualPropertySection />
                 <Divider />
                 <PrivacySection />
@@ -130,46 +125,7 @@ export default function TermsOfServicePage() {
                 <TerminationSection />
                 <Divider />
                 <DisclaimersSection />
-                <Divider />
-                <LimitationSection />
-                <Divider />
-                <ChangesSection />
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Bottom CTA Section */}
-      <section className="w-full py-16 md:py-24 bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
-        <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 size-96 bg-purple-400/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 size-96 bg-indigo-400/20 rounded-full blur-3xl"></div>
-        </div>
-        
-        <div className="container px-4 md:px-6 relative z-10">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
-                Ready to Experience ChatSecure?
-              </h2>
-              <p className="text-purple-100 text-lg md:text-xl">
-                Join thousands of users enjoying secure, intelligent AI conversations
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-white text-purple-700 hover:bg-purple-50 shadow-xl hover:shadow-2xl transition-all">
-                <Link href="/">
-                  Start Chatting Now
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm">
-                <Link href="/help-center">
-                  Visit Help Center
-                </Link>
-              </Button>
             </div>
           </div>
         </div>
