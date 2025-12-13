@@ -49,50 +49,13 @@ export default function HelpCenterPage() {
             
             {/* Search Bar */}
             <div className="w-full max-w-xl mt-4">
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-5 text-muted-foreground" />
-                <Input 
-                  type="search"
-                  placeholder="Search for help articles, guides, and more..."
-                  className="w-full pl-12 pr-4 py-6 text-base rounded-xl bg-white/95 backdrop-blur border-0 shadow-lg focus-visible:ring-2 focus-visible:ring-purple-300"
-                />
-              </div>
+          
             </div>
           </div>
         </div>
       </section>
 
-      {/* Quick Links Section */}
-      <section className="w-full py-12 md:py-16 bg-background">
-        <div className="container px-4 md:px-6">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <QuickLinkCard 
-              icon={<BookOpen className="size-6" />}
-              title="Getting Started"
-              description="New to ChatSecure? Start here"
-              href="#getting-started"
-            />
-            <QuickLinkCard 
-              icon={<FileQuestion className="size-6" />}
-              title="FAQs"
-              description="Frequently asked questions"
-              href="#faqs"
-            />
-            <QuickLinkCard 
-              icon={<Headphones className="size-6" />}
-              title="Contact Support"
-              description="Get help from our team"
-              href="#contact"
-            />
-            <QuickLinkCard 
-              icon={<MessageSquare className="size-6" />}
-              title="Community"
-              description="Join the discussion"
-              href="/coming-soon"
-            />
-          </div>
-        </div>
-      </section>
+      
 
       {/* Help Categories Section */}
       <section id="getting-started" className="w-full py-12 md:py-24 bg-muted/50">
@@ -192,101 +155,7 @@ export default function HelpCenterPage() {
       </section>
 
       {/* Contact Support Section */}
-      <section id="contact" className="w-full py-12 md:py-24 bg-muted/50">
-        <div className="container px-4 md:px-6">
-          <div className="grid gap-10 lg:grid-cols-2 items-center">
-            <div className="space-y-4">
-              <div className="inline-block rounded-lg bg-purple-100 dark:bg-purple-950 px-3 py-1 text-sm text-purple-600 dark:text-purple-400">
-                Still Need Help?
-              </div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-                Contact Our Support Team
-              </h2>
-              <p className="text-muted-foreground md:text-lg">
-                Can&apos;t find what you&apos;re looking for? Our support team is here to help you 24/7.
-              </p>
-              
-              <div className="space-y-4 pt-4">
-                <ContactOption 
-                  icon={<Mail className="size-5 text-purple-600" />}
-                  title="Email Support"
-                  description="Get a response within 24 hours"
-                  action="support@chatsecure.com"
-                />
-                <ContactOption 
-                  icon={<MessageSquare className="size-5 text-purple-600" />}
-                  title="Live Chat"
-                  description="Available Monday to Friday, 9am-6pm EST"
-                  action="Start Chat"
-                />
-                <ContactOption 
-                  icon={<Headphones className="size-5 text-purple-600" />}
-                  title="Priority Support"
-                  description="For enterprise customers"
-                  action="Contact Sales"
-                />
-              </div>
-            </div>
-            
-            <div className="rounded-xl border bg-card p-8 shadow-lg">
-              <h3 className="text-xl font-bold mb-6">Send us a message</h3>
-              <form className="space-y-4">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium">Name</label>
-                    <Input id="name" placeholder="Your name" />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">Email</label>
-                    <Input id="email" type="email" placeholder="you@example.com" />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="subject" className="text-sm font-medium">Subject</label>
-                  <Input id="subject" placeholder="How can we help?" />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium">Message</label>
-                  <textarea 
-                    id="message"
-                    placeholder="Describe your issue or question..."
-                    className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  />
-                </div>
-                <Button className="w-full bg-purple-600 hover:bg-purple-700">
-                  Send Message
-                  <ArrowRight className="ml-2 size-4" />
-                </Button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="w-full py-12 md:py-20 bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl text-white">
-              Ready to start chatting?
-            </h2>
-            <p className="mx-auto max-w-[500px] text-purple-100 md:text-lg">
-              Experience the power of secure, intelligent AI conversations.
-            </p>
-            <div className="space-x-4 mt-4">
-              <Button asChild size="lg" className="bg-white text-purple-700 hover:bg-purple-50">
-                <Link href="/">
-                  Start Chatting
-                  <ChevronRight className="ml-2 size-4" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                <Link href="/dashboard">Learn More</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      
     </div>
   )
 }
