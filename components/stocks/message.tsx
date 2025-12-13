@@ -9,6 +9,7 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import { StreamableValue, useStreamableValue } from 'ai/rsc'
 import { useStreamableText } from '@/lib/hooks/use-streamable-text'
+import Image from 'next/image'
 
 // Different types of message bubbles.
 
@@ -28,7 +29,7 @@ export function UserMessage({
         {imageUrl && (
           <div className="mb-3 mt-1">
             <div className="relative inline-block group/image">
-              <img
+              <Image
                 src={imageUrl}
                 alt="User uploaded image"
                 className="rounded-xl border-2 border-border max-w-sm sm:max-w-md max-h-80 object-contain cursor-pointer hover:opacity-95 transition-all duration-200 shadow-md hover:shadow-lg bg-muted/30"

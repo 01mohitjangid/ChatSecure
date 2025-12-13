@@ -20,6 +20,7 @@ import { useRouter } from 'next/navigation'
 import { validateImageFile, compressImage, createImagePreview } from '@/lib/image-utils'
 import { toast } from 'sonner'
 import type { ImageAttachment } from '@/lib/types'
+import Image from 'next/image'
 
 export function PromptForm({
   input,
@@ -176,10 +177,10 @@ export function PromptForm({
             <div className="inline-flex items-center gap-2 bg-muted/50 border border-border rounded-lg px-3 py-2 max-w-[280px] group hover:bg-muted/70 transition-colors">
               {/* Small thumbnail */}
               <div className="relative shrink-0">
-                <img
+                <Image
                   src={imagePreview}
                   alt="Preview"
-                  className="w-10 h-10 rounded object-cover border border-border/50"
+                  className="size-10 rounded object-cover border border-border/50"
                 />
                 {isUploading && (
                   <div className="absolute inset-0 flex items-center justify-center bg-black/60 rounded backdrop-blur-[1px]">
