@@ -35,7 +35,7 @@ export default function DashboardPage() {
                   <ChevronRight className="ml-2 size-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Button asChild size="lg" variant="outline" className="bg-white text-purple-700 hover:bg-purple-50">
                 <Link href="#features">Learn More</Link>
               </Button>
             </div>
@@ -244,29 +244,7 @@ export default function DashboardPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
-                Ready to Get Started?
-              </h2>
-              <p className="mx-auto max-w-[600px] text-purple-100 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Join thousands of users who trust ChatSecure for their AI-powered conversations.
-              </p>
-            </div>
-            <div className="space-x-4 mt-6">
-              <Button asChild size="lg" className="bg-white text-purple-700 hover:bg-purple-50">
-                <Link href="/sign-up">Sign Up Free</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                <Link href="/">Try Demo</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Footer */}
       <footer className="w-full border-t bg-background">
