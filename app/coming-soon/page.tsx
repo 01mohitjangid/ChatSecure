@@ -28,6 +28,7 @@ export default function ComingSoonPage() {
               We&apos;re working hard to bring you something amazing. This feature is currently under development 
               and will be available soon. Stay tuned for updates!
             </p>
+            
           </div>
 
           {/* Newsletter Signup */}

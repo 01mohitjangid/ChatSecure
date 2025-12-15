@@ -38,6 +38,7 @@ export default function DashboardPage() {
               <Button asChild size="lg" variant="outline" className="bg-white text-purple-700 hover:bg-purple-50">
                 <Link href="#features">Learn More</Link>
               </Button>
+              
             </div>
           </div>
         </div>
