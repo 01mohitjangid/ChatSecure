@@ -91,6 +91,7 @@ export default function HelpCenterPage() {
               description="Understand how we protect your data"
               articles={["Data encryption", "Privacy controls", "Account security", "Data deletion"]}
             />
+            
             <CategoryCard 
               icon={<Settings className="size-8 text-purple-600" />}
               title="Account Settings"
