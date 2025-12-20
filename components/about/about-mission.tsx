@@ -14,6 +14,7 @@ export const AboutMission = () => {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Making AI Accessible & Secure
             </h2>
+            
             <p className="text-muted-foreground md:text-xl/relaxed">
               At ChatSecure, we believe that everyone deserves access to powerful AI technology 
               without compromising their privacy or security. Our mission is to democratize 

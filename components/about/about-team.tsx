@@ -13,6 +13,7 @@ const team = [
       github: "/coming-soon"
     }
   },
+  
   {
     name: "Sarah Johnson",
     role: "CTO",

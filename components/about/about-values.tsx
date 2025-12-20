@@ -11,6 +11,7 @@ const values = [
     title: "Privacy by Design",
     description: "Your conversations are yours alone. We implement privacy-preserving technologies at every layer."
   },
+  
   {
     icon: <Zap className="size-8 text-purple-600" />,
     title: "Innovation",
