@@ -322,14 +322,12 @@ export default function DashboardPage() {
                 </li>
                 
               </ul>
-            </div>
-
-            {/* Company Links */}
+            </div>            {/* Company Links */}
             <div className="space-y-4">
               <h3 className="text-sm font-semibold">Company</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/about" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     About Us
                   </Link>
                 </li>
