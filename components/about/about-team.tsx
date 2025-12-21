@@ -7,98 +7,98 @@ const team = [
     role: "CEO & Founder",
     bio: "Former AI researcher at Stanford with 10+ years in machine learning and natural language processing.",
     avatar: "AC",
-    social: {
-      twitter: "/coming-soon",
-      linkedin: "/coming-soon",
-      github: "/coming-soon"
-    }
+    color: "from-purple-500 to-indigo-600"
   },
-  
   {
     name: "Sarah Johnson",
     role: "CTO",
     bio: "Previously led engineering teams at major tech companies. Expert in distributed systems and security.",
     avatar: "SJ",
-    social: {
-      twitter: "/coming-soon",
-      linkedin: "/coming-soon",
-      github: "/coming-soon"
-    }
+    color: "from-indigo-500 to-purple-600"
   },
   {
     name: "Michael Park",
     role: "Head of Security",
     bio: "Cybersecurity veteran with experience at top security firms. Passionate about privacy-first design.",
     avatar: "MP",
-    social: {
-      twitter: "/coming-soon",
-      linkedin: "/coming-soon",
-      github: "/coming-soon"
-    }
+    color: "from-purple-600 to-pink-500"
   },
   {
     name: "Emily Rodriguez",
     role: "Head of Product",
     bio: "Product leader focused on user experience. Previously built consumer products used by millions.",
     avatar: "ER",
-    social: {
-      twitter: "/coming-soon",
-      linkedin: "/coming-soon",
-      github: "/coming-soon"
-    }
+    color: "from-pink-500 to-purple-600"
   }
 ]
 
 export const AboutTeam = () => {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-          <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-purple-100 dark:bg-purple-950 px-3 py-1 text-sm text-purple-600 dark:text-purple-400">
+    <section className="w-full py-20 md:py-32 lg:py-40 bg-background relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent"></div>
+      <div className="absolute -top-40 left-1/4 size-80 bg-purple-100 dark:bg-purple-950/30 rounded-full blur-3xl opacity-30"></div>
+      <div className="absolute -bottom-40 right-1/4 size-80 bg-indigo-100 dark:bg-indigo-950/30 rounded-full blur-3xl opacity-30"></div>
+
+      <div className="container px-4 md:px-6 relative z-10">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-2 rounded-full bg-purple-100 dark:bg-purple-950 px-4 py-2 text-sm text-purple-600 dark:text-purple-400 font-medium">
               The People Behind ChatSecure
             </div>
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              Meet Our Team
+            <h2 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+              Meet Our <span className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">Team</span>
             </h2>
-            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="max-w-[700px] text-lg text-muted-foreground">
               A passionate group of engineers, researchers, and designers dedicated to building 
               the future of secure AI communication
             </p>
           </div>
         </div>
+        
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((member, index) => (
             <div 
               key={index}
-              className="group flex flex-col items-center text-center space-y-4 p-6 rounded-lg border bg-card hover:shadow-lg transition-all duration-300"
+              className="group flex flex-col items-center text-center space-y-5 p-8 rounded-2xl border bg-card hover-lift transition-all duration-500 relative overflow-hidden"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
+              {/* Hover background */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${member.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+              
+              {/* Avatar */}
               <div className="relative">
-                <div className="size-24 rounded-full bg-gradient-to-br from-purple-600 to-indigo-800 flex items-center justify-center text-white text-2xl font-bold group-hover:scale-110 transition-transform duration-300">
+                <div className={`absolute inset-0 bg-gradient-to-br ${member.color} rounded-full blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 scale-110`}></div>
+                <div className={`relative size-28 rounded-full bg-gradient-to-br ${member.color} flex items-center justify-center text-white text-3xl font-bold group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg`}>
                   {member.avatar}
                 </div>
               </div>
-              <div className="space-y-1">
-                <h3 className="text-lg font-bold">{member.name}</h3>
-                <p className="text-sm text-purple-600 dark:text-purple-400 font-medium">{member.role}</p>
+              
+              {/* Info */}
+              <div className="space-y-2 relative">
+                <h3 className="text-xl font-bold group-hover:text-purple-600 transition-colors">{member.name}</h3>
+                <p className="text-sm text-purple-600 dark:text-purple-400 font-semibold">{member.role}</p>
               </div>
-              <p className="text-sm text-muted-foreground">{member.bio}</p>
-              <div className="flex space-x-3">
+              
+              <p className="text-sm text-muted-foreground leading-relaxed">{member.bio}</p>
+              
+              {/* Social links */}
+              <div className="flex space-x-3 pt-2">
                 <Link 
-                  href={member.social.twitter}
-                  className="rounded-full border p-2 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-colors"
+                  href="/coming-soon"
+                  className="rounded-full border p-2.5 hover:bg-purple-600 hover:border-purple-600 hover:text-white hover:scale-110 transition-all duration-300"
                 >
                   <Twitter className="size-4" />
                 </Link>
                 <Link 
-                  href={member.social.linkedin}
-                  className="rounded-full border p-2 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-colors"
+                  href="/coming-soon"
+                  className="rounded-full border p-2.5 hover:bg-purple-600 hover:border-purple-600 hover:text-white hover:scale-110 transition-all duration-300"
                 >
                   <Linkedin className="size-4" />
                 </Link>
                 <Link 
-                  href={member.social.github}
-                  className="rounded-full border p-2 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-colors"
+                  href="/coming-soon"
+                  className="rounded-full border p-2.5 hover:bg-purple-600 hover:border-purple-600 hover:text-white hover:scale-110 transition-all duration-300"
                 >
                   <Github className="size-4" />
                 </Link>
