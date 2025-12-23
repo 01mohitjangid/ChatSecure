@@ -29,6 +29,7 @@ export default function ComingSoonPage() {
               and will be available soon. Stay tuned for updates!
             </p>
             
+            
           </div>
 
           {/* Newsletter Signup */}

@@ -42,6 +42,7 @@ export default function DashboardPage() {
             </div>
           </div>
         </div>
+        
       </section>
 
       {/* Features Section */}
@@ -283,7 +284,7 @@ export default function DashboardPage() {
                   <Linkedin className="size-4" />
                 </Link>
                 <Link 
-                  href="/coming-soon" 
+                  href="#contact" 
                   className="rounded-full border p-2 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-colors"
                 >
                   <Mail className="size-4" />

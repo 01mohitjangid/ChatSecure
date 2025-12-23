@@ -284,7 +284,7 @@ export default function BlogPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/dashboard#contact" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Contact
                   </Link>
                 </li>
