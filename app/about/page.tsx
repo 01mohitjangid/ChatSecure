@@ -12,7 +12,6 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col w-full">
       <AboutHero />
-      
       <AboutCTA />
     </div>
   )
