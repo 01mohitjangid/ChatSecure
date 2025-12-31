@@ -40,7 +40,7 @@ export async function submitContactForm(formData: FormData) {
 
     return {
       success: true,
-      message: 'Thank you for contacting us! We will respond within 24 hours.'
+      message: 'Thank you for contacting us! We will respond within 2-3 days .'
     }
   } catch (error) {
     if (error instanceof z.ZodError) {
