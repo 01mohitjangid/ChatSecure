@@ -46,7 +46,10 @@ export default function HelpCenterPage() {
             <p className="mx-auto max-w-[700px] text-purple-100 md:text-xl/relaxed">
               Find answers to your questions, explore guides, and get the support you need to make the most of ChatSecure.
             </p>
-            
+            <div className="">
+
+            </div>
+
             {/* Search Bar */}
             <div className="w-full max-w-xl mt-4">
           
