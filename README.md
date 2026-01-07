@@ -59,3 +59,4 @@ ChatSecure/
 ├── middleware.ts  # Middleware
 └── package.json   # Project config
 ```
+
