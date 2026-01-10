@@ -275,6 +275,7 @@ export default function DashboardPage() {
                   href="/coming-soon" 
                   className="rounded-full border p-2 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-colors"
                 >
+                  
                   <Github className="size-4" />
                 </Link>
                 <Link 
