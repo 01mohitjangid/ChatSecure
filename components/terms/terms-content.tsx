@@ -142,7 +142,7 @@ export const TerminationSection = () => (
   </TermsSection>
 )
 
-export const DisclaimersSection = () => (
+export const DisclaimersSection = () => (  
   <TermsSection id="disclaimers" number="6" title="Disclaimers">
     <TermsHighlight type="warning">
       THE SERVICE IS PROVIDED ON AN &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; BASIS WITHOUT WARRANTIES 
