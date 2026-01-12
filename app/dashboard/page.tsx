@@ -308,7 +308,7 @@ export default function DashboardPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/api-docs" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     API Documentation
                   </Link>
                 </li>

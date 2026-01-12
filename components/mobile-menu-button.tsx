@@ -27,6 +27,13 @@ export function MobileMenuButton() {
             Dashboard
           </Link>
           <Link 
+            href="/api-docs" 
+            className="text-lg font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            API Docs
+          </Link>
+          <Link 
             href="/blog" 
             className="text-lg font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400"
             onClick={() => setMobileMenuOpen(false)}

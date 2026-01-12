@@ -49,7 +49,12 @@ export async function Header() {
           >
             Dashboard
           </Link>
-          
+          <Link 
+            href="/api-docs" 
+            className="text-sm font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400"
+          >
+            API Docs
+          </Link>
         </nav>
         <MobileMenuButton />
       </div>
