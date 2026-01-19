@@ -24,7 +24,7 @@ export default function APIDocsPage() {
   return (
     <div className="flex flex-col w-full">
       {/* Hero Section */}
-      <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-40 bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800">
+      {/* <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-40 bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
         <div className="container px-4 md:px-6 relative">
           <div className="flex flex-col items-center space-y-4 text-center">
@@ -51,7 +51,7 @@ export default function APIDocsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Quick Start Section */}
       <section id="getting-started" className="w-full py-12 md:py-24 lg:py-32 bg-background">
