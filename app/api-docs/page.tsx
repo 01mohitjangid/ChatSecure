@@ -64,22 +64,6 @@ export default function APIDocsPage() {
         </div>
       </section>
 
-      {/* Authentication */}
-      <section className="w-full py-12 md:py-24 bg-muted/50">
-        <div className="container px-4 md:px-6">
-          <div className="rounded-xl border bg-card p-6 max-w-2xl mx-auto">
-            <h2 className="text-xl font-semibold mb-4 flex items-center space-x-2">
-              <Shield className="size-5 text-purple-600" />
-              <span>Authentication</span>
-            </h2>
-            <p className="text-muted-foreground">
-              All endpoints require session-based authentication. Users must be signed in. 
-              For browser requests, cookies are sent automatically. For server requests, include the session cookie in headers.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* API Endpoints */}
       <section className="w-full py-12 md:py-24 bg-background">
         <div className="container px-4 md:px-6">
