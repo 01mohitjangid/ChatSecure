@@ -1,249 +1,230 @@
-import { 
-  Shield, 
-  MessageSquare, 
-  Upload, 
-  Info,
-  AlertCircle
-} from "lucide-react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { CodeBlock } from "@/components/ui/codeblock"
+import { ExternalLink, Terminal, Upload, FileImage, MessageSquare } from 'lucide-react'
+import Link from 'next/link'
 
 export const metadata = {
   title: 'API Documentation - ChatSecure',
-  description: 'API documentation for ChatSecure'
+  description: 'Developer documentation for ChatSecure APIs'
 }
 
-export default function APIDocsPage() {
-  const baseUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'https://your-domain.com'}/api`
-
+export default function ApiDocsPage() {
   return (
-    <div className="flex flex-col w-full">
-      {/* Hero Section */}
-      <section className="relative w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800">
-        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
-        <div className="container px-4 md:px-6 relative">
-          <div className="flex flex-col items-center space-y-4 text-center">
-            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white">
-              API <span className="text-purple-200">Documentation</span>
+    <div className="min-h-screen bg-background text-foreground pb-20">
+      {/* Header */}
+      <div className="bg-muted/30 border-b">
+        <div className="container mx-auto px-4 py-12 md:py-16">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+              API Documentation
             </h1>
-            <p className="mx-auto max-w-[700px] text-purple-100 md:text-xl">
-              Integrate ChatSecure AI chat capabilities into your applications
+            <p className="text-xl text-muted-foreground mb-8">
+              Integrate ChatSecure's powerful features into your applications.
+              Comprehensive guides and references for our Chat and Upload APIs.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Base URL */}
-      <section className="w-full py-12 md:py-24 bg-background">
-        <div className="container px-4 md:px-6">
-          <div className="rounded-xl border bg-card p-6 max-w-2xl mx-auto">
-            <h2 className="text-xl font-semibold mb-4">Base URL</h2>
-            <div className="bg-muted rounded-lg p-4 font-mono text-sm break-all mb-4">
-              {baseUrl}
-            </div>
-            <div className="space-y-3 text-sm text-muted-foreground">
-              <p>
-                All API requests should be made to this base URL. Append the endpoint path to this URL.
-              </p>
-              <div className="bg-muted/50 rounded-lg p-3 space-y-2">
-                <div className="flex items-start space-x-2">
-                  <span className="font-semibold text-foreground">Example:</span>
-                  <code className="text-xs">{baseUrl}/chat</code>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <span className="font-semibold text-foreground">Example:</span>
-                  <code className="text-xs">{baseUrl}/upload</code>
-                </div>
+            <div className="flex flex-wrap gap-4">
+              <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                v1.0.0
               </div>
-              <p className="text-xs">
-                <strong>Note:</strong> Replace <code className="bg-background px-1 rounded">your-domain.com</code> with your actual ChatSecure domain.
-              </p>
+              <div className="inline-flex items-center px-3 py-1 rounded-full bg-green-500/10 text-green-600 text-sm font-medium">
+                Stable
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* API Endpoints */}
-      <section className="w-full py-12 md:py-24 bg-background">
-        <div className="container px-4 md:px-6">
-          <h2 className="text-3xl font-bold text-center mb-12">Endpoints</h2>
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
 
-          <div className="space-y-12 max-w-4xl mx-auto">
-            {/* Chat Endpoint */}
-            <div className="rounded-xl border bg-card p-6">
-              <div className="flex items-center space-x-3 mb-4">
-                <MessageSquare className="size-6 text-purple-600" />
+          {/* Sidebar Navigation */}
+          <div className="hidden lg:block lg:col-span-3">
+            <div className="sticky top-8 space-y-8">
+              <div>
+                <h3 className="font-semibold text-lg mb-4 text-foreground">Getting Started</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li><a href="#authentication" className="hover:text-primary transition-colors block py-1">Authentication</a></li>
+                  <li><a href="#base-url" className="hover:text-primary transition-colors block py-1">Base URL</a></li>
+                  <li><a href="#errors" className="hover:text-primary transition-colors block py-1">Errors</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold text-lg mb-4 text-foreground">Endpoints</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li>
+                    <a href="#chat-api" className="hover:text-primary transition-colors flex items-center gap-2 py-1">
+                      <span className="w-16 text-xs font-mono uppercase bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 px-1.5 py-0.5 rounded text-center">POST</span>
+                      Chat
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#upload-api" className="hover:text-primary transition-colors flex items-center gap-2 py-1">
+                      <span className="w-16 text-xs font-mono uppercase bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 px-1.5 py-0.5 rounded text-center">POST</span>
+                      Upload
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Main Content */}
+          <div className="lg:col-span-9 space-y-16">
+
+            {/* General Info */}
+            <section id="introduction" className="space-y-6">
+              <h2 className="text-3xl font-bold tracking-tight">Introduction</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Welcome to the ChatSecure API documentation. Our APIs allow you to build intelligent chat interfaces and handle secure file uploads with ease. All endpoints are built to be RESTful and return JSON responses, with the exception of the streaming Chat API.
+              </p>
+            </section>
+
+            <section id="authentication" className="space-y-6 scroll-mt-20">
+              <h2 className="text-2xl font-bold tracking-tight">Authentication</h2>
+              <p className="text-muted-foreground text-lg">
+                The API uses session-based authentication. Ensure you include the session cookie in your requests.
+                Unauthorized requests will receive a <code className="text-sm bg-muted px-1.5 py-0.5 rounded font-mono">401 Unauthorized</code> response.
+              </p>
+              <div className="bg-card border rounded-lg p-6 flex items-start gap-4">
+                <div className="p-3 bg-primary/10 rounded-full text-primary mt-1">
+                  <ExternalLink className="h-6 w-6" />
+                </div>
                 <div>
-                  <span className="px-2 py-1 rounded text-xs font-semibold bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 mr-2">
-                    POST
-                  </span>
-                  <code className="text-sm font-mono">/api/chat</code>
+                  <h4 className="font-semibold text-lg mb-2">Auth.js Integration</h4>
+                  <p className="text-muted-foreground">This project uses Auth.js (NextAuth) for authentication handling. The session is automatically managed by the framework.</p>
+                </div>
+              </div>
+            </section>
+
+            <hr className="border-border" />
+
+            {/* Chat API */}
+            <section id="chat-api" className="space-y-8 scroll-mt-20">
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-blue-500/10 text-blue-600 rounded-lg">
+                  <MessageSquare className="h-8 w-8" />
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold tracking-tight">Chat API</h2>
+                  <p className="text-lg text-muted-foreground mt-1">Generate AI responses using OpenAI models.</p>
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <div>
-                  <h3 className="font-semibold mb-2">Request Body</h3>
-                  <div className="bg-muted rounded-lg p-4">
-                    <pre className="text-sm overflow-x-auto">
-{`{
+              <div className="bg-card border rounded-xl overflow-hidden shadow-sm">
+                <div className="border-b bg-muted/40 px-6 py-4 flex flex-col md:flex-row md:items-center gap-4">
+                  <span className="px-3 py-1 rounded-md bg-blue-600 text-white font-bold font-mono text-sm tracking-wide">POST</span>
+                  <code className="font-mono text-muted-foreground">/api/chat</code>
+                </div>
+                <div className="p-6 space-y-8">
+                  <div>
+                    <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Request Body</h4>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-left text-sm">
+                        <thead>
+                          <tr className="border-b">
+                            <th className="py-3 font-semibold w-1/4">Field</th>
+                            <th className="py-3 font-semibold w-1/4">Type</th>
+                            <th className="py-3 font-semibold">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y">
+                          <tr>
+                            <td className="py-3 font-mono text-primary">messages</td>
+                            <td className="py-3 font-mono text-muted-foreground">Array</td>
+                            <td className="py-3 text-muted-foreground">Array of message objects with <code className="bg-muted px-1 rounded">role</code> and <code className="bg-muted px-1 rounded">content</code>.</td>
+                          </tr>
+                          <tr>
+                            <td className="py-3 font-mono text-primary">model</td>
+                            <td className="py-3 font-mono text-muted-foreground">String</td>
+                            <td className="py-3 text-muted-foreground">Optional. The OpenAI model to use. Default: <code className="bg-muted px-1 rounded">'gpt-4-turbo-preview'</code>.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Example Request</h4>
+                    <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto text-foreground">
+                      <pre>{`{
   "messages": [
-    { "role": "user", "content": "Hello!" }
+    { "role": "user", "content": "Hello, how does this API work?" }
   ],
-  "model": "gpt-4-turbo-preview" // optional
-}`}
-                    </pre>
+  "model": "gpt-4-turbo-preview"
+}`}</pre>
+                    </div>
                   </div>
-                </div>
 
-                <div>
-                  <h3 className="font-semibold mb-2">Example</h3>
-                  <CodeBlock
-                    language="javascript"
-                    value={`const response = await fetch('/api/chat', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  credentials: 'include',
-  body: JSON.stringify({
-    messages: [{ role: 'user', content: 'Hello!' }]
-  })
-})
-
-const reader = response.body.getReader()
-const decoder = new TextDecoder()
-
-while (true) {
-  const { done, value } = await reader.read()
-  if (done) break
-  const chunk = decoder.decode(value)
-  console.log(chunk)
-}`}
-                  />
-                </div>
-
-                <div>
-                  <h3 className="font-semibold mb-2 flex items-center space-x-2">
-                    <AlertCircle className="size-4 text-amber-500" />
-                    <span>Errors</span>
-                  </h3>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex items-center space-x-2">
-                      <code className="text-red-600">401</code>
-                      <span className="text-muted-foreground">Unauthorized</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <code className="text-red-600">400</code>
-                      <span className="text-muted-foreground">Invalid request</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <code className="text-red-600">429</code>
-                      <span className="text-muted-foreground">Rate limit exceeded</span>
-                    </div>
+                  <div>
+                    <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Response</h4>
+                    <p className="text-muted-foreground mb-4">Returns a streaming text response compatible with the AI SDK.</p>
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
 
-            {/* Upload Endpoint */}
-            <div className="rounded-xl border bg-card p-6">
-              <div className="flex items-center space-x-3 mb-4">
-                <Upload className="size-6 text-purple-600" />
+            <hr className="border-border" />
+
+            {/* Upload API */}
+            <section id="upload-api" className="space-y-8 scroll-mt-20">
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-purple-500/10 text-purple-600 rounded-lg">
+                  <Upload className="h-8 w-8" />
+                </div>
                 <div>
-                  <span className="px-2 py-1 rounded text-xs font-semibold bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 mr-2">
-                    POST
-                  </span>
-                  <code className="text-sm font-mono">/api/upload</code>
+                  <h2 className="text-3xl font-bold tracking-tight">Upload API</h2>
+                  <p className="text-lg text-muted-foreground mt-1">Securely upload image files to the server.</p>
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <div>
-                  <h3 className="font-semibold mb-2">Request</h3>
-                  <p className="text-sm text-muted-foreground mb-2">
-                    Send multipart/form-data with a file field named &quot;file&quot;
-                  </p>
-                  <div className="bg-muted rounded-lg p-3 text-sm">
-                    <div className="flex justify-between mb-1">
-                      <span>Max Size:</span>
-                      <span>5 MB</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Allowed Types:</span>
-                      <span>JPEG, PNG, GIF, WebP</span>
+              <div className="bg-card border rounded-xl overflow-hidden shadow-sm">
+                <div className="border-b bg-muted/40 px-6 py-4 flex flex-col md:flex-row md:items-center gap-4">
+                  <span className="px-3 py-1 rounded-md bg-purple-600 text-white font-bold font-mono text-sm tracking-wide">POST</span>
+                  <code className="font-mono text-muted-foreground">/api/upload</code>
+                </div>
+                <div className="p-6 space-y-8">
+                  <div>
+                    <p className="text-muted-foreground mb-6">
+                      Accepts multipart/form-data. Supported formats: JPEG, PNG, GIF, WebP. Max size: 5MB.
+                    </p>
+                    <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Request Body</h4>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-left text-sm">
+                        <thead>
+                          <tr className="border-b">
+                            <th className="py-3 font-semibold w-1/4">Field</th>
+                            <th className="py-3 font-semibold w-1/4">Type</th>
+                            <th className="py-3 font-semibold">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y">
+                          <tr>
+                            <td className="py-3 font-mono text-primary">file</td>
+                            <td className="py-3 font-mono text-muted-foreground">File</td>
+                            <td className="py-3 text-muted-foreground">The image file to upload.</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
-                </div>
 
-                <div>
-                  <h3 className="font-semibold mb-2">Example</h3>
-                  <CodeBlock
-                    language="javascript"
-                    value={`const formData = new FormData()
-formData.append('file', fileInput.files[0])
-
-const response = await fetch('/api/upload', {
-  method: 'POST',
-  credentials: 'include',
-  body: formData
-})
-
-const data = await response.json()
-console.log(data.imageUrl) // /uploads/abc123.png`}
-                  />
-                </div>
-
-                <div>
-                  <h3 className="font-semibold mb-2">Response</h3>
-                  <div className="bg-muted rounded-lg p-4">
-                    <pre className="text-sm overflow-x-auto">
-{`{
+                  <div>
+                    <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Example Response</h4>
+                    <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto text-foreground">
+                      <pre>{`{
   "success": true,
-  "imageUrl": "/uploads/abc123.png",
-  "fileName": "abc123.png",
-  "size": 102400,
+  "imageUrl": "/uploads/example-image.png",
+  "fileName": "example-image.png",
+  "size": 10240,
   "type": "image/png"
-}`}
-                    </pre>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold mb-2 flex items-center space-x-2">
-                    <AlertCircle className="size-4 text-amber-500" />
-                    <span>Errors</span>
-                  </h3>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex items-center space-x-2">
-                      <code className="text-red-600">401</code>
-                      <span className="text-muted-foreground">Unauthorized</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <code className="text-red-600">400</code>
-                      <span className="text-muted-foreground">Invalid file type or too large</span>
+}`}</pre>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            </section>
 
-      {/* Support */}
-      <section className="w-full py-12 md:py-24 bg-muted/50">
-        <div className="container px-4 md:px-6">
-          <div className="rounded-xl border bg-card p-8 max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl font-bold mb-4">Need Help?</h2>
-            <p className="text-muted-foreground mb-6">
-              Have questions? Contact our support team.
-            </p>
-            <Button asChild>
-              <Link href="/dashboard#contact">Contact Support</Link>
-            </Button>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   )
 }
