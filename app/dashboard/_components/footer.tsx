@@ -8,7 +8,7 @@ export function Footer() {
     const currentYear = new Date().getFullYear()
 
     return (
-        <footer className="relative w-full bg-black pt-20 pb-10 overflow-hidden border-t border-white/10">
+        <footer className="relative w-full bg-black pt-20 pb-10 overflow-hidden">
             {/* Background Gradients */}
             <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[128px]" />
@@ -63,7 +63,7 @@ export function Footer() {
                 <div
                     className="w-full flex justify-center py-12 border-t border-white/10"
                 >
-                    <h1 className="text-[12vw] leading-none font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white/10 to-white/0 select-none pointer-events-none">
+                    <h1 className="text-[12vw] leading-none font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white/30 to-white/5 select-none pointer-events-none">
                         CHATSECURE
                     </h1>
                 </div>

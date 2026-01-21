@@ -17,7 +17,7 @@ export default function ApiDocsPage() {
               API Documentation
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Integrate ChatSecure's powerful features into your applications.
+              Integrate ChatSecure&apos;s powerful features into your applications.
               Comprehensive guides and references for our Chat and Upload APIs.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -134,7 +134,7 @@ export default function ApiDocsPage() {
                           <tr>
                             <td className="py-3 font-mono text-primary">model</td>
                             <td className="py-3 font-mono text-muted-foreground">String</td>
-                            <td className="py-3 text-muted-foreground">Optional. The OpenAI model to use. Default: <code className="bg-muted px-1 rounded">'gpt-4-turbo-preview'</code>.</td>
+                            <td className="py-3 text-muted-foreground">Optional. The OpenAI model to use. Default: <code className="bg-muted px-1 rounded">&apos;gpt-4-turbo-preview&apos;</code>.</td>
                           </tr>
                         </tbody>
                       </table>
