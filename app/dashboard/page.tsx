@@ -34,7 +34,7 @@ export default function DashboardPage() {
                 Contact Us
               </h2>
               <p className="text-gray-400 md:text-xl/relaxed">
-                Need an API key or have questions? We're here to help. Fill out the form and our team will get back to you within 24 hours.
+                Need an API key or have questions? We&apos;re here to help. Fill out the form and our team will get back to you within 24 hours.
               </p>
 
               <div className="space-y-6 pt-4">
