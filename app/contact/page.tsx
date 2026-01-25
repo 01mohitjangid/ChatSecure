@@ -12,15 +12,15 @@ export default function ContactPage() {
         <div className="min-h-screen bg-black text-white selection:bg-purple-500/30">
             {/* Background Effects */}
             <div className="fixed inset-0 bg-grid-white/[0.02] bg-[size:50px_50px] pointer-events-none" />
-            <div className="fixed top-0 left-1/4 w-96 h-96 bg-purple-900/20 rounded-full blur-[128px] pointer-events-none" />
-            <div className="fixed bottom-0 right-1/4 w-96 h-96 bg-indigo-900/20 rounded-full blur-[128px] pointer-events-none" />
+            <div className="fixed top-0 left-1/4 size-96 bg-purple-900/20 rounded-full blur-[128px] pointer-events-none" />
+            <div className="fixed bottom-0 right-1/4 size-96 bg-indigo-900/20 rounded-full blur-[128px] pointer-events-none" />
 
             <main className="container relative mx-auto px-4 md:px-6 py-20 min-h-screen flex items-center">
                 {/* Back Button */}
                 <div className="absolute top-8 left-4 md:left-8">
                     <Link href="/dashboard">
                         <Button variant="ghost" className="text-gray-400 hover:text-white hover:bg-white/10 group">
-                            <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+                            <ArrowLeft className="mr-2 size-4 group-hover:-translate-x-1 transition-transform" />
                             Back to Dashboard
                         </Button>
                     </Link>
@@ -42,7 +42,7 @@ export default function ContactPage() {
                                 Contact Us
                             </h1>
                             <p className="text-lg text-gray-400 leading-relaxed max-w-lg">
-                                Need an API key or have questions? We're here to help. Fill out the
+                                Need an API key or have questions? We&apos;re here to help. Fill out the
                                 form and our team will get back to you within 24 hours.
                             </p>
                         </div>
@@ -62,8 +62,8 @@ export default function ContactPage() {
                         </div>
 
                         {/* Decorative elements around form */}
-                        <div className="absolute -top-10 -right-10 w-24 h-24 bg-purple-500/20 rounded-full blur-2xl -z-10" />
-                        <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-indigo-500/20 rounded-full blur-2xl -z-10" />
+                        <div className="absolute -top-10 -right-10 size-24 bg-purple-500/20 rounded-full blur-2xl -z-10" />
+                        <div className="absolute -bottom-10 -left-10 size-32 bg-indigo-500/20 rounded-full blur-2xl -z-10" />
                     </motion.div>
                 </div>
             </main>
