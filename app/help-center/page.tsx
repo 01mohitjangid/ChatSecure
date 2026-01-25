@@ -1,12 +1,12 @@
-import { 
-  HelpCircle, 
-  MessageSquare, 
-  Shield, 
-  Zap, 
-  Users, 
-  Settings, 
-  CreditCard, 
-  Lock, 
+import {
+  HelpCircle,
+  MessageSquare,
+  Shield,
+  Zap,
+  Users,
+  Settings,
+  CreditCard,
+  Lock,
   Search,
   ChevronRight,
   BookOpen,
@@ -52,13 +52,13 @@ export default function HelpCenterPage() {
 
             {/* Search Bar */}
             <div className="w-full max-w-xl mt-4">
-          
+
             </div>
           </div>
         </div>
       </section>
 
-      
+
 
       {/* Help Categories Section */}
       <section id="getting-started" className="w-full py-12 md:py-24 bg-muted/50">
@@ -74,40 +74,40 @@ export default function HelpCenterPage() {
               Choose a category below to find the help you need
             </p>
           </div>
-          
+
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <CategoryCard 
+            <CategoryCard
               icon={<Zap className="size-8 text-purple-600" />}
               title="Getting Started"
               description="Learn the basics of ChatSecure and set up your account"
               articles={["Creating your account", "First chat guide", "Interface overview", "Customizing settings"]}
             />
-            <CategoryCard 
+            <CategoryCard
               icon={<MessageSquare className="size-8 text-purple-600" />}
               title="Using Chat"
               description="Master conversations and get the most from AI"
               articles={["Starting conversations", "Best prompting practices", "Saving chat history", "Exporting chats"]}
             />
-            <CategoryCard 
+            <CategoryCard
               icon={<Shield className="size-8 text-purple-600" />}
               title="Security & Privacy"
               description="Understand how we protect your data"
               articles={["Data encryption", "Privacy controls", "Account security", "Data deletion"]}
             />
-            
-            <CategoryCard 
+
+            <CategoryCard
               icon={<Settings className="size-8 text-purple-600" />}
               title="Account Settings"
               description="Manage your profile and preferences"
               articles={["Profile settings", "Notification preferences", "Theme customization", "Language settings"]}
             />
-            <CategoryCard 
+            <CategoryCard
               icon={<CreditCard className="size-8 text-purple-600" />}
               title="Billing & Plans"
               description="Subscription and payment information"
               articles={["Plan comparison", "Payment methods", "Invoices & receipts", "Cancel subscription"]}
             />
-            <CategoryCard 
+            <CategoryCard
               icon={<Users className="size-8 text-purple-600" />}
               title="Teams & Collaboration"
               description="Work together with your team"
@@ -128,29 +128,29 @@ export default function HelpCenterPage() {
               Frequently Asked Questions
             </h2>
           </div>
-          
+
           <div className="max-w-3xl mx-auto space-y-4">
-            <FAQItem 
+            <FAQItem
               question="What is ChatSecure?"
               answer="ChatSecure is a next-generation AI chat platform built with cutting-edge technology and enterprise-grade security. It provides intelligent, context-aware conversations while keeping your data private and protected."
             />
-            <FAQItem 
+            <FAQItem
               question="How secure is my data?"
               answer="We use 256-bit encryption for all data transmission and storage. Your conversations are never used for training purposes, and you have full control over your data, including the ability to delete it at any time."
             />
-            <FAQItem 
+            <FAQItem
               question="Can I use ChatSecure for my business?"
               answer="Absolutely! ChatSecure offers enterprise solutions with advanced features like team management, custom integrations, and dedicated support. Contact our sales team for more information."
             />
-            <FAQItem 
+            <FAQItem
               question="What AI models does ChatSecure use?"
               answer="ChatSecure is powered by state-of-the-art AI models including OpenAI's GPT. We continuously update our models to provide the best possible experience."
             />
-            <FAQItem 
+            <FAQItem
               question="How do I get an API key?"
-              answer="You can request an API key through our contact form on the dashboard page. Our team will review your request and get back to you within 24 hours."
+              answer="You can request an API key through our contact page. Our team will review your request and get back to you within 24 hours."
             />
-            <FAQItem 
+            <FAQItem
               question="Is there a free plan available?"
               answer="Yes! ChatSecure offers a free tier with generous usage limits. You can upgrade to a paid plan anytime for additional features and higher limits."
             />
@@ -159,24 +159,24 @@ export default function HelpCenterPage() {
       </section>
 
       {/* Contact Support Section */}
-      
+
     </div>
   )
 }
 
-const QuickLinkCard = ({ 
-  icon, 
-  title, 
-  description, 
-  href 
-}: { 
+const QuickLinkCard = ({
+  icon,
+  title,
+  description,
+  href
+}: {
   icon: React.ReactNode
   title: string
   description: string
-  href: string 
+  href: string
 }) => {
   return (
-    <Link 
+    <Link
       href={href}
       className="group flex items-center gap-4 rounded-xl border bg-card p-4 hover:shadow-md hover:border-purple-200 dark:hover:border-purple-800 transition-all duration-300"
     >
@@ -192,12 +192,12 @@ const QuickLinkCard = ({
   )
 }
 
-const CategoryCard = ({ 
-  icon, 
-  title, 
-  description, 
-  articles 
-}: { 
+const CategoryCard = ({
+  icon,
+  title,
+  description,
+  articles
+}: {
   icon: React.ReactNode
   title: string
   description: string
@@ -216,8 +216,8 @@ const CategoryCard = ({
         <ul className="space-y-2 pt-2 border-t">
           {articles.map((article, index) => (
             <li key={index}>
-              <Link 
-                href="/coming-soon" 
+              <Link
+                href="/coming-soon"
                 className="flex items-center text-sm text-muted-foreground hover:text-purple-600 transition-colors"
               >
                 <ChevronRight className="size-4 mr-1" />
@@ -247,16 +247,16 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
   )
 }
 
-const ContactOption = ({ 
-  icon, 
-  title, 
-  description, 
-  action 
-}: { 
+const ContactOption = ({
+  icon,
+  title,
+  description,
+  action
+}: {
   icon: React.ReactNode
   title: string
   description: string
-  action: string 
+  action: string
 }) => {
   return (
     <div className="flex items-start space-x-3">
