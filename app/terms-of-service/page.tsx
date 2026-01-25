@@ -21,7 +21,7 @@ export default function TermsOfServicePage() {
       {/* Hero Section - Fabulous Gradient */}
       <section className="relative w-full py-20 md:py-32 overflow-hidden bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
-        
+
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 size-80 bg-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
@@ -75,7 +75,7 @@ export default function TermsOfServicePage() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm">
-                <Link href="/dashboard#contact">
+                <Link href="/contact">
                   Contact Us
                 </Link>
               </Button>
@@ -88,17 +88,17 @@ export default function TermsOfServicePage() {
       <section className="w-full py-12 md:py-16 bg-background border-b">
         <div className="container px-4 md:px-6">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
-            <HighlightCard 
+            <HighlightCard
               icon={<Shield className="size-6 text-purple-600" />}
               title="Your Privacy"
               description="We never sell your data to third parties"
             />
-            <HighlightCard 
+            <HighlightCard
               icon={<CheckCircle2 className="size-6 text-purple-600" />}
               title="Fair Terms"
               description="Clear, straightforward legal language"
             />
-            <HighlightCard 
+            <HighlightCard
               icon={<Sparkles className="size-6 text-purple-600" />}
               title="Always Updated"
               description="We notify you of any changes"
@@ -134,14 +134,14 @@ export default function TermsOfServicePage() {
   )
 }
 
-const HighlightCard = ({ 
-  icon, 
-  title, 
-  description 
-}: { 
+const HighlightCard = ({
+  icon,
+  title,
+  description
+}: {
   icon: React.ReactNode
   title: string
-  description: string 
+  description: string
 }) => {
   return (
     <div className="flex flex-col items-center text-center p-6 rounded-2xl border bg-card hover:shadow-lg transition-all duration-300 group">
