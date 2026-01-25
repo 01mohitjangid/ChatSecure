@@ -29,7 +29,7 @@ export default function BlogPage() {
               </p>
             </div>
           </div>
-          
+
         </div>
       </section>
 
@@ -284,10 +284,10 @@ export default function BlogPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/dashboard#contact" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/contact" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Contact
                   </Link>
-                  
+
                 </li>
               </ul>
             </div>
@@ -299,7 +299,7 @@ export default function BlogPage() {
                 <li>
                   <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Help Center
-                    
+
                   </Link>
                 </li>
                 <li>
@@ -340,15 +340,15 @@ export default function BlogPage() {
   )
 }
 
-const BlogCard = ({ 
-  category, 
-  title, 
-  excerpt, 
-  date, 
-  readTime, 
+const BlogCard = ({
+  category,
+  title,
+  excerpt,
+  date,
+  readTime,
   author,
-  image 
-}: { 
+  image
+}: {
   category: string
   title: string
   excerpt: string
@@ -398,8 +398,8 @@ const BlogCard = ({
           </div>
           <span className="text-xs font-medium">{author}</span>
         </div>
-        <Link 
-          href="/coming-soon" 
+        <Link
+          href="/coming-soon"
           className="inline-flex items-center text-sm font-medium text-purple-600 hover:text-purple-700 pt-2"
         >
           Read Article
@@ -410,11 +410,11 @@ const BlogCard = ({
   )
 }
 
-const CategoryCard = ({ 
-  icon, 
-  title, 
-  count 
-}: { 
+const CategoryCard = ({
+  icon,
+  title,
+  count
+}: {
   icon: React.ReactNode
   title: string
   count: number
