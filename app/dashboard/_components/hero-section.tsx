@@ -55,14 +55,43 @@ export function HeroSection() {
                     </motion.div>
 
                     <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
+                        initial="hidden"
+                        animate="visible"
+                        variants={{
+                            hidden: { opacity: 1 },
+                            visible: {
+                                opacity: 1,
+                                transition: {
+                                    delay: 0.5,
+                                    staggerChildren: 0.05,
+                                },
+                            },
+                        }}
                         className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none text-white max-w-4xl"
                     >
-                        Experience the Future of{" "}
+                        {"Experience the Future of ".split("").map((char, index) => (
+                            <motion.span
+                                key={index}
+                                variants={{
+                                    hidden: { opacity: 0, y: 50 },
+                                    visible: { opacity: 1, y: 0 },
+                                }}
+                            >
+                                {char}
+                            </motion.span>
+                        ))}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-                            Intelligent Chat
+                            {"Intelligent Chat".split("").map((char, index) => (
+                                <motion.span
+                                    key={index}
+                                    variants={{
+                                        hidden: { opacity: 0, y: 50 },
+                                        visible: { opacity: 1, y: 0 },
+                                    }}
+                                >
+                                    {char}
+                                </motion.span>
+                            ))}
                         </span>
                     </motion.h1>
 
