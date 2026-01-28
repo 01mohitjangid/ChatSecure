@@ -16,7 +16,7 @@ export function HeroSection() {
 
             {/* Floating Orbs */}
             <motion.div
-                className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-500/20 rounded-full blur-[100px]"
+                className="absolute top-1/4 left-1/4 size-72 bg-purple-500/20 rounded-full blur-[100px]"
                 animate={{
                     x: [0, 50, 0],
                     y: [0, -50, 0],
@@ -29,7 +29,7 @@ export function HeroSection() {
                 }}
             />
             <motion.div
-                className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-[100px]"
+                className="absolute bottom-1/4 right-1/4 size-96 bg-indigo-500/10 rounded-full blur-[100px]"
                 animate={{
                     x: [0, -30, 0],
                     y: [0, 30, 0],
@@ -118,7 +118,8 @@ export function HeroSection() {
                         >
                             <Link href="/">
                                 Get Started
-                                <ChevronRight className="ml-2 h-4 w-4" />
+                                
+                                <ChevronRight  className="ml-2 size-4" />
                             </Link>
                         </Button>
                         <Button
