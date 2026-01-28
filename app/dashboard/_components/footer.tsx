@@ -11,8 +11,8 @@ export function Footer() {
         <footer className="relative w-full bg-black pt-20 pb-10 overflow-hidden">
             {/* Background Gradients */}
             <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[128px]" />
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-900/20 rounded-full blur-[128px]" />
+            <div className="absolute bottom-0 left-0 size-[500px] bg-purple-900/20 rounded-full blur-[128px]" />
+            <div className="absolute top-0 right-0 size-[500px] bg-indigo-900/20 rounded-full blur-[128px]" />
 
             <div className="container relative z-10 px-4 md:px-6">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">

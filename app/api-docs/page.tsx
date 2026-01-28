@@ -85,7 +85,7 @@ export default function ApiDocsPage() {
               </p>
               <div className="bg-card border rounded-lg p-6 flex items-start gap-4">
                 <div className="p-3 bg-primary/10 rounded-full text-primary mt-1">
-                  <ExternalLink className="h-6 w-6" />
+                  <ExternalLink className="size-6" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-lg mb-2">Auth.js Integration</h4>
@@ -100,7 +100,7 @@ export default function ApiDocsPage() {
             <section id="chat-api" className="space-y-8 scroll-mt-20">
               <div className="flex items-center gap-4">
                 <div className="p-3 bg-blue-500/10 text-blue-600 rounded-lg">
-                  <MessageSquare className="h-8 w-8" />
+                  <MessageSquare className="size-8" />
                 </div>
                 <div>
                   <h2 className="text-3xl font-bold tracking-tight">Chat API</h2>
@@ -167,7 +167,7 @@ export default function ApiDocsPage() {
             <section id="upload-api" className="space-y-8 scroll-mt-20">
               <div className="flex items-center gap-4">
                 <div className="p-3 bg-purple-500/10 text-purple-600 rounded-lg">
-                  <Upload className="h-8 w-8" />
+                  <Upload className="size-8" />
                 </div>
                 <div>
                   <h2 className="text-3xl font-bold tracking-tight">Upload API</h2>
