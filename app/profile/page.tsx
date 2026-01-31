@@ -4,8 +4,8 @@ import { ProfileForm } from "./profile-form"
 import { getUser } from "../sign-up/actions"
 
 export const metadata = {
-  title: 'My Profile - ChatSecure',
-  description: 'Manage your ChatSecure account'
+  title: 'Profile - ChatSecure',
+  description: 'Manage your account settings and preferences'
 }
 
 export default async function ProfilePage() {
@@ -19,39 +19,28 @@ export default async function ProfilePage() {
   const userDetails = await getUser(session.user.email!)
 
   return (
-    <div className="flex flex-col w-full">
-      {/* Header Section */}
-      <section className="relative w-full py-12 md:py-16 bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800">
-        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 right-20 size-32 border border-white/20 rounded-full"></div>
-          <div className="absolute bottom-10 left-20 size-24 border border-white/20 rounded-full"></div>
-          <div className="absolute top-1/2 right-1/3 size-16 border border-white/20 rounded-full"></div>
-        </div>
-        <div className="container px-4 md:px-6 relative">
-          <div className="flex flex-col items-center space-y-2 text-center">
-            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
-              PROFILE
+    <div className="min-h-screen bg-black text-white selection:bg-white/20">
+      <div className="container max-w-5xl mx-auto px-4 py-8 md:py-12">
+        <div className="flex flex-col gap-10">
+          {/* Header */}
+          <div className="flex flex-col gap-2 pb-6 border-b border-white/10">
+            <h1 className="text-3xl font-bold tracking-tight text-white">
+              Profile
             </h1>
-            <p className="text-purple-200 text-sm md:text-base">
-              Manage your account settings
+            <p className="text-base text-zinc-400">
+              Manage your personal information and security settings.
             </p>
           </div>
-        </div>
-      </section>
 
-      {/* Profile Content */}
-      <section className="w-full py-12 bg-background">
-        <div className="container px-4 md:px-6">
-          <div className="max-w-4xl mx-auto">
-            <ProfileForm 
-              user={userDetails} 
+          {/* Main Content */}
+          <div className="w-full">
+            <ProfileForm
+              user={userDetails}
               userEmail={session.user.email!}
             />
           </div>
         </div>
-      </section>
+      </div>
     </div>
   )
 }
-

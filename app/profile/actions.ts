@@ -12,11 +12,30 @@ async function getUser(email: string) {
       password: string
       salt: string
       profilePhoto?: string
+      bio?: string
+      phoneNumber?: string
+      lastLogin?: string
     }>(`user:${email}`)
     return user
   } catch (error) {
     console.error('Failed to fetch user:', error)
     return null
+  }
+}
+
+export async function updateUserDetails(email: string, data: { bio?: string, phoneNumber?: string }) {
+  try {
+    const user = await getUser(email)
+    if (!user) return { type: 'error', message: 'User not found' }
+
+    await kv.hset(`user:${email}`, {
+      ...data
+    })
+
+    revalidatePath('/profile')
+    return { type: 'success', message: 'Profile updated' }
+  } catch (error) {
+    return { type: 'error', message: 'Failed to update profile' }
   }
 }
 
