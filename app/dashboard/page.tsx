@@ -15,11 +15,8 @@ export default function DashboardPage() {
   return (
     <div className="flex flex-col w-full bg-black min-h-screen">
       <HeroSection />
-
       <StatsSection />
-
       <FeaturesGrid />
-
       <TechStack />
 
       {/* Contact Section - Kept largely same but with dark theme adjustments */}
