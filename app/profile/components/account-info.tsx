@@ -105,6 +105,7 @@ export function AccountInfo({ user }: AccountInfoProps) {
                 </motion.button>
             </motion.div>
 
+
             {/* Last Login */}
             <motion.div
                 className="bg-secondary/20 rounded-md p-3 hover:bg-secondary/30 transition-all"
