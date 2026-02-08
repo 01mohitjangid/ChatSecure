@@ -94,6 +94,55 @@ export default function ApiDocsPage() {
               </div>
             </section>
 
+            <section id="base-url" className="space-y-6 scroll-mt-20">
+              <h2 className="text-2xl font-bold tracking-tight">Base URL</h2>
+              <p className="text-muted-foreground text-lg">
+                All API requests should be made to the following base URL:
+              </p>
+              <div className="bg-muted rounded-lg p-4 font-mono text-sm flex items-center justify-between">
+                <span>http://localhost:3000/api</span>
+              </div>
+            </section>
+
+            <section id="errors" className="space-y-6 scroll-mt-20">
+              <h2 className="text-2xl font-bold tracking-tight">Errors</h2>
+              <p className="text-muted-foreground text-lg">
+                The API uses standard HTTP status codes to indicate the success or failure of requests.
+              </p>
+              <div className="border rounded-lg overflow-hidden">
+                <table className="w-full text-left text-sm">
+                  <thead className="bg-muted/50">
+                    <tr className="border-b">
+                      <th className="py-3 px-4 font-semibold w-24">Code</th>
+                      <th className="py-3 px-4 font-semibold">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y">
+                    <tr>
+                      <td className="py-3 px-4 font-mono text-blue-600">200</td>
+                      <td className="py-3 px-4 text-muted-foreground">The request was successful.</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-4 font-mono text-yellow-600">400</td>
+                      <td className="py-3 px-4 text-muted-foreground">Bad Request. The request was invalid or cannot be served.</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-4 font-mono text-orange-600">401</td>
+                      <td className="py-3 px-4 text-muted-foreground">Unauthorized. Authentication is required or has failed.</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-4 font-mono text-red-600">429</td>
+                      <td className="py-3 px-4 text-muted-foreground">Too Many Requests. Rate limit exceeded.</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-4 font-mono text-red-600">500</td>
+                      <td className="py-3 px-4 text-muted-foreground">Internal Server Error. Something went wrong on our end.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
             <hr className="border-border" />
 
             {/* Chat API */}
@@ -143,13 +192,18 @@ export default function ApiDocsPage() {
 
                   <div>
                     <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Example Request</h4>
-                    <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto text-foreground">
-                      <pre>{`{
-  "messages": [
-    { "role": "user", "content": "Hello, how does this API work?" }
-  ],
-  "model": "gpt-4-turbo-preview"
-}`}</pre>
+                    <div className="space-y-4">
+                      <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto text-foreground">
+                        <div className="mb-2 text-xs text-muted-foreground select-none font-semibold">cURL</div>
+                        <pre>{`curl -X POST http://localhost:3000/api/chat \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "messages": [
+      { "role": "user", "content": "Hello, how does this API work?" }
+    ],
+    "model": "gpt-4-turbo-preview"
+  }'`}</pre>
+                      </div>
                     </div>
                   </div>
 
@@ -203,6 +257,16 @@ export default function ApiDocsPage() {
                           </tr>
                         </tbody>
                       </table>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Example Request</h4>
+                    <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto text-foreground">
+                      <div className="mb-2 text-xs text-muted-foreground select-none font-semibold">cURL</div>
+                      <pre>{`curl -X POST http://localhost:3000/api/upload \\
+  -H "Content-Type: multipart/form-data" \\
+  -F "file=@/path/to/image.png"`}</pre>
                     </div>
                   </div>
 
