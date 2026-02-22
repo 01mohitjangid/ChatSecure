@@ -19,15 +19,15 @@ export default async function ProfilePage() {
   const userDetails = await getUser(session.user.email!)
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-white/20">
+    <div className="min-h-screen bg-background text-foreground selection:bg-foreground/20">
       <div className="container max-w-5xl mx-auto px-4 py-8 md:py-12">
         <div className="flex flex-col gap-10">
           {/* Header */}
-          <div className="flex flex-col gap-2 pb-6 border-b border-white/10">
-            <h1 className="text-3xl font-bold tracking-tight text-white">
+          <div className="flex flex-col gap-2 pb-6 border-b border-border">
+            <h1 className="text-3xl font-bold tracking-tight text-foreground">
               Profile
             </h1>
-            <p className="text-base text-zinc-400">
+            <p className="text-base text-muted-foreground">
               Manage your personal information and security settings.
             </p>
           </div>
