@@ -44,7 +44,7 @@ export function ProfileForm({ user, userEmail }: ProfileFormProps) {
   }
 
   return (
-    <div className="min-h-screen dark bg-background py-6 sm:py-12 px-4 sm:px-6 lg:px-8">
+    <div className="py-6 sm:py-12 px-4 sm:px-6 lg:px-8">
       <motion.div
         className="max-w-2xl mx-auto space-y-4"
         initial={{ opacity: 0, y: 20 }}

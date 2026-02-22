@@ -5,7 +5,7 @@ import { Mail, Zap, Shield } from "lucide-react"
 
 export function ContactInfoList() {
     return (
-        <div className="space-y-6 pt-4">
+        <div className="space-y-4">
             <ContactInfoItem
                 icon={Mail}
                 title="Email Support"
@@ -44,14 +44,14 @@ function ContactInfoItem({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay, duration: 0.5 }}
-            className="flex items-start space-x-4 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition-colors"
+            className="flex items-start gap-5 bg-white/5 p-5 rounded-2xl border border-white/5 hover:border-purple-500/30 hover:bg-white/[0.07] transition-all group"
         >
-            <div className="p-3 rounded-lg bg-gradient-to-br from-purple-900/50 to-indigo-900/50 border border-purple-500/20 text-purple-400">
+            <div className="p-3.5 rounded-xl bg-[#1e1e2e] border border-white/10 text-purple-400 group-hover:text-purple-300 group-hover:bg-purple-500/20 transition-colors">
                 <Icon className="size-6" />
             </div>
             <div>
-                <h3 className="font-semibold text-white/90">{title}</h3>
-                <p className="text-sm text-gray-400 mt-1">{description}</p>
+                <h3 className="font-semibold text-white text-lg mb-1">{title}</h3>
+                <p className="text-sm text-zinc-400">{description}</p>
             </div>
         </motion.div>
     )
