@@ -25,21 +25,21 @@ export default function ApiDocsPage() {
   if (!mounted) return null
 
   return (
-    <div className="min-h-screen bg-[#030303] text-white selection:bg-purple-500/30 selection:text-purple-200 font-sans overflow-hidden">
+    <div className="min-h-screen bg-zinc-50 dark:bg-[#030303] text-zinc-900 dark:text-white selection:bg-purple-500/30 selection:text-purple-900 dark:selection:text-purple-200 font-sans overflow-hidden transition-colors">
 
       {/* Background Gradients */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] size-[40%] bg-purple-900/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] size-[40%] bg-blue-900/10 rounded-full blur-[120px]" />
+        <div className="absolute top-[-10%] left-[-10%] size-[40%] bg-purple-500/10 dark:bg-purple-900/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] size-[40%] bg-blue-500/10 dark:bg-blue-900/10 rounded-full blur-[120px]" />
       </div>
 
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex flex-col items-center justify-center overflow-hidden border-b border-white/5">
+      <section className="relative h-[60vh] flex flex-col items-center justify-center overflow-hidden border-b border-zinc-200 dark:border-white/5">
         <motion.div
           style={{ y: y1, opacity }}
           className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
         >
-          <h1 className="text-[12vw] md:text-[15vw] font-black tracking-tighter text-white/[0.03] select-none whitespace-nowrap">
+          <h1 className="text-[12vw] md:text-[15vw] font-black tracking-tighter text-black/[0.07] dark:text-white/[0.04] select-none whitespace-nowrap">
             CHATSECURE
           </h1>
         </motion.div>
@@ -50,17 +50,17 @@ export default function ApiDocsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-purple-300 mb-6 backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-200/50 dark:bg-white/5 border border-zinc-300 dark:border-white/10 text-xs font-medium text-purple-600 dark:text-purple-300 mb-6 backdrop-blur-sm">
               <span className="relative flex size-2">
                 <span className="animate-ping absolute inline-flex size-full rounded-full bg-purple-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full size-2 bg-purple-500"></span>
               </span>
               API v1.0.0 Stable
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-zinc-900 to-zinc-500 dark:from-white dark:to-white/60">
               Build with Superpowers
             </h1>
-            <p className="text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
               Integrate ChatSecure&apos;s powerful AI chat and secure file handling capabilities directly into your applications.
             </p>
           </motion.div>
@@ -84,10 +84,10 @@ export default function ApiDocsPage() {
                 <NavLink href="#upload-api" method="POST">Upload</NavLink>
               </NavSection>
 
-              <div className="p-4 rounded-xl bg-gradient-to-br from-purple-900/20 to-blue-900/20 border border-white/5 backdrop-blur-sm">
-                <h4 className="font-semibold text-sm mb-2 text-white">Need Help?</h4>
-                <p className="text-xs text-zinc-400 mb-3">Check our community guides or contact support.</p>
-                <Link href="/contact" className="text-xs text-purple-400 hover:text-purple-300 flex items-center gap-1 transition-colors">
+              <div className="p-4 rounded-xl bg-gradient-to-br from-purple-100/50 to-blue-100/50 dark:from-purple-900/20 dark:to-blue-900/20 border border-zinc-200 dark:border-white/5 backdrop-blur-sm">
+                <h4 className="font-semibold text-sm mb-2 text-zinc-900 dark:text-white">Need Help?</h4>
+                <p className="text-xs text-zinc-600 dark:text-zinc-400 mb-3">Check our community guides or contact support.</p>
+                <Link href="/contact" className="text-xs text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 flex items-center gap-1 transition-colors">
                   Contact Support <ChevronRight className="size-3" />
                 </Link>
               </div>
@@ -118,17 +118,17 @@ export default function ApiDocsPage() {
 
             {/* Authentication */}
             <Section id="authentication" title="Authentication">
-              <p className="text-lg text-zinc-400 mb-6">
+              <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-6">
                 The API uses session-based authentication via secure cookies. All requests must include valid session credentials.
               </p>
-              <div className="bg-zinc-900/50 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+              <div className="bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-200 dark:border-white/10 rounded-xl p-6 backdrop-blur-sm">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-purple-500/20 rounded-lg text-purple-400">
+                  <div className="p-3 bg-purple-100 dark:bg-purple-500/20 rounded-lg text-purple-600 dark:text-purple-400">
                     <Shield className="size-6" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-white mb-2">Auth.js Integration</h4>
-                    <p className="text-zinc-400 leading-relaxed">
+                    <h4 className="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Auth.js Integration</h4>
+                    <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
                       This project uses Auth.js (also known as NextAuth) for seamless authentication handling. The session token is automatically managed by the framework when you log in via the web interface.
                     </p>
                   </div>
@@ -138,38 +138,38 @@ export default function ApiDocsPage() {
 
             {/* Base URL */}
             <Section id="base-url" title="Base URL">
-              <p className="text-zinc-400 mb-4">All API requests should be made to:</p>
+              <p className="text-zinc-600 dark:text-zinc-400 mb-4">All API requests should be made to:</p>
               <CodeBlock code="http://localhost:3000/api" language="bash" />
             </Section>
 
             {/* Chat API */}
             <Section id="chat-api" title="Chat API" badge="POST">
-              <p className="text-lg text-zinc-400 mb-8">
+              <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-8">
                 Generate AI responses using advanced OpenAI models. Supports streaming for real-time interaction.
               </p>
 
               <div className="space-y-8">
                 <div>
                   <h3 className="text-sm font-semibold text-zinc-500 uppercase tracking-wider mb-4">Request Body</h3>
-                  <div className="border border-white/10 rounded-xl overflow-hidden">
+                  <div className="border border-zinc-200 dark:border-white/10 rounded-xl overflow-hidden">
                     <table className="w-full text-left text-sm">
-                      <thead className="bg-white/5">
+                      <thead className="bg-zinc-100 dark:bg-white/5">
                         <tr>
-                          <th className="py-4 px-6 font-semibold text-white">Field</th>
-                          <th className="py-4 px-6 font-semibold text-white">Type</th>
-                          <th className="py-4 px-6 font-semibold text-white">Description</th>
+                          <th className="py-4 px-6 font-semibold text-zinc-900 dark:text-white">Field</th>
+                          <th className="py-4 px-6 font-semibold text-zinc-900 dark:text-white">Type</th>
+                          <th className="py-4 px-6 font-semibold text-zinc-900 dark:text-white">Description</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-white/5 bg-zinc-900/30">
+                      <tbody className="divide-y divide-zinc-200 dark:divide-white/5 bg-white dark:bg-zinc-900/30">
                         <tr>
-                          <td className="py-4 px-6 font-mono text-purple-400">messages</td>
-                          <td className="py-4 px-6 text-zinc-400">Array</td>
-                          <td className="py-4 px-6 text-zinc-400">List of message objects ({`{ role, content }`})</td>
+                          <td className="py-4 px-6 font-mono text-purple-600 dark:text-purple-400">messages</td>
+                          <td className="py-4 px-6 text-zinc-600 dark:text-zinc-400">Array</td>
+                          <td className="py-4 px-6 text-zinc-600 dark:text-zinc-400">List of message objects ({`{ role, content }`})</td>
                         </tr>
                         <tr>
-                          <td className="py-4 px-6 font-mono text-purple-400">model</td>
-                          <td className="py-4 px-6 text-zinc-400">String</td>
-                          <td className="py-4 px-6 text-zinc-400">Model to use (default: gpt-4-turbo-preview)</td>
+                          <td className="py-4 px-6 font-mono text-purple-600 dark:text-purple-400">model</td>
+                          <td className="py-4 px-6 text-zinc-600 dark:text-zinc-400">String</td>
+                          <td className="py-4 px-6 text-zinc-600 dark:text-zinc-400">Model to use (default: gpt-4-turbo-preview)</td>
                         </tr>
                       </tbody>
                     </table>
@@ -195,7 +195,7 @@ export default function ApiDocsPage() {
 
             {/* Upload API */}
             <Section id="upload-api" title="Upload API" badge="POST">
-              <p className="text-lg text-zinc-400 mb-8">
+              <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-8">
                 Securely upload image files. Supports JPEG, PNG, GIF, and WebP formats up to 5MB.
               </p>
 
@@ -244,9 +244,9 @@ function Section({ id, title, children, badge }: { id: string, title: string, ch
       transition={{ duration: 0.6 }}
     >
       <div className="flex items-center gap-4 mb-6">
-        <h2 className="text-3xl font-bold text-white tracking-tight">{title}</h2>
+        <h2 className="text-3xl font-bold text-zinc-900 dark:text-white tracking-tight">{title}</h2>
         {badge && (
-          <span className="px-3 py-1 bg-purple-500/20 text-purple-300 text-xs font-mono font-bold rounded-md border border-purple-500/30">
+          <span className="px-3 py-1 bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 text-xs font-mono font-bold rounded-md border border-purple-200 dark:border-purple-500/30">
             {badge}
           </span>
         )}
@@ -259,7 +259,7 @@ function Section({ id, title, children, badge }: { id: string, title: string, ch
 function NavSection({ title, children }: { title: string, children: React.ReactNode }) {
   return (
     <div className="mb-8">
-      <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-purple-500 pl-3">
+      <h3 className="text-sm font-bold text-zinc-900 dark:text-white uppercase tracking-wider mb-4 border-l-2 border-purple-500 pl-3">
         {title}
       </h3>
       <ul className="space-y-2">
@@ -274,11 +274,11 @@ function NavLink({ href, children, method }: { href: string, children: React.Rea
     <li>
       <a
         href={href}
-        className="group flex items-center justify-between py-2 px-3 rounded-lg text-zinc-400 hover:text-white hover:bg-white/5 transition-all text-sm"
+        className="group flex items-center justify-between py-2 px-3 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-200/50 dark:hover:bg-white/5 transition-all text-sm"
       >
         <span>{children}</span>
         {method && (
-          <span className="text-[10px] font-mono opacity-50 bg-white/10 px-1.5 py-0.5 rounded group-hover:bg-purple-500/20 group-hover:text-purple-300 transition-colors">
+          <span className="text-[10px] font-mono opacity-50 bg-zinc-200 dark:bg-white/10 px-1.5 py-0.5 rounded group-hover:bg-purple-100 dark:group-hover:bg-purple-500/20 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors">
             {method}
           </span>
         )}
@@ -327,12 +327,12 @@ function CodeBlock({ code, language }: { code: string, language: string }) {
 
 function FeatureCard({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) {
   return (
-    <div className="p-6 rounded-xl bg-white/5 border border-white/5 hover:border-purple-500/30 transition-colors group">
-      <div className="p-3 bg-white/5 rounded-lg w-fit mb-4 group-hover:bg-purple-500/20 transition-colors">
+    <div className="p-6 rounded-xl bg-zinc-100/50 dark:bg-white/5 border border-zinc-200 dark:border-white/5 hover:border-purple-500/30 transition-colors group">
+      <div className="p-3 bg-zinc-200/50 dark:bg-white/5 rounded-lg w-fit mb-4 group-hover:bg-purple-100 dark:group-hover:bg-purple-500/20 transition-colors">
         {icon}
       </div>
-      <h3 className="font-semibold text-white mb-2">{title}</h3>
-      <p className="text-sm text-zinc-400">{description}</p>
+      <h3 className="font-semibold text-zinc-900 dark:text-white mb-2">{title}</h3>
+      <p className="text-sm text-zinc-600 dark:text-zinc-400">{description}</p>
     </div>
   )
 }
