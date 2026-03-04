@@ -24,10 +24,10 @@ export function Footer() {
                             viewport={{ once: true }}
                             className="flex items-center space-x-2"
                         >
-                            <div className="rounded-xl bg-gradient-to-br from-purple-600 to-indigo-600 p-2.5">
-                                <Shield className="size-6 text-white" />
+                            <div className="rounded-xl bg-gradient-to-br  bg-indigo-500 p-2.5">
+                                <Shield className="size-6 text-white " />
                             </div>
-                            <span className="text-2xl font-bold text-white tracking-tight">ChatSecure</span>
+                            <span className=" text-2xl font-bold text-white tracking-tight">ChatSecure</span>
                         </motion.div>
                         <p className="text-gray-400 leading-relaxed max-w-sm">
                             Empowering the next generation of secure communications with enterprise-grade encryption and AI-driven intelligence.
@@ -45,7 +45,7 @@ export function Footer() {
                             title="Product"
                             links={[
                                 { label: "Features", href: "#" },
-                                { label: "Pricing", href: "#" },
+                                { label: "Pricing", href: "/pricing" },
                                 { label: "API Docs", href: "/api-docs" },
                                 { label: "Changelog", href: "#" }
                             ]}
@@ -78,7 +78,7 @@ export function Footer() {
                 <div
                     className="w-full flex justify-center py-12 border-t border-white/10"
                 >
-                    <h1 className="text-[12vw] leading-none font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white/30 to-white/5 select-none pointer-events-none">
+                    <h1 className="bg-indigo-500 text-[12vw] leading-none font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white/30 to-white/5 select-none pointer-events-none">
                         CHATSECURE
                     </h1>
                 </div>
