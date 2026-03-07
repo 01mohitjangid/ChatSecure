@@ -38,6 +38,7 @@ export function Footer() {
                             <SocialLink href="#" icon={Linkedin} />
                         </div>
                     </div>
+                    
 
                     {/* Links Columns */}
                     <div className="md:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8">
