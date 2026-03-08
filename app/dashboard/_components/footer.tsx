@@ -24,7 +24,7 @@ export function Footer() {
                             viewport={{ once: true }}
                             className="flex items-center space-x-2"
                         >
-                            <div className="rounded-xl bg-gradient-to-br  bg-indigo-500 p-2.5">
+                            <div className="rounded-xl bg-gradient-to-br bg-purple-600 p-2.5">
                                 <Shield className="size-6 text-white " />
                             </div>
                             <span className=" text-2xl font-bold text-white tracking-tight">ChatSecure</span>
@@ -38,7 +38,7 @@ export function Footer() {
                             <SocialLink href="#" icon={Linkedin} />
                         </div>
                     </div>
-                    
+
 
                     {/* Links Columns */}
                     <div className="md:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8">
@@ -79,7 +79,7 @@ export function Footer() {
                 <div
                     className="w-full flex justify-center py-12 border-t border-white/10"
                 >
-                    <h1 className="bg-indigo-500 text-[12vw] leading-none font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white/30 to-white/5 select-none pointer-events-none">
+                    <h1 className="text-[12vw] leading-none font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-purple-500/30 to-transparent select-none pointer-events-none">
                         CHATSECURE
                     </h1>
                 </div>
