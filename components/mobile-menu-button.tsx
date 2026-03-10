@@ -19,29 +19,36 @@ export function MobileMenuButton() {
       </SheetTrigger>
       <SheetContent side="left" className="w-[300px] sm:w-[400px]">
         <nav className="flex flex-col space-y-4 mt-8">
-          <Link 
-            href="/dashboard" 
+          <Link
+            href="/dashboard"
             className="text-lg font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400"
             onClick={() => setMobileMenuOpen(false)}
           >
             Dashboard
           </Link>
-          <Link 
-            href="/api-docs" 
+          <Link
+            href="/pricing"
             className="text-lg font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400"
             onClick={() => setMobileMenuOpen(false)}
           >
-            API Docs
+            Pricing
           </Link>
-          <Link 
-            href="/blog" 
+          <Link
+            href="/contact"
+            className="text-lg font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Contact
+          </Link>
+          <Link
+            href="/blog"
             className="text-lg font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400"
             onClick={() => setMobileMenuOpen(false)}
           >
             Blog
           </Link>
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="text-lg font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400"
             onClick={() => setMobileMenuOpen(false)}
           >
