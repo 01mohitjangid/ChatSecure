@@ -44,9 +44,9 @@ function ContactInfoItem({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay, duration: 0.5 }}
-            className="flex items-start gap-5 bg-white/5 p-5 rounded-2xl border border-white/5 hover:border-purple-500/30 hover:bg-white/[0.07] transition-all group"
+            className="flex items-start gap-5 bg-white/5 p-5 rounded-2xl border border-white/5 hover:border-blue-500/30 hover:bg-white/[0.07] transition-all group"
         >
-            <div className="p-3.5 rounded-xl bg-[#1e1e2e] border border-white/10 text-purple-400 group-hover:text-purple-300 group-hover:bg-purple-500/20 transition-colors">
+            <div className="p-3.5 rounded-xl bg-[#1e1e2e] border border-white/10 text-blue-400 group-hover:text-blue-300 group-hover:bg-blue-500/20 transition-colors">
                 <Icon className="size-6" />
             </div>
             <div>
