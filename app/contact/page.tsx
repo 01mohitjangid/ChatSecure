@@ -11,7 +11,7 @@ export default function ContactPage() {
     const y1 = useTransform(scrollY, [0, 500], [0, 150])
 
     return (
-        <div className="min-h-screen bg-black text-white selection:bg-purple-500/30 font-sans relative overflow-hidden">
+        <div className="min-h-screen bg-black text-white selection:bg-blue-500/30 font-sans relative overflow-hidden">
             {/* Background Effects */}
             <div className="fixed inset-0 bg-grid-white/[0.02] bg-[size:50px_50px] pointer-events-none" />
 
@@ -25,8 +25,8 @@ export default function ContactPage() {
                 </h1>
             </motion.div>
 
-            <div className="fixed top-0 left-1/4 size-96 bg-purple-900/20 rounded-full blur-[128px] pointer-events-none opacity-50" />
-            <div className="fixed bottom-0 right-1/4 size-96 bg-indigo-900/20 rounded-full blur-[128px] pointer-events-none opacity-50" />
+            <div className="fixed top-0 left-1/4 size-96 bg-blue-900/20 rounded-full blur-[128px] pointer-events-none opacity-50" />
+            <div className="fixed bottom-0 right-1/4 size-96 bg-sky-900/20 rounded-full blur-[128px] pointer-events-none opacity-50" />
 
             <div className="container relative mx-auto px-4 md:px-6 py-12 lg:py-24 max-w-7xl z-10">
                 {/* Back Link */}
@@ -49,7 +49,7 @@ export default function ContactPage() {
                         className="space-y-10"
                     >
                         <div className="space-y-6">
-                            <span className="inline-flex items-center px-4 py-1.5 rounded-full border border-purple-500/20 bg-purple-500/10 text-xs font-medium text-purple-300">
+                            <span className="inline-flex items-center px-4 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/10 text-xs font-medium text-blue-300">
                                 Get in Touch
                             </span>
                             <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white">

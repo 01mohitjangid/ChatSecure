@@ -44,7 +44,7 @@ export function ContactForm() {
           placeholder="John Doe"
           required
           disabled={isSubmitting}
-          className="w-full rounded-lg border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-purple-600/50 focus:border-purple-600 transition-all disabled:opacity-50"
+          className="w-full rounded-lg border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:border-blue-600 transition-all disabled:opacity-50"
         />
       </div>
 
@@ -59,7 +59,7 @@ export function ContactForm() {
           placeholder="john@example.com"
           required
           disabled={isSubmitting}
-          className="w-full rounded-lg border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-purple-600/50 focus:border-purple-600 transition-all disabled:opacity-50"
+          className="w-full rounded-lg border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:border-blue-600 transition-all disabled:opacity-50"
         />
       </div>
 
@@ -73,7 +73,7 @@ export function ContactForm() {
             name="reason"
             required
             disabled={isSubmitting}
-            className="w-full rounded-lg border border-border bg-background px-4 py-3.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-purple-600/50 focus:border-purple-600 transition-all disabled:opacity-50 appearance-none"
+            className="w-full rounded-lg border border-border bg-background px-4 py-3.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:border-blue-600 transition-all disabled:opacity-50 appearance-none"
           >
             <option value="" className="bg-background">Select a reason...</option>
             <option value="api-key" className="bg-background">Request API Key</option>
@@ -101,7 +101,7 @@ export function ContactForm() {
           placeholder="Tell us more about your needs..."
           required
           disabled={isSubmitting}
-          className="w-full rounded-lg border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-purple-600/50 focus:border-purple-600 transition-all resize-none disabled:opacity-50"
+          className="w-full rounded-lg border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:border-blue-600 transition-all resize-none disabled:opacity-50"
         />
       </div>
 
@@ -109,7 +109,7 @@ export function ContactForm() {
         type="submit"
         size="lg"
         disabled={isSubmitting}
-        className="w-full h-12 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg shadow-lg shadow-purple-900/20 transition-all hover:scale-[1.02] disabled:opacity-50 disabled:hover:scale-100"
+        className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg shadow-blue-900/20 transition-all hover:scale-[1.02] disabled:opacity-50 disabled:hover:scale-100"
       >
         <Mail className="mr-2 size-4" />
         {isSubmitting ? 'Sending...' : 'Send Message'}

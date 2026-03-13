@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { LogOut, Github, Menu, User } from "lucide-react"
+import { LogOut, Github, Menu, User, Linkedin } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,7 +10,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { auth } from "@/auth"
 import { SignOutButton } from "./sign-out-button"
 import { MobileMenuButton } from "./mobile-menu-button"
@@ -29,7 +28,7 @@ async function getUserProfilePhoto(email: string): Promise<string | null> {
 export async function Header() {
   const session = await auth()
   const user = session?.user
-  
+
   // Fetch fresh profile photo from database
   const profilePhoto = user?.email ? await getUserProfilePhoto(user.email) : null
 
@@ -40,34 +39,50 @@ export async function Header() {
           <div className="size-8 bg-purple-600 rounded-full flex items-center justify-center">
             <span className="text-white font-bold text-sm">AI</span>
           </div>
-          
+
         </Link>
-        <nav className="hidden md:flex items-center space-x-6">
-          <Link 
-            href="/dashboard" 
-            className="text-sm font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400"
-          >
-            Dashboard
-          </Link>
-          <Link 
-            href="/api-docs" 
-            className="text-sm font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400"
-          >
-            API Docs
-          </Link>
-        </nav>
         <MobileMenuButton />
       </div>
+
+      <nav className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center space-x-6">
+        <Link
+          href="/dashboard"
+          className="text-sm font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400"
+        >
+          Dashboard
+        </Link>
+        <Link
+          href="/pricing"
+          className="text-sm font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400"
+        >
+          Pricing
+        </Link>
+        <Link
+          href="/contact"
+          className="text-sm font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400"
+        >
+          Contact
+        </Link>
+      </nav>
 
       <div className="flex items-center justify-end space-x-2">
         <a
           target="_blank"
           href="https://github.com/01mohitjangid/ai-chatbox"
           rel="noopener noreferrer"
-          className={cn(buttonVariants({ variant: "outline" }))}
+          className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
         >
-          <Github className="size-4" />
-          <span className="hidden ml-2 md:flex">GitHub</span>
+          <Github className="size-5" />
+          <span className="sr-only">GitHub</span>
+        </a>
+        <a
+          target="_blank"
+          href="https://www.linkedin.com/in/01mohitjangid/"
+          rel="noopener noreferrer"
+          className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
+        >
+          <Linkedin className="size-5" />
+          <span className="sr-only">LinkedIn</span>
         </a>
 
         {user ? (
@@ -94,7 +109,7 @@ export async function Header() {
                   <User className="mr-2 size-4" />
                   <span>Profile</span>
                 </Link>
-                
+
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <SignOutButton />
@@ -109,7 +124,7 @@ export async function Header() {
               <Link href="/sign-up">Sign Up</Link>
             </Button>
           </div>
-          
+
         )}
       </div>
     </header>
