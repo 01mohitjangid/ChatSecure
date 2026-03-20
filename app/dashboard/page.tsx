@@ -31,7 +31,7 @@ export default function DashboardPage() {
                 Contact Us
               </h2>
               <p className="text-gray-400 md:text-xl/relaxed">
-                Need an API key or have questions? We&apos;re here to help. Fill out the form and our team will get back to you within 24 hours.
+                Have a question about ChatSecure's features, need an enterprise solution, or just want to say hello? Our team is always ready to assist you. Fill out the form below with your inquiry, and we'll ensure the right person gets back to you promptly, typically within 24 hours.
               </p>
 
               <div className="space-y-6 pt-4">
