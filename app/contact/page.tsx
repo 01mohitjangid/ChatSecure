@@ -56,7 +56,7 @@ export default function ContactPage() {
                                 Contact Us
                             </h1>
                             <p className="text-lg text-zinc-400 leading-relaxed max-w-md">
-                                Have a question about ChatSecure's features, need an enterprise solution, or just want to say hello? Our team is always ready to assist you. Fill out the form below with your inquiry, and we'll ensure the right person gets back to you promptly, typically within 24 hours.
+                                Have a question about ChatSecure&apos;s features, need an enterprise solution, or just want to say hello? Our team is always ready to assist you. Fill out the form below with your inquiry, and we&apos;ll ensure the right person gets back to you promptly, typically within 24 hours.
                             </p>
                         </div>
 
