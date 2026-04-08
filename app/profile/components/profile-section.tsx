@@ -35,7 +35,7 @@ export function ProfileSection({
                             animate={{ rotate: isExpanded ? 360 : 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <Icon className="w-5 h-5 text-muted-foreground" />
+                            <Icon className="size-5 text-muted-foreground" />
                         </motion.div>
                         <h3 className="text-sm font-semibold text-foreground">{title}</h3>
                     </div>
@@ -43,7 +43,7 @@ export function ProfileSection({
                         animate={{ rotate: isExpanded ? 180 : 0 }}
                         transition={{ duration: 0.3 }}
                     >
-                        <ChevronDown className="w-5 h-5 text-muted-foreground" />
+                        <ChevronDown className="size-5 text-muted-foreground" />
                     </motion.div>
                 </div>
             </button>

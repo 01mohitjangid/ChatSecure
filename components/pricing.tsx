@@ -122,7 +122,7 @@ export function PricingCards() {
                                     className={`text-lg font-semibold leading-8 flex items-center gap-2 ${tier.featured ? 'text-indigo-400' : 'text-white'
                                         }`}
                                 >
-                                    <tier.icon className="h-5 w-5" />
+                                    <tier.icon className="size-5" />
                                     {tier.name}
                                 </h3>
                                 {tier.featured ? (

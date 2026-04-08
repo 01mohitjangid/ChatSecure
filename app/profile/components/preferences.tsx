@@ -15,7 +15,7 @@ export function Preferences() {
             >
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <Bell className="w-5 h-5 text-muted-foreground" />
+                        <Bell className="size-5 text-muted-foreground" />
                         <div>
                             <p className="text-sm font-medium text-foreground">Email Notifications</p>
                             <p className="text-xs text-muted-foreground mt-1">Receive updates about your account</p>
@@ -30,7 +30,7 @@ export function Preferences() {
                         <motion.div
                             animate={{ x: emailNotifications ? 20 : 2 }}
                             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                            className="w-5 h-5 bg-foreground rounded-full"
+                            className="size-5 bg-foreground rounded-full"
                         />
                     </motion.button>
                 </div>
@@ -45,7 +45,7 @@ export function Preferences() {
                             animate={{ rotate: [0, 360] }}
                             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                         >
-                            <Moon className="w-5 h-5 text-accent" />
+                            <Moon className="size-5 text-accent" />
                         </motion.div>
                         <div>
                             <p className="text-sm font-medium text-foreground">Dark Mode</p>
@@ -58,7 +58,7 @@ export function Preferences() {
                         <motion.div
                             animate={{ scale: [1, 1.1, 1] }}
                             transition={{ duration: 2, repeat: Infinity }}
-                            className="w-5 h-5 bg-background rounded-full"
+                            className="size-5 bg-background rounded-full"
                         />
                     </motion.div>
                 </div>
@@ -75,7 +75,7 @@ export function Preferences() {
                             animate={{ y: [0, -3, 0] }}
                             transition={{ duration: 1.5, repeat: Infinity }}
                         >
-                            <Zap className="w-5 h-5 text-accent" />
+                            <Zap className="size-5 text-accent" />
                         </motion.div>
                         <div>
                             <p className="text-sm font-medium text-foreground">Performance Mode</p>
@@ -89,7 +89,7 @@ export function Preferences() {
                         <motion.div
                             animate={{ x: 20 }}
                             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                            className="w-5 h-5 bg-foreground rounded-full"
+                            className="size-5 bg-foreground rounded-full"
                         />
                     </motion.button>
                 </div>
@@ -105,7 +105,7 @@ export function Preferences() {
                             animate={{ rotate: [0, 10, -10, 0] }}
                             transition={{ duration: 2, repeat: Infinity }}
                         >
-                            <Shield className="w-5 h-5 text-accent" />
+                            <Shield className="size-5 text-accent" />
                         </motion.div>
                         <div>
                             <p className="text-sm font-medium text-foreground">Enhanced Security</p>
@@ -117,7 +117,7 @@ export function Preferences() {
                         whileTap={{ scale: 0.95 }}
                     >
                         <motion.div
-                            className="w-5 h-5 bg-foreground rounded-full"
+                            className="size-5 bg-foreground rounded-full"
                         />
                     </motion.button>
                 </div>

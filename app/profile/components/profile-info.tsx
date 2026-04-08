@@ -141,7 +141,7 @@ export function ProfileInfo({ user, userEmail, userInitial }: ProfileInfoProps) 
                         transition={{ duration: 0.3 }}
                         className="relative"
                     >
-                        <Avatar className="h-16 w-16 border-2 border-border hover:border-accent transition-colors shadow-lg">
+                        <Avatar className="size-16 border-2 border-border hover:border-accent transition-colors shadow-lg">
                             <AvatarImage src={preview || undefined} alt="Profile" className="object-cover" />
                             <AvatarFallback className="bg-secondary text-foreground font-bold text-lg">
                                 {userInitial}
@@ -159,14 +159,14 @@ export function ProfileInfo({ user, userEmail, userInitial }: ProfileInfoProps) 
                                 animate={{ rotate: [0, 10, -10, 0] }}
                                 transition={{ duration: 2, repeat: Infinity }}
                             >
-                                <User className="w-5 h-5 text-accent" />
+                                <User className="size-5 text-accent" />
                             </motion.div>
                             <h2 className="text-lg font-semibold text-foreground">My Profile</h2>
                             <motion.div
                                 animate={{ scale: [1, 1.1, 1] }}
                                 transition={{ duration: 2, repeat: Infinity }}
                             >
-                                <Award className="w-4 h-4 text-accent/60" />
+                                <Award className="size-4 text-accent/60" />
                             </motion.div>
                         </div>
                         <p className="text-sm text-muted-foreground truncate max-w-xs">{userEmail}</p>
@@ -188,9 +188,9 @@ export function ProfileInfo({ user, userEmail, userInitial }: ProfileInfoProps) 
                         transition={{ duration: 2, repeat: Infinity }}
                     >
                         {uploading ? (
-                            <Loader2 className="w-5 h-5 text-accent animate-spin" />
+                            <Loader2 className="size-5 text-accent animate-spin" />
                         ) : (
-                            <Camera className="w-5 h-5 text-accent group-hover:text-accent/80" />
+                            <Camera className="size-5 text-accent group-hover:text-accent/80" />
                         )}
                     </motion.div>
                     <span className="text-xs font-medium">{uploading ? 'Uploading' : 'Photo'}</span>
@@ -205,7 +205,7 @@ export function ProfileInfo({ user, userEmail, userInitial }: ProfileInfoProps) 
                         animate={{ scale: [1, 1.1, 1] }}
                         transition={{ duration: 2, repeat: Infinity }}
                     >
-                        <Award className="w-5 h-5 text-accent" />
+                        <Award className="size-5 text-accent" />
                     </motion.div>
                     <span className="text-xs font-medium">Badge</span>
                 </motion.button>
@@ -219,9 +219,9 @@ export function ProfileInfo({ user, userEmail, userInitial }: ProfileInfoProps) 
                         className="p-4 bg-gradient-to-br from-destructive/20 to-destructive/10 hover:from-destructive/30 hover:to-destructive/20 text-destructive rounded-md transition-all flex flex-col items-center gap-2"
                     >
                         {removing ? (
-                            <Loader2 className="w-5 h-5 animate-spin" />
+                            <Loader2 className="size-5 animate-spin" />
                         ) : (
-                            <Trash2 className="w-5 h-5" />
+                            <Trash2 className="size-5" />
                         )}
                         <span className="text-xs font-medium">{removing ? 'Removing' : 'Delete'}</span>
                     </motion.button>
@@ -235,7 +235,7 @@ export function ProfileInfo({ user, userEmail, userInitial }: ProfileInfoProps) 
             >
                 <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide flex items-center gap-2 cursor-pointer">
                     <motion.div animate={{ rotate: [0, 360] }} transition={{ duration: 3, repeat: Infinity, ease: "linear" }}>
-                        <Camera className="w-4 h-4" />
+                        <Camera className="size-4" />
                     </motion.div>
                     Profile Photo
                 </Label>
@@ -249,7 +249,7 @@ export function ProfileInfo({ user, userEmail, userInitial }: ProfileInfoProps) 
                 onHoverEnd={() => setHoveredItem(null)}
             >
                 <Label htmlFor="bio" className="text-xs font-medium text-muted-foreground uppercase tracking-wide flex items-center gap-2">
-                    <FileText className="w-4 h-4" />
+                    <FileText className="size-4" />
                     Bio
                 </Label>
                 <motion.div
@@ -273,7 +273,7 @@ export function ProfileInfo({ user, userEmail, userInitial }: ProfileInfoProps) 
                 onHoverEnd={() => setHoveredItem(null)}
             >
                 <Label htmlFor="phone" className="text-xs font-medium text-muted-foreground uppercase tracking-wide flex items-center gap-2">
-                    <Phone className="w-4 h-4" />
+                    <Phone className="size-4" />
                     Phone Number
                 </Label>
                 <Input

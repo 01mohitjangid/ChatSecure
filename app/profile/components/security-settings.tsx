@@ -73,7 +73,7 @@ export function SecuritySettings({ userEmail }: SecuritySettingsProps) {
                             animate={{ rotate: [0, -10, 10, 0] }}
                             transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 3 }}
                         >
-                            <Key className="w-4 h-4 text-muted-foreground" />
+                            <Key className="size-4 text-muted-foreground" />
                         </motion.div>
                         <div>
                             <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Password</p>
@@ -84,7 +84,7 @@ export function SecuritySettings({ userEmail }: SecuritySettingsProps) {
                         animate={{ x: [0, 2, 0] }}
                         transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 3 }}
                     >
-                        <Edit2 className="w-4 h-4 text-muted-foreground" />
+                        <Edit2 className="size-4 text-muted-foreground" />
                     </motion.div>
                 </motion.button>
             ) : (
@@ -96,7 +96,7 @@ export function SecuritySettings({ userEmail }: SecuritySettingsProps) {
                 >
                     <div className="space-y-2">
                         <Label htmlFor="current" className="text-xs font-medium text-muted-foreground uppercase flex items-center gap-2">
-                            <Lock className="w-4 h-4" />
+                            <Lock className="size-4" />
                             Current Password
                         </Label>
                         <div className="relative">
@@ -115,13 +115,13 @@ export function SecuritySettings({ userEmail }: SecuritySettingsProps) {
                                 whileTap={{ scale: 0.95 }}
                                 className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                             >
-                                {showCurrentPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                                {showCurrentPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
                             </motion.button>
                         </div>
                     </div>
                     <div className="space-y-2">
                         <Label htmlFor="new" className="text-xs font-medium text-muted-foreground uppercase flex items-center gap-2">
-                            <Zap className="w-4 h-4" />
+                            <Zap className="size-4" />
                             New Password
                         </Label>
                         <div className="relative">
@@ -140,13 +140,13 @@ export function SecuritySettings({ userEmail }: SecuritySettingsProps) {
                                 whileTap={{ scale: 0.95 }}
                                 className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                             >
-                                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                                {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
                             </motion.button>
                         </div>
                     </div>
                     <div className="space-y-2">
                         <Label htmlFor="confirm" className="text-xs font-medium text-muted-foreground uppercase flex items-center gap-2">
-                            <CheckCircle2 className="w-4 h-4" />
+                            <CheckCircle2 className="size-4" />
                             Confirm Password
                         </Label>
                         <div className="relative">
@@ -165,7 +165,7 @@ export function SecuritySettings({ userEmail }: SecuritySettingsProps) {
                                 whileTap={{ scale: 0.95 }}
                                 className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                             >
-                                {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                                {showConfirmPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
                             </motion.button>
                         </div>
                     </div>
@@ -182,7 +182,7 @@ export function SecuritySettings({ userEmail }: SecuritySettingsProps) {
                             whileTap={{ scale: 0.98 }}
                             className="px-4 py-2 rounded-md text-sm font-medium text-muted-foreground hover:bg-secondary/30 transition-all flex items-center gap-2"
                         >
-                            <X className="w-4 h-4" />
+                            <X className="size-4" />
                             Cancel
                         </motion.button>
                         <motion.button
@@ -192,8 +192,8 @@ export function SecuritySettings({ userEmail }: SecuritySettingsProps) {
                             whileTap={{ scale: 0.98 }}
                             className="px-4 py-2 bg-foreground text-background rounded-md text-sm font-medium hover:opacity-90 transition-all flex items-center gap-2"
                         >
-                            {loading && <Loader2 className="w-4 h-4 animate-spin" />}
-                            <Save className="w-4 h-4" />
+                            {loading && <Loader2 className="size-4 animate-spin" />}
+                            <Save className="size-4" />
                             Save Password
                         </motion.button>
                     </div>

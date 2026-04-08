@@ -29,8 +29,8 @@ export default function ApiDocsPage() {
 
       {/* Background Gradients */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] size-[40%] bg-purple-500/10 dark:bg-purple-900/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] size-[40%] bg-blue-500/10 dark:bg-blue-900/10 rounded-full blur-[120px]" />
+        <div className="absolute top-[-10%] left-[-10%] size-2/5 bg-purple-500/10 dark:bg-purple-900/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] size-2/5 bg-blue-500/10 dark:bg-blue-900/10 rounded-full blur-[120px]" />
       </div>
 
       {/* Hero Section */}
