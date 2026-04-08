@@ -34,7 +34,7 @@ export function AccountInfo({ user }: AccountInfoProps) {
                 onHoverEnd={() => setHoveredItem(null)}
             >
                 <div className="flex items-center gap-3">
-                    <Mail className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+                    <Mail className="size-4 text-muted-foreground shrink-0" />
                     <div>
                         <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Email</p>
                         <p className="text-sm text-foreground font-medium mt-1">{user.email}</p>
@@ -44,9 +44,9 @@ export function AccountInfo({ user }: AccountInfoProps) {
                     onClick={() => copyToClipboard(user.email)}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className="p-2 hover:bg-secondary/30 rounded-md transition-all text-muted-foreground hover:text-foreground flex-shrink-0"
+                    className="p-2 hover:bg-secondary/30 rounded-md transition-all text-muted-foreground hover:text-foreground shrink-0"
                 >
-                    <Copy className="w-4 h-4" />
+                    <Copy className="size-4" />
                 </motion.button>
             </motion.div>
 
@@ -57,7 +57,7 @@ export function AccountInfo({ user }: AccountInfoProps) {
                     animate={{ scale: [1, 1.05, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
                 >
-                    <CheckCircle2 className="w-3 h-3" />
+                    <CheckCircle2 className="size-3" />
                     Verified
                 </motion.div>
                 <motion.div
@@ -65,7 +65,7 @@ export function AccountInfo({ user }: AccountInfoProps) {
                     animate={{ opacity: [0.6, 1, 0.6] }}
                     transition={{ duration: 2, repeat: Infinity }}
                 >
-                    <Zap className="w-3 h-3" />
+                    <Zap className="size-3" />
                     Active
                 </motion.div>
                 <motion.div
@@ -88,7 +88,7 @@ export function AccountInfo({ user }: AccountInfoProps) {
                         animate={{ rotate: [0, 360] }}
                         transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                     >
-                        <Settings className="w-4 h-4 text-accent flex-shrink-0" />
+                        <Settings className="size-4 text-accent shrink-0" />
                     </motion.div>
                     <div className="min-w-0">
                         <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">User ID</p>
@@ -99,9 +99,9 @@ export function AccountInfo({ user }: AccountInfoProps) {
                     onClick={() => copyToClipboard(user.id)}
                     whileHover={{ scale: 1.1, rotate: 90 }}
                     whileTap={{ scale: 0.95 }}
-                    className="p-2 hover:bg-secondary/30 rounded-md transition-all text-muted-foreground hover:text-foreground flex-shrink-0"
+                    className="p-2 hover:bg-secondary/30 rounded-md transition-all text-muted-foreground hover:text-foreground shrink-0"
                 >
-                    <Copy className="w-4 h-4" />
+                    <Copy className="size-4" />
                 </motion.button>
             </motion.div>
 
@@ -116,7 +116,7 @@ export function AccountInfo({ user }: AccountInfoProps) {
                         animate={{ rotate: [0, 10, -10, 0] }}
                         transition={{ duration: 2, repeat: Infinity }}
                     >
-                        <Clock className="w-4 h-4 text-muted-foreground mt-0.5" />
+                        <Clock className="size-4 text-muted-foreground mt-0.5" />
                     </motion.div>
                     <div>
                         <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Last Login</p>
@@ -137,7 +137,7 @@ export function AccountInfo({ user }: AccountInfoProps) {
                         animate={{ scale: [1, 1.1, 1] }}
                         transition={{ duration: 2, repeat: Infinity }}
                     >
-                        <Shield className="w-4 h-4 text-muted-foreground mt-0.5" />
+                        <Shield className="size-4 text-muted-foreground mt-0.5" />
                     </motion.div>
                     <div>
                         <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Plan</p>
