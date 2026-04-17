@@ -71,7 +71,7 @@ export default function ContactPage() {
                         className="relative"
                     >
                         <div className="relative rounded-3xl border border-white/10 bg-[#121212] p-6 md:p-8 lg:p-10 shadow-2xl">
-                            <ContactForm />
+                            <ContactForm theme="blue" />
                         </div>
                     </motion.div>
                 </div>
