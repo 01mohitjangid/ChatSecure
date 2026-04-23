@@ -46,10 +46,10 @@ export async function Header() {
 
       <nav className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center space-x-6">
         <Link
-          href="/dashboard"
+          href="/chat"
           className="text-sm font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400"
         >
-          Dashboard
+          Chat
         </Link>
         <Link
           href="/pricing"

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Mail } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { submitContactForm } from '@/app/dashboard/actions'
+import { submitContactForm } from '@/app/(dashboard)/actions'
 import { toast } from 'sonner'
 
 export function ContactForm({ theme = "purple" }: { theme?: "purple" | "blue" }) {

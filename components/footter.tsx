@@ -38,7 +38,7 @@ export default function Footer() {
                 <Linkedin className="size-4" />
               </Link>
               <Link
-                href="/dashboard#contact"
+                href="/#contact"
                 className="rounded-full border p-2 hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-colors"
               >
                 <Mail className="size-4" />
@@ -98,7 +98,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard#contact" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link href="/#contact" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                   Contact
                 </Link>
               </li>
