@@ -40,7 +40,7 @@ export const TermsContact = () => {
           
           <div className="flex justify-center">
             <Button asChild className="bg-purple-600 hover:bg-purple-700">
-              <Link href="/dashboard#contact">Contact Us</Link>
+              <Link href="/#contact">Contact Us</Link>
             </Button>
           </div>
         </div>

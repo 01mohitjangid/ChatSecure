@@ -252,7 +252,7 @@ export default function BlogPage() {
               <h3 className="text-sm font-semibold">Product</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                  <Link href="/" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
                     Features
                   </Link>
                 </li>

@@ -20,11 +20,11 @@ export function MobileMenuButton() {
       <SheetContent side="left" className="w-[300px] sm:w-[400px]">
         <nav className="flex flex-col space-y-4 mt-8">
           <Link
-            href="/dashboard"
+            href="/"
             className="text-lg font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400"
             onClick={() => setMobileMenuOpen(false)}
           >
-            Dashboard
+            Home
           </Link>
           <Link
             href="/pricing"
@@ -48,7 +48,7 @@ export function MobileMenuButton() {
             Blog
           </Link>
           <Link
-            href="/"
+            href="/chat"
             className="text-lg font-medium transition-colors hover:text-purple-600 dark:hover:text-purple-400"
             onClick={() => setMobileMenuOpen(false)}
           >

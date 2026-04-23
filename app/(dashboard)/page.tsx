@@ -1,13 +1,13 @@
-import { HeroSection } from "@/app/dashboard/_components/hero-section"
-import { FeaturesGrid } from "@/app/dashboard/_components/features-grid"
-import { StatsSection } from "@/app/dashboard/_components/stats-section"
-import { TechStack } from "@/app/dashboard/_components/tech-stack"
-import { Footer } from "@/app/dashboard/_components/footer"
+import { HeroSection } from "@/app/(dashboard)/_components/hero-section"
+import { FeaturesGrid } from "@/app/(dashboard)/_components/features-grid"
+import { StatsSection } from "@/app/(dashboard)/_components/stats-section"
+import { TechStack } from "@/app/(dashboard)/_components/tech-stack"
+import { Footer } from "@/app/(dashboard)/_components/footer"
 import { ContactForm } from "@/components/contact-form"
 import { Mail, Zap, Shield } from "lucide-react"
 
 export const metadata = {
-  title: 'Dashboard - ChatSecure',
+  title: 'Home - ChatSecure',
   description: 'Experience the future of secure, intelligent conversations.',
 }
 

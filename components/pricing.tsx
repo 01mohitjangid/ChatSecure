@@ -8,7 +8,7 @@ const tiers = [
     {
         name: "Free",
         id: "tier-free",
-        href: "/dashboard",
+        href: "/chat",
         priceMonthly: "$0",
         description: "Perfect for exploring basic AI capabilities and secure messaging.",
         features: [
@@ -30,7 +30,7 @@ const tiers = [
     {
         name: "Pro",
         id: "tier-pro",
-        href: "/dashboard",
+        href: "/chat",
         priceMonthly: "$29",
         description: "Advanced AI models and priority features for power users.",
         features: [
