@@ -32,7 +32,7 @@ export default function ContactPage() {
                 {/* Back Link */}
                 <div className="mb-12">
                     <Link
-                        href="/dashboard"
+                        href="/"
                         className="inline-flex items-center text-sm text-zinc-400 hover:text-white transition-colors group"
                     >
                         <ArrowLeft className="mr-2 size-4 group-hover:-translate-x-1 transition-transform" />
