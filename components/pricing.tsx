@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { Check, X, Shield, Zap, Globe } from "lucide-react"
 import Link from "next/link"
-
+import { toast } from "sonner"
 const tiers = [
     {
         name: "Free",
@@ -136,16 +136,21 @@ export function PricingCards() {
                                 <span className="text-4xl font-bold tracking-tight text-white">{tier.priceMonthly}</span>
                                 {tier.priceMonthly !== 'Custom' && <span className="text-sm font-semibold leading-6 text-gray-400">/month</span>}
                             </p>
-                            <Link
-                                href={tier.href}
+                            <button
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    toast("Maintenance break ... started soon", {
+                                        position: "bottom-right"
+                                    })
+                                }}
                                 aria-describedby={tier.id}
-                                className={`mt-6 block rounded-md py-2.5 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${tier.featured
+                                className={`mt-6 w-full block rounded-md py-2.5 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${tier.featured
                                     ? 'bg-indigo-500 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline-indigo-500'
                                     : 'bg-white/10  text-white hover:bg-white/20'
                                     }`}
                             >
                                 {tier.priceMonthly === 'Custom' ? 'Contact sales' : 'Get started'}
-                            </Link>
+                            </button>
                             <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-300 xl:mt-10">
                                 {tier.features.map((feature) => (
                                     <li key={feature} className="flex gap-x-3">
