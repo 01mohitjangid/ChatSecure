@@ -1,19 +1,20 @@
-import Link from "next/link"
-import { Button, buttonVariants } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-import { LogOut, Github, Menu, User, Linkedin } from "lucide-react"
+import Link from 'next/link'
+import { Button, buttonVariants } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+import { LogOut, Github, Menu, User, Linkedin } from 'lucide-react'
+import { Logo } from '@/components/ui/logo'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { auth } from "@/auth"
-import { SignOutButton } from "./sign-out-button"
-import { MobileMenuButton } from "./mobile-menu-button"
-import { kv } from "@vercel/kv"
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { auth } from '@/auth'
+import { SignOutButton } from './sign-out-button'
+import { MobileMenuButton } from './mobile-menu-button'
+import { kv } from '@vercel/kv'
 
 async function getUserProfilePhoto(email: string): Promise<string | null> {
   try {
@@ -30,16 +31,15 @@ export async function Header() {
   const user = session?.user
 
   // Fetch fresh profile photo from database
-  const profilePhoto = user?.email ? await getUserProfilePhoto(user.email) : null
+  const profilePhoto = user?.email
+    ? await getUserProfilePhoto(user.email)
+    : null
 
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between w-full h-16 px-4 border-b shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
       <div className="flex items-center gap-6">
-        <Link href="/" className="flex items-center space-x-2">
-          <div className="size-8 bg-purple-600 rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-sm">AI</span>
-          </div>
-
+        <Link href="/">
+          <Logo />
         </Link>
         <MobileMenuButton />
       </div>
@@ -70,7 +70,7 @@ export async function Header() {
           target="_blank"
           href="https://github.com/01mohitjangid/ai-chatbox"
           rel="noopener noreferrer"
-          className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
+          className={cn(buttonVariants({ variant: 'ghost', size: 'icon' }))}
         >
           <Github className="size-5" />
           <span className="sr-only">GitHub</span>
@@ -79,7 +79,7 @@ export async function Header() {
           target="_blank"
           href="https://www.linkedin.com/in/01mohitjangid/"
           rel="noopener noreferrer"
-          className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
+          className={cn(buttonVariants({ variant: 'ghost', size: 'icon' }))}
         >
           <Linkedin className="size-5" />
           <span className="sr-only">LinkedIn</span>
@@ -90,9 +90,12 @@ export async function Header() {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="relative size-8 rounded-full">
                 <Avatar className="size-8">
-                  <AvatarImage src={profilePhoto || user.image || undefined} alt={user.email || "User"} />
+                  <AvatarImage
+                    src={profilePhoto || user.image || undefined}
+                    alt={user.email || 'User'}
+                  />
                   <AvatarFallback className="bg-purple-600 text-white">
-                    {user.email?.[0]?.toUpperCase() || "U"}
+                    {user.email?.[0]?.toUpperCase() || 'U'}
                   </AvatarFallback>
                 </Avatar>
               </Button>
@@ -100,7 +103,9 @@ export async function Header() {
             <DropdownMenuContent className="w-56" align="end" forceMount>
               <div className="flex items-center justify-start gap-2 p-2">
                 <div className="flex flex-col space-y-1 leading-none">
-                  <p className="w-[200px] truncate text-sm text-muted-foreground">{user.email}</p>
+                  <p className="w-[200px] truncate text-sm text-muted-foreground">
+                    {user.email}
+                  </p>
                 </div>
               </div>
               <DropdownMenuSeparator />
@@ -109,7 +114,6 @@ export async function Header() {
                   <User className="mr-2 size-4" />
                   <span>Profile</span>
                 </Link>
-
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <SignOutButton />
@@ -124,7 +128,6 @@ export async function Header() {
               <Link href="/sign-up">Sign Up</Link>
             </Button>
           </div>
-
         )}
       </div>
     </header>

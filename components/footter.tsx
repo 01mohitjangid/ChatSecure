@@ -1,5 +1,5 @@
-import { Shield, Github, Twitter, Linkedin, Mail, Globe } from "lucide-react"
-import Link from "next/link"
+import { Shield, Github, Twitter, Linkedin, Mail, Globe } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Footer() {
   return (
@@ -16,7 +16,8 @@ export default function Footer() {
               <span className="text-xl font-bold">ChatSecure</span>
             </div>
             <p className="text-sm text-muted-foreground max-w-xs">
-              Next-generation AI chat platform built with cutting-edge technology and enterprise-grade security.
+              Next-generation AI chat platform built with cutting-edge
+              technology and enterprise-grade security.
             </p>
             <div className="flex space-x-3">
               <Link
@@ -51,27 +52,42 @@ export default function Footer() {
             <h3 className="text-sm font-semibold">Product</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="#features" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link
+                  href="#features"
+                  className="text-sm text-muted-foreground hover:text-purple-600 transition-colors"
+                >
                   Features
                 </Link>
               </li>
               <li>
-                <Link href="/pricing" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link
+                  href="/pricing"
+                  className="text-sm text-muted-foreground hover:text-purple-600 transition-colors"
+                >
                   Pricing
                 </Link>
               </li>
               <li>
-                <Link href="/api-docs" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link
+                  href="/api-docs"
+                  className="text-sm text-muted-foreground hover:text-purple-600 transition-colors"
+                >
                   API Documentation
                 </Link>
               </li>
               <li>
-                <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link
+                  href="/coming-soon"
+                  className="text-sm text-muted-foreground hover:text-purple-600 transition-colors"
+                >
                   Integrations
                 </Link>
               </li>
               <li>
-                <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link
+                  href="/coming-soon"
+                  className="text-sm text-muted-foreground hover:text-purple-600 transition-colors"
+                >
                   Changelog
                 </Link>
               </li>
@@ -83,27 +99,42 @@ export default function Footer() {
             <h3 className="text-sm font-semibold">Company</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link
+                  href="/coming-soon"
+                  className="text-sm text-muted-foreground hover:text-purple-600 transition-colors"
+                >
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link
+                  href="/coming-soon"
+                  className="text-sm text-muted-foreground hover:text-purple-600 transition-colors"
+                >
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link
+                  href="/coming-soon"
+                  className="text-sm text-muted-foreground hover:text-purple-600 transition-colors"
+                >
                   Careers
                 </Link>
               </li>
               <li>
-                <Link href="/#contact" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link
+                  href="/#contact"
+                  className="text-sm text-muted-foreground hover:text-purple-600 transition-colors"
+                >
                   Contact
                 </Link>
               </li>
               <li>
-                <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link
+                  href="/coming-soon"
+                  className="text-sm text-muted-foreground hover:text-purple-600 transition-colors"
+                >
                   Partners
                 </Link>
               </li>
@@ -115,27 +146,42 @@ export default function Footer() {
             <h3 className="text-sm font-semibold">Resources</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link
+                  href="/coming-soon"
+                  className="text-sm text-muted-foreground hover:text-purple-600 transition-colors"
+                >
                   Help Center
                 </Link>
               </li>
               <li>
-                <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link
+                  href="/coming-soon"
+                  className="text-sm text-muted-foreground hover:text-purple-600 transition-colors"
+                >
                   Community
                 </Link>
               </li>
               <li>
-                <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link
+                  href="/coming-soon"
+                  className="text-sm text-muted-foreground hover:text-purple-600 transition-colors"
+                >
                   Guides & Tutorials
                 </Link>
               </li>
               <li>
-                <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link
+                  href="/coming-soon"
+                  className="text-sm text-muted-foreground hover:text-purple-600 transition-colors"
+                >
                   Status
                 </Link>
               </li>
               <li>
-                <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+                <Link
+                  href="/coming-soon"
+                  className="text-sm text-muted-foreground hover:text-purple-600 transition-colors"
+                >
                   Terms of Service
                 </Link>
               </li>
@@ -152,13 +198,22 @@ export default function Footer() {
               © 2024 ChatSecure. All rights reserved.
             </p>
             <div className="flex items-center space-x-6">
-              <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+              <Link
+                href="/coming-soon"
+                className="text-sm text-muted-foreground hover:text-purple-600 transition-colors"
+              >
                 Privacy Policy
               </Link>
-              <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+              <Link
+                href="/coming-soon"
+                className="text-sm text-muted-foreground hover:text-purple-600 transition-colors"
+              >
                 Cookie Policy
               </Link>
-              <Link href="/coming-soon" className="text-sm text-muted-foreground hover:text-purple-600 transition-colors">
+              <Link
+                href="/coming-soon"
+                className="text-sm text-muted-foreground hover:text-purple-600 transition-colors"
+              >
                 Security
               </Link>
             </div>

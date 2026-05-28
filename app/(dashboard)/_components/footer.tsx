@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { Logo } from '@/components/ui/logo'
 import { Twitter, Github, Linkedin, Shield, Mail, ArrowUpRight } from "lucide-react"
 import Link from "next/link"
 
@@ -24,10 +25,7 @@ export function Footer() {
                             viewport={{ once: true }}
                             className="flex items-center space-x-2"
                         >
-                            <div className="rounded-xl bg-gradient-to-br bg-purple-600 p-2.5">
-                                <Shield className="size-6 text-white " />
-                            </div>
-                            <span className=" text-2xl font-bold text-white tracking-tight">ChatSecure</span>
+                            <Logo />
                         </motion.div>
                         <p className="text-gray-400 leading-relaxed max-w-sm">
                             Empowering the next generation of secure communications with enterprise-grade encryption and AI-driven intelligence.
