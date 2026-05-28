@@ -1,18 +1,18 @@
-"use client"
+'use client'
 
-import type React from "react"
+import type React from 'react'
 
-import { useFormState, useFormStatus } from "react-dom"
-import { useEffect } from "react"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { X, ArrowRight } from "lucide-react"
-import { signup } from "./actions"
-import { toast } from "sonner"
-import { getMessageFromCode } from "@/lib/utils"
+import { useFormState, useFormStatus } from 'react-dom'
+import { useEffect } from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { X, ArrowRight } from 'lucide-react'
+import { signup } from './actions'
+import { toast } from 'sonner'
+import { getMessageFromCode } from '@/lib/utils'
 
 function SignUpButton() {
   const { pending } = useFormStatus()
@@ -23,7 +23,7 @@ function SignUpButton() {
       disabled={pending}
       className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3"
     >
-      {pending ? "Creating account..." : "Sign Up"}
+      {pending ? 'Creating account...' : 'Sign Up'}
     </Button>
   )
 }
@@ -51,7 +51,12 @@ export default function SignUpPage() {
         <div className="w-full max-w-md space-y-6">
           {/* Close button */}
           <div className="flex justify-end">
-            <Button variant="ghost" size="icon" asChild className="text-white hover:bg-white/10">
+            <Button
+              variant="ghost"
+              size="icon"
+              asChild
+              className="text-white hover:bg-white/10"
+            >
               <Link href="/">
                 <X className="size-4" />
               </Link>
@@ -61,7 +66,9 @@ export default function SignUpPage() {
           {/* Header */}
           <div className="space-y-2">
             <h1 className="text-2xl font-semibold">Create your account</h1>
-            <p className="text-gray-400 text-sm">Enter your details to get started</p>
+            <p className="text-gray-400 text-sm">
+              Enter your details to get started
+            </p>
           </div>
 
           {/* Form */}
@@ -139,13 +146,19 @@ export default function SignUpPage() {
           </div>
 
           {/* CTA Button */}
-          <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 px-6">
+          <Button
+            variant="outline"
+            className="bg-transparent border-white/30 text-white hover:bg-white/10 px-6"
+          >
             SIGNUP NOW
           </Button>
 
           {/* Navigation Arrow */}
           <div className="absolute bottom-8 right-8">
-            <Button size="icon" className="bg-white/20 hover:bg-white/30 text-white rounded-full">
+            <Button
+              size="icon"
+              className="bg-white/20 hover:bg-white/30 text-white rounded-full"
+            >
               <ArrowRight className="size-4" />
             </Button>
           </div>

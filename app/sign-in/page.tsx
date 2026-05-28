@@ -1,18 +1,18 @@
-"use client"
+'use client'
 
-import type React from "react"
+import type React from 'react'
 
-import { useFormState, useFormStatus } from "react-dom"
-import { useEffect } from "react"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { X, ArrowRight } from "lucide-react"
-import { authenticate } from "./actions"
-import { toast } from "sonner"
-import { getMessageFromCode } from "@/lib/utils"
+import { useFormState, useFormStatus } from 'react-dom'
+import { useEffect } from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { X, ArrowRight } from 'lucide-react'
+import { authenticate } from './actions'
+import { toast } from 'sonner'
+import { getMessageFromCode } from '@/lib/utils'
 
 function SignInButton() {
   const { pending } = useFormStatus()
@@ -23,7 +23,7 @@ function SignInButton() {
       disabled={pending}
       className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3"
     >
-      {pending ? "Signing in..." : "Sign In"}
+      {pending ? 'Signing in...' : 'Sign In'}
     </Button>
   )
 }
@@ -51,7 +51,12 @@ export default function SignInPage() {
         <div className="w-full max-w-md space-y-6">
           {/* Close button */}
           <div className="flex justify-end">
-            <Button variant="ghost" size="icon" asChild className="text-white hover:bg-white/10">
+            <Button
+              variant="ghost"
+              size="icon"
+              asChild
+              className="text-white hover:bg-white/10"
+            >
               <Link href="/">
                 <X className="size-4" />
               </Link>
@@ -100,7 +105,10 @@ export default function SignInPage() {
 
           {/* Footer Links */}
           <div className="space-y-4 text-center">
-            <Link href="/forgot-password" className="text-gray-400 hover:text-white text-sm">
+            <Link
+              href="/forgot-password"
+              className="text-gray-400 hover:text-white text-sm"
+            >
               Forgot your password?
             </Link>
 
@@ -143,13 +151,19 @@ export default function SignInPage() {
           </div>
 
           {/* CTA Button */}
-          <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 px-6">
+          <Button
+            variant="outline"
+            className="bg-transparent border-white/30 text-white hover:bg-white/10 px-6"
+          >
             LOGIN NOW
           </Button>
 
           {/* Navigation Arrow */}
           <div className="absolute bottom-8 right-8">
-            <Button size="icon" className="bg-white/20 hover:bg-white/30 text-white rounded-full">
+            <Button
+              size="icon"
+              className="bg-white/20 hover:bg-white/30 text-white rounded-full"
+            >
               <ArrowRight className="size-4" />
             </Button>
           </div>
