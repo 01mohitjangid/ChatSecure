@@ -25,6 +25,7 @@ export function Footer() {
                             viewport={{ once: true }}
                             className="flex items-center space-x-2"
                         >
+                            
                             <Logo />
                         </motion.div>
                         <p className="text-gray-400 leading-relaxed max-w-sm">
