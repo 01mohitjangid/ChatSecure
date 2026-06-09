@@ -29,7 +29,6 @@ export default function BlogPage() {
               </p>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -49,6 +48,7 @@ export default function BlogPage() {
                 className="object-cover"
                 priority
               />
+              
             </div>
             <div className="space-y-4">
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
