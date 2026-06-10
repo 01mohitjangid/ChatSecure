@@ -32,7 +32,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Featured Post Section */}
+
       <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
         <div className="container px-4 md:px-6">
           <div className="flex items-center gap-2 mb-8">
@@ -48,7 +48,7 @@ export default function BlogPage() {
                 className="object-cover"
                 priority
               />
-              
+
             </div>
             <div className="space-y-4">
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -89,8 +89,6 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
-
-      {/* Blog Posts Grid */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/50">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
